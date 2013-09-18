@@ -3,12 +3,10 @@ RailsBoot::Application.routes.draw do
   resources :route
   #resources :busstop
   get "busstop/show"
-  
   get "busstop/showAllBusstop"
-  
   post "busstop/showAllBusstop"
-  
   get "busstop/index"
+  
   #get "route/index"
   get "user/index"
   get "hello/index"
