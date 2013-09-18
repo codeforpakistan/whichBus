@@ -1,5 +1,12 @@
 RailsBoot::Application.routes.draw do
+  
+  resources :routes
+  
+  get "busstop/index"
+  #get "route/index"
+  get "user/index"
   get "hello/index"
+  get "route/showAllRoute"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

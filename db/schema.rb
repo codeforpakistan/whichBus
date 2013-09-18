@@ -11,6 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20130918013750) do
+
+  create_table "busstops", force: true do |t|
+    t.string   "busStopName"
+    t.string   "busStopLatLong"
+    t.string   "busStopSecName"
+    t.string   "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "routes", force: true do |t|
+    t.string   "routeName"
+    t.decimal  "routeDistance"
+    t.string   "routeSourceLatlong"
+    t.string   "routeDestLatLong"
+    t.decimal  "routeTravelTime"
+    t.string   "user_id"
+    t.time     "routeStartTime"
+    t.time     "routeStopTime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "userName"
+    t.string   "firstName"
+    t.string   "lastName"
+    t.string   "password"
+    t.string   "streetAddress"
+    t.string   "city"
+    t.string   "town"
+    t.string   "contactNumber"
+    t.string   "secContactNumber"
+    t.string   "email"
+    t.string   "yserType"
+    t.string   "organization"
+    t.string   "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
