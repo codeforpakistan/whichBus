@@ -1,7 +1,12 @@
 RailsBoot::Application.routes.draw do
   
   resources :route
-  resources :busstop
+  #resources :busstop
+  get "busstop/show"
+  
+  get "busstop/showAllBusstop"
+  
+  post "busstop/showAllBusstop"
   
   get "busstop/index"
   #get "route/index"

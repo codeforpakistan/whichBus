@@ -1,0 +1,10 @@
+%h1 Show All Bus Stops
+
+- if @busstops.blank?
+	%p There is no bus stop currently exist
+-else
+	%p These are the bus stops
+	%ul#user
+		- @busstops.each do |c|
+			%li= link_to c.busStopName, {:action => 'index', :id => c.id}
+	- link_to "Add new Bus Stop", {:action => 'index'}

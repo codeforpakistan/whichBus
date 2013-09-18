@@ -4,4 +4,8 @@ class BusstopController < ApplicationController
   
   def addBusstop
   end
+  
+  def showAllBusStop
+    @busstops = Busstop.All
+  end
 end
