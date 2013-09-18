@@ -1,6 +1,6 @@
 RailsBoot::Application.routes.draw do
   
-  resources :routes
+  resources :route
   
   get "busstop/index"
   #get "route/index"
