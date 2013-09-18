@@ -15,7 +15,7 @@ class RouteController < ApplicationController
   
   def addRoute
     
-    @routes = Route.new
+   # @routes = Route.new
     
   end
   
