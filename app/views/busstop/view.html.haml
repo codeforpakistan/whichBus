@@ -1,0 +1,16 @@
+%h3 Viewing Busstop
+
+- if @busstops.blank?
+	%p There is no bus stop currently exist
+-else
+	%p These are the bus stops
+	%ul#user
+	%li=@busstops.busStopName
+	%li=@busstops.busStopLatLong
+	%li=@busstops.busStopSecName
+	%li=@busstops.user_id
+%br
+
+/- @busstops.each do |b|
+
+

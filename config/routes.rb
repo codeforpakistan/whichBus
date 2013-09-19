@@ -2,12 +2,12 @@ RailsBoot::Application.routes.draw do
   
   resources :route
   #resources :busstop
-  get "busstop/show"
+  #get "busstop/show"
   get "busstop/showAll"
   get "busstop/index"
   get "busstop/new"
-  
-  post "busstop/show"
+  get "busstop/view/:id", to: 'busstop#view'
+  #post "busstop/show"
   post "busstop/createBusstop"
   
   

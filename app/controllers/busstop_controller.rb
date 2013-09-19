@@ -1,5 +1,16 @@
 class BusstopController < ApplicationController
+  
   def index
+    
+    
+  end
+  
+  def showAll
+    @busstops = Busstop.all
+  end
+  
+  def view
+      @busstops = Busstop.find(params[:id])
   end
   
   def new
@@ -9,16 +20,13 @@ class BusstopController < ApplicationController
   def createBusstop
     @busstops = Busstop.new(busstop_params)
     if @busstops.save
-      redirect_to root_path
+      redirect_to busstop_showAll_path
     else
       render 'showAll'
     end  
   end
   
-  def showAll
-    @busstops = Busstop.all
-  end
-  
+  #Private Members for Busstop  
   private
   def busstop_params
     
