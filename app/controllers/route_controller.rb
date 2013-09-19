@@ -3,6 +3,10 @@ class RouteController < ApplicationController
      @routes = Route.all
   end
   
+  def new
+    @routes = Route.new
+  end
+  
   def showAllRoute
     @routes = Route.all
   end

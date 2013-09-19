@@ -3,16 +3,21 @@ RailsBoot::Application.routes.draw do
   resources :route
   #resources :busstop
   get "busstop/show"
-  get "busstop/showAllBusstop"
-  post "busstop/showAllBusstop"
+  get "busstop/showAll"
   get "busstop/index"
+  get "busstop/new"
   
   post "busstop/show"
+  post "busstop/createBusstop"
+  
   
   #get "route/index"
   get "user/index"
   get "hello/index"
   get "route/showAllRoute"
+  
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
