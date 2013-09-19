@@ -7,6 +7,8 @@ RailsBoot::Application.routes.draw do
   post "busstop/showAllBusstop"
   get "busstop/index"
   
+  post "busstop/show"
+  
   #get "route/index"
   get "user/index"
   get "hello/index"
