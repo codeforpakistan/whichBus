@@ -1,0 +1,8 @@
+%h1 Showing All Routes
+%div
+	%ul
+		- @routes.each do |r|
+			%li= link_to r.routeName, {:action => 'view', :id => r.id}
+			%li= r.routeDistance
+			%li= r.routeTravelTime
+			%li= r.user_id
