@@ -1,0 +1,26 @@
+%h1 Add Route
+=form_for :route do |f|
+	%div
+		=f.label :routeName
+		=f.text_field :routeName
+	%div 
+		=f.label :routeDistance
+		=f.text_field :routeDistance
+	%div
+		=f.label :routeDestLatLong
+		=f.text_field :routeDestLatLong
+	%div
+		=f.label :routeTravelTime
+		=f.text_field :routeTravelTime
+	%div
+		=f.label :user_id
+		=f.text_field :user_id
+	%div
+		=f.label :routeStartTime
+		=f.text_field :routeStartTime
+	%div
+		=f.label :routeStopTime
+		=f.text_field :routeStopTime
+	%div
+		=f.submit
+	

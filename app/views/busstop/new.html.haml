@@ -1,0 +1,17 @@
+%h1 Add Bus Stop
+=form_for :busstop do |f|
+	%div
+		=f.label :busStopName
+		=f.text_field :busStopName
+	%div
+		=f.label :busStopLatLong
+		=f.text_field :busStopLatLong
+	%div
+		=f.label :busStopSecName
+		=f.text_field :busStopSecName
+	%div
+		=f.label :user_id
+		=f.text_field :user_id
+	%div
+		=f.submit
+	
