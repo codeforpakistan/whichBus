@@ -26,6 +26,13 @@ class BusstopController < ApplicationController
     end  
   end
   
+  
+  def destroy
+      
+      @busstops = Busstop.find(params[:id])
+      @busstops.destroy
+      redirect_to busstop_showAll_path
+  end
   #Private Members for Busstop  
   private
   def busstop_params

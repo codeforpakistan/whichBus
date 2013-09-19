@@ -1,12 +1,15 @@
 %h1 Show All Bus Stops
 
+%h4= link_to 'Add new bus stop.', controller: 'busstop', action: 'new'
 - if @busstops.blank?
-	%p There is no bus stop currently exist
+	%p No bus stop currently exist.
 -else
 	%p These are the bus stops
-	%ul#user
+	%ul
 		- @busstops.each do |c|
-			%li= link_to c.busStopName, {:action => 'view', :id => c.id}
-			%li= c.busStopLatLong
+			%div
+				%li
+					= link_to c.busStopName, {:action => 'view', :id => c.id}
+				%li= c.busStopLatLong
+				= button_to 'Destroy', {:controller => 'busstop', :action => 'destroy', :id => c.id}, method: :delete, data: { :confirm => 'Are you sure?' }
 			
-	- link_to "Add new Bus Stop", {:action => 'index'}
