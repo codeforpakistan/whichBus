@@ -17,6 +17,11 @@ RailsBoot::Application.routes.draw do
   get "user/index"
   get "hello/index"
   get "route/showAllRoute"
+  get "route/addRoute"
+  get "route/showAll"
+  get "route/view/:id", to: 'route#view'
+  post "route/createRoute"
+  
   
   
   
@@ -24,7 +29,7 @@ RailsBoot::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'route#index'
+   root 'route#showAll'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
