@@ -7,7 +7,7 @@ class RouteController < ApplicationController
     @routes = Route.new
   end
   
-  def showAllRoute
+  def showAll
     @routes = Route.all
   end
   
