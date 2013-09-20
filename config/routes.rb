@@ -27,9 +27,11 @@ RailsBoot::Application.routes.draw do
   
   get "user/index"
   get "/new-user", to:'user#signUp'
-  get "/sign-in", to: 'user#signIn'
-  post "sign-in", to: 'user#signIn'
+  get "/user/sign-in", to: 'user#signIn'
+  post "/user/sign-in", to: 'user#signIn'
   
+  get "/user/sign-up", to: 'user#signUp'
+  post "user/authenticateUser"
   
   
   # The priority is based upon order of creation: first created -> highest priority.
