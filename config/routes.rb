@@ -1,5 +1,6 @@
 RailsBoot::Application.routes.draw do
   
+  devise_for :users
   #resources :route
   #resources :busstop
   #get "busstop/show"
