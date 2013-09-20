@@ -8,12 +8,10 @@
 </head>
 <body>
 <h1 class="btn btn-primary">Welcome to FYP-MIS</h1>
-<%= link_to 'Manage Routes', {:controller => 'route', :action => 'showAll'} %>
-<%= link_to 'Manage Bus Stops', {:controller => 'busstop', :action => 'showAll'} %>
 <% # Required for deivse.%>
 <% if notice %>
   <p class="alert alert-notice"><%= notice %></p>
-<% end %0.>
+<% end %>
 <% if alert %>
   <p class="alert alert-error"><%= alert %></p>
 <% end %>

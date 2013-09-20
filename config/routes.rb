@@ -26,12 +26,6 @@ RailsBoot::Application.routes.draw do
   delete "route/:id", to: 'route#destroy'
   
   
-  get "user/index"
-  get "/new-user", to:'user#signUp'
-  get "/sign-in", to: 'user#signIn'
-  post "sign-in", to: 'user#signIn'
-  
-  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
