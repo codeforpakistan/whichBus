@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+%html
+	%head
+		%title RailsBoot
+		= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+		= javascript_include_tag "application", "data-turbolinks-track" => true
+		= csrf_meta_tags
+	%body
+		%h1.btn.btn-primary Welcome to FYP-MIS
+		= link_to 'Manage Routes', {:controller => 'route', :action => 'showAll'}
+		= link_to 'Manage Bus Stops', {:controller => 'busstop', :action => 'showAll'}
+		= yield
+		
+		
+		/ Footer Implementation
+		%div#real_footer
+			%div.copyright
+				%span Copyright © PakTransit.pk
