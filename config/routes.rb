@@ -14,14 +14,21 @@ RailsBoot::Application.routes.draw do
   
   
   #get "route/index"
-  get "user/index"
+  
   get "hello/index"
   get "route/showAllRoute"
   get "route/addRoute"
   get "route/showAll"
   get "route/view/:id", to: 'route#view'
   post "route/createRoute"
+  get "route/new"
+  delete "route/:id", to: 'route#destroy'
   
+  
+  get "user/index"
+  get "/new-user", to:'user#signUp'
+  get "/sign-in", to: 'user#signIn'
+  post "sign-in", to: 'user#signIn'
   
   
   

@@ -4,42 +4,31 @@ class RouteController < ApplicationController
   end
 
   def new
-    @routes = Route.new
+    
   end
   
   def showAll
     @routes = Route.all
   end
   
-  def destroy
-  end
-  
-  def edit
-  end
-  
-  def addRoute
-    
-   # @routes = Route.new
-    
-  end
-  
-  def createRoute    
-    
+  def createRoute
     @route = Route.new(params[:route].permit(:routeName, :routeDistance, :user_id))
-    
     if @route.save
-      redirect_to :action => 'addRoute'
+      redirect_to :action => 'showAll'
     else
       render 'addRoute'
-    end
-    
+    end 
   end
   
-  def view
-    
-    @routes = Route.find(params [:id])
-    
+  def view   
+    @routes = Route.find(params[:id])   
   end
-  def show
+  
+  def destroy
+    @routes = Route.find(params[:id])
+    
+    if @routes.destroy
+      redirect_to route_showAll_path
+    end
   end
 end

@@ -1,5 +1,5 @@
 %h1 Add Route
-=form_for :route do |f|
+=form_for :route, url: {action: "createRoute"}  do |f|
 	%div
 		=f.label :routeName
 		=f.text_field :routeName
@@ -23,4 +23,6 @@
 		=f.text_field :routeStopTime
 	%div
 		=f.submit
+		= "  "
+		= button_to 'Cancel', {:action => 'showAll'}
 	

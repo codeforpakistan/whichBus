@@ -1,1 +1,14 @@
 %h1= "Showing Route: #{@routes.routeName}"
+=link_to 'Show All Routes', {:action => 'showAll'}
+
+- if @routes.blank?
+	%p= "Route not found"
+- else
+	%ul#user
+	%li=@routes.routeName
+	%li=@routes.routeTravelTime
+	%li=@routes.routeDistance
+	%li=@routes.user_id
+	%li=@routes.id
+	%br
+	= button_to 'Destroy', {:controller => 'busstop', :action => 'destroy', :id => @routes.id}, method: :delete, data: { :confirm => 'Are you sure?' }

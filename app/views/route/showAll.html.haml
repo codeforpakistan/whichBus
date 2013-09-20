@@ -1,4 +1,8 @@
 %h1 Showing All Routes
+-if @routes.blank?
+	%h3= "No routes to show"
+%div
+	=link_to 'Add new route', {:action => 'new'}
 %div
 	%ul
 		- @routes.each do |r|
@@ -6,4 +10,6 @@
 			%li= r.routeDistance
 			%li= r.routeTravelTime
 			%li= r.user_id
+			%li= r.id
+			%li= button_to 'Delete', {:controller => 'route', :action => 'destroy', :id =>r.id}, method: :delete, data: { :confirm => 'Are you sure?' }
 /comment
