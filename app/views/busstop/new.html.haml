@@ -1,14 +1,18 @@
 %h1 Add Bus Stop
-=form_for :busstop, url: {action: "createBusstop"} do |f|
-	%div
-		=f.label :busStopName
-		=f.text_field :busStopName
-	%div
-		=f.label :busStopLatLong
-		=f.text_field :busStopLatLong
-	%div
-		=f.label :user_id
-		=f.text_field :user_id
-	%div
-		=f.submit
+=form_for :busstop, url:{action: "createBusstop"}, html:{class: "form-horizontal"} do |f|
+	%div.form-group
+		=f.label :busStopName, {:class => 'col-lg-2 control-label'}
+		%div.col-lg-3
+			=f.text_field :busStopName, {:class => 'form-control'}
+	%div.form-group
+		=f.label :busStopLatLong, {:class => 'col-lg-2 control-label'}
+		%div.col-lg-3
+			=f.text_field :busStopLatLong, {:class => 'form-control'}
+	%div.form-group
+		=f.label :user_id, {:class => 'col-lg-2 control-label'}
+		%div.col-lg-3
+			=f.text_field :user_id, {:class => 'form-control'}
+	%div.form-group
+		%div.col-lg-offset-2.col-lg-10
+			=f.submit :class => 'btn btn-default'
 	

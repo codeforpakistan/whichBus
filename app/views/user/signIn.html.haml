@@ -1,0 +1,12 @@
+=form_for :user, url:{:action => 'authenticateUser'}, html: {class: "form-horizontal"} do |u|
+	%div.form-group
+		=u.label :userName, {:class => 'col-lg-2 control-label'}
+		%div.col-lg-3
+			=u.text_field :userName, {:class => 'form-control', :id => 'inputEmail'}
+	%div.form-group
+		=u.label :password, {:class => 'col-lg-2 control-label'}
+		%div.col-lg-3
+			=u.text_field :password, {:class => 'form-control', :id => 'inputPassword1'}
+	%div.form-group
+		%div.col-lg-offset-2.col-lg-10
+			=u.submit "Log In", {:class => 'btn btn-default'}
