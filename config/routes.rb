@@ -1,20 +1,15 @@
 RailsBoot::Application.routes.draw do
   
   
-  #resources :route
-  #resources :busstop
-  #get "busstop/show"
-  #get "busstop/:id", to: 'busstop#hello'
+  
   get "busstop/showAll"
   get "busstop/index"
   get "busstop/new"
   get "busstop/view/:id", to: 'busstop#view'
   delete "busstop/:id", to: 'busstop#destroy'
-  #post "busstop/show"
   post "busstop/createBusstop"
   
   
-  #get "route/index"
   
   get "hello/index"
   get "route/showAllRoute"
