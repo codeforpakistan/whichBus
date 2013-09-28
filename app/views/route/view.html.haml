@@ -4,11 +4,32 @@
 - if @routes.blank?
 	%p= "Route not found"
 - else
-	%ul#user
-	%li=@routes.routeName
-	%li=@routes.routeTravelTime
-	%li=@routes.routeDistance
-	%li=@routes.user_id
-	%li=@routes.id
-	%br
-	= button_to 'Destroy', {:controller => 'busstop', :action => 'destroy', :id => @routes.id}, method: :delete, data: { :confirm => 'Are you sure?' }
+	%table.table.table-hover.table-condensed
+		%tr
+			%th
+				Route Id
+			%th
+				Route Name
+			%th
+				Route Travel Time
+			%th
+				Route Distance
+			%th
+				User
+		%tr
+			%td
+				=@routes.id
+			%td
+				=@routes.routeName
+			%td
+				=@routes.routeTravelTime
+			%td
+				=@routes.routeDistance
+			%td
+				=@routes.user_id
+			%td
+				= link_to route_delete_path(@routes.id), method: :delete, data: { :confirm => 'Are you sure?' } do
+					= content_tag :span, class: "glyphicon glyphicon-remove" do
+						=""
+
+/	= button_to 'Destroy', {:controller => 'busstop', :action => 'destroy', :id => @routes.id}, method: :delete, data: { :confirm => 'Are you sure?' }

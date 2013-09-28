@@ -7,8 +7,9 @@ RailsBoot::Application.routes.draw do
   get "busstop/showAll"
   get "busstop/index"
   get "busstop/new"
-  get "busstop/view/:id", to: 'busstop#view'
-  delete "busstop/:id", to: 'busstop#destroy'
+  get "busstop/view/:id", to: 'busstop#view', as: :busstop_view
+  delete "busstop/:id", to: 'busstop#destroy', as: :busstop_delete
+  patch "busstop/edit/:id", :to => "busstop#edit", as: :busstop_edit
   post "busstop/createBusstop"
   
   

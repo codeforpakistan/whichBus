@@ -1,16 +1,35 @@
-%h3 Viewing Busstop
+%h3 Viewing Busstops
 
-- if @busstops.blank?
+- if @busstop.blank?
 	%p There is no bus stop currently exist
 -else
 	%p These are the bus stops
-	%ul#user
-	%li=@busstops.busStopName
-	%li=@busstops.busStopLatLong
-	%li=@busstops.busStopSecName
-	%li=@busstops.user_id
+	%table.table.table-hover.table-condensed
+		%tr
+			%th
+				Bus Stop Name
+			%th
+				Bus Stop LatLong
+			%th
+				Bus Stop Secondary Name
+			%th
+				user
+			%th
+				Options
+		%tr
+			%td
+				=@busstop.busStopName
+			%td
+				=@busstop.busStopLatLong
+			%td
+				=@busstop.busStopSecName
+			%td
+				=@busstop.user_id
+			%td
+				= link_to busstop_delete_path, method: :delete, data: { :confirm => 'Are you sure?' } do
+					= content_tag :span, class: "glyphicon glyphicon-remove" do
+						=""
 %br
 
-/- @busstops.each do |b|
 
 

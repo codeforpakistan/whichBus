@@ -38,7 +38,7 @@
 				%td= r.routeStartTime
 				%td= r.routeStopTime
 				%td
-					= link_to (route_view_path(r.id)) do
+					= link_to route_view_path(r.id) do
 						= content_tag :span, class: "glyphicon glyphicon-list" do
 							=""
 					= link_to route_edit_path(r.id), method: :patch, data: { :confirm => 'Are you sure?' } do

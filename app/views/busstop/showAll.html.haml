@@ -1,15 +1,39 @@
 %h1 Show All Bus Stops
-
 %h4= link_to 'Add new bus stop.', controller: 'busstop', action: 'new'
 - if @busstops.blank?
 	%p No bus stop currently exist.
 -else
-	%p These are the bus stops
-	%ul
+	%p 
+		These are the bus stops
+	%table.table.table-hover.table-condensed
+		%tr
+			%th
+				Bus Stop Name
+			%th
+				Bus Stop LatLong
+			%th
+				Bus Stop Secondary Name
+			%th
+				user
+			%th
+				Options
 		- @busstops.each do |c|
-			%div
-				%li
+			%tr
+				%td
 					= link_to c.busStopName, {:action => 'view', :id => c.id}
-				%li= c.busStopLatLong
-				= button_to 'Destroy', {:controller => 'busstop', :action => 'destroy', :id => c.id}, method: :delete, data: { :confirm => 'Are you sure?' }
-			
+				%td
+					= c.busStopLatLong
+					%td
+					= c.busStopSecName
+				%td
+					= c.user_id
+				%td
+					= link_to busstop_view_path(c.id) do
+						= content_tag :span, class: "glyphicon glyphicon-list" do
+							=""
+					= link_to busstop_edit_path(c.id), method: :patch, data: { :confirm => 'Are you sure?' } do
+						= content_tag :span, class: "glyphicon glyphicon-pencil" do
+							=""
+					= link_to busstop_delete_path(c.id), method: :delete, data: { :confirm => 'Are you sure?' } do
+						= content_tag :span, class: "glyphicon glyphicon-remove" do
+							=""
