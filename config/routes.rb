@@ -17,10 +17,11 @@ RailsBoot::Application.routes.draw do
   get "route/showAllRoute"
   get "route/addRoute"
   get "route/showAll"
-  get "route/view/:id", to: 'route#view'
+  get "route/view/:id", to: 'route#view', as: :route_view
   post "route/createRoute"
   get "route/new"
-  delete "route/:id", to: 'route#destroy'
+  patch "route/edit/:id", :to => "route#edit", as: :route_edit
+  delete "route/:id", to: 'route#destroy', as: :route_delete
   
   
   devise_for :users
@@ -28,7 +29,7 @@ RailsBoot::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'route#showAll'
+   root 'super_admin#dashboard'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

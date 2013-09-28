@@ -2,11 +2,14 @@
 %html
 	%head
 		%title RailsBoot
-		%link{:href => 'http://fonts.googleapis.com/css?family=Stint+Ultra+Expanded',  :rel => 'stylesheet', :type => 'text/css'}
+		/%link{:href => 'http://fonts.googleapis.com/css?family=Stint+Ultra+Expanded',  :rel => 'stylesheet', :type => 'text/css'}
 		= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
 		= javascript_include_tag "application", "data-turbolinks-track" => true
 		= csrf_meta_tags
 	%body
+		=link_to root_path do
+			%button.btn.btn-primary
+				Welcome to MIS-FYP
 		%p.navbar-text.pull-right
 			-if user_signed_in?
 				Logged in as
@@ -17,7 +20,7 @@
 			-else
 				= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
 				= link_to "Login", new_user_session_path, :class => 'navbar-link'	
-		%h1.btn.btn-primary Welcome to FYP-MIS
+			
 		/= link_to 'Manage Routes', {:controller => 'route', :action => 'showAll'}
 		/= link_to 'Manage Bus Stops', {:controller => 'busstop', :action => 'showAll'}
 		= yield

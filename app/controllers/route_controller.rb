@@ -26,6 +26,9 @@ class RouteController < ApplicationController
     @routes = Route.find(params[:id])   
   end
   
+  def edit
+  end
+  
   def destroy
     @routes = Route.find(params[:id])
     
