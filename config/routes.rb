@@ -2,6 +2,8 @@ RailsBoot::Application.routes.draw do
   
   
   
+  get "super_admin/index"
+  get "super_admin/dashboard"
   get "busstop/showAll"
   get "busstop/index"
   get "busstop/new"
