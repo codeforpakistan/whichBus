@@ -1,5 +1,5 @@
 class RouteController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_admin!
   
   def index
      @routes = Route.all
