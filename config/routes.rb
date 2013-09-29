@@ -12,8 +12,6 @@ RailsBoot::Application.routes.draw do
   patch "busstop/edit/:id", :to => "busstop#edit", as: :busstop_edit
   post "busstop/createBusstop"
   
-  get "/users", to: 'super_admin#dashboard'
-  
   get "hello/index"
   get "route/showAllRoute"
   get "route/addRoute"
