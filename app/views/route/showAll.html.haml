@@ -41,9 +41,11 @@
 					= link_to route_view_path(r.id) do
 						= content_tag :span, class: "glyphicon glyphicon-list" do
 							=""
+					|
 					= link_to route_edit_path(r.id), method: :patch, data: { :confirm => 'Are you sure?' } do
 						= content_tag :span, class: "glyphicon glyphicon-pencil" do
 							=""
+					|
 					= link_to route_delete_path(r.id), method: :delete, data: { :confirm => 'Are you sure?' } do
 						= content_tag :span, class: "glyphicon glyphicon-remove" do
 							=""

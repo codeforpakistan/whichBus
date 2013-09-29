@@ -31,9 +31,11 @@
 					= link_to busstop_view_path(c.id) do
 						= content_tag :span, class: "glyphicon glyphicon-list" do
 							=""
+					|
 					= link_to busstop_edit_path(c.id), method: :patch, data: { :confirm => 'Are you sure?' } do
 						= content_tag :span, class: "glyphicon glyphicon-pencil" do
 							=""
+					|
 					= link_to busstop_delete_path(c.id), method: :delete, data: { :confirm => 'Are you sure?' } do
 						= content_tag :span, class: "glyphicon glyphicon-remove" do
 							=""

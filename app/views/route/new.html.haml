@@ -30,8 +30,9 @@
 			=f.text_field :routeStopTime, {:class => 'form-control'}
 	%div.form-group
 		%div.col-lg-offset-2.col-lg-10
-			=f.submit :class => 'btn btn-default'
-			%button.btn.btn-default{:type => 'button'}
-				="Cancel"
+			=f.submit :class => 'btn btn-primary'
+			= link_to route_showAll_path do
+				= content_tag :button, class: "btn btn-default" do
+					="Cancel"
 			
 	

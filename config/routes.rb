@@ -4,7 +4,7 @@ RailsBoot::Application.routes.draw do
   
   get "super_admin/index"
   get "super_admin/dashboard"
-  get "busstop/showAll"
+  get "busstop/showAll", as: :busstop_showAll
   get "busstop/index"
   get "busstop/new"
   get "busstop/view/:id", to: 'busstop#view', as: :busstop_view
@@ -15,7 +15,7 @@ RailsBoot::Application.routes.draw do
   get "hello/index"
   get "route/showAllRoute"
   get "route/addRoute"
-  get "route/showAll"
+  get "route/showAll", as: :route_showAll
   get "route/view/:id", to: 'route#view', as: :route_view
   post "route/createRoute"
   get "route/new"
