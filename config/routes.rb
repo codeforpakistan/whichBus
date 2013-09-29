@@ -13,6 +13,7 @@ RailsBoot::Application.routes.draw do
   post "busstop/createBusstop"
   
   get "/users", to: 'super_admin#dashboard'
+  post "/users"
   
   get "hello/index"
   get "route/showAllRoute"
