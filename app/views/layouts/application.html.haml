@@ -10,6 +10,11 @@
 		=link_to root_path do
 			%button.btn.btn-primary
 				Welcome to MIS-FYP
+		= link_to "Manage Users", "#" 
+		|		
+		= link_to "Manage Routes", route_showAll_path
+		|
+		= link_to "Manage Bus Stops", busstop_showAll_path
 		%p.navbar-text.pull-right
 			-if user_signed_in?
 				Logged in as
