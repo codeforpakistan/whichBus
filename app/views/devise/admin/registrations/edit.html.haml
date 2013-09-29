@@ -29,6 +29,13 @@
 		%i (we need your current password to confirm your changes)
 		%br
 		=f.password_field :current_password
+		
+	%div
+		=f.label :userName
+		%br
+		=f.text_field :userName, :autofocus => true
+		
+	%p ""
 	%div
 		=f.submit "Update"
 %h3 Cancel my account

@@ -14,5 +14,11 @@
 	%br
 		=f.password_field :password_confirmation
 	%div
+		=f.label :userName
+		%br
+		=f.text_field :userName, :autofocus => true
+
+	%p ""
+	%div
 		=f.submit "Sign up"
 =render "devise/shared/links"
