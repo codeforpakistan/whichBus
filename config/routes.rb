@@ -1,6 +1,6 @@
 RailsBoot::Application.routes.draw do
-  
-  devise_for :admin, :controllers => { :registrations => "devise/admin/registrations" }
+  #devise_for :admin
+  devise_for :admin, :controllers => { :registrations => "devise/admin/registrations", :sessions => "devise/admin/sessions" }
   
  # devise_for :admins
   get "super_admin/index"

@@ -1,20 +1,19 @@
 %h2 Sign in to Form
-= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {:class => "form-horizontal" }) do |f|
+= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {:class => "form-horizontal", :role => 'form'}) do |f|
 	%div.form-group
 		= f.label :email, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			= f.email_field :email, :autofocus => true, {:class => 'form-control', :id => 'inputEmail'}
+			= f.email_field :email, {:class => 'form-control', :id => 'inputEmail'}
 
 	%div.form-group
 		= f.label :password, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			= f.password_field :password, {:class => 'form-control', :id => 'inputEmail'}
+			= f.password_field :password, {:class => 'form-control'}
 	- if devise_mapping.rememberable?
 		%div.form-group
-			= f.check_box :remember_me, {:class => 'col-lg-2 control-label'}
-			= " "
-			%div.col-lg-3
-				= f.label :remember_me, {:class => 'form-control', :id => 'inputEmail'}
+			=f.label :remember_me, :class => "control-label col-lg-2"
+			%div.col-lg-offset-2
+				=f.check_box :remember_me, class: "form-control"
 	%div.form-group
 		%div.col-lg-offset-2.col-lg-10
 			= f.submit "Sign in", {:class => 'btn btn-default'}
