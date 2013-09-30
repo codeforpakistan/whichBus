@@ -31,6 +31,16 @@ class DeviseCreateAdmins < ActiveRecord::Migration
       # t.datetime :locked_at
 
       t.string :userName
+      t.string :firstName
+      t.string :lastName
+      t.string :streetAddress
+      t.string :city
+      t.string :town
+      t.string :contactNumber
+      t.string :secContactNumber
+      t.string :yserType
+      t.string :organization
+      t.string :user_id
 
       t.timestamps
     end
