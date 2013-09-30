@@ -38,7 +38,7 @@ class DeviseCreateAdmins < ActiveRecord::Migration
       t.string :town
       t.string :contactNumber
       t.string :secContactNumber
-      t.string :yserType
+      t.string :userType
       t.string :organization
       t.string :user_id
 
