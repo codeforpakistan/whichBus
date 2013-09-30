@@ -1,0 +1,15 @@
+%h1 Show All Users
+-if @admins.blank?
+	%h3= No User Currently
+%div
+	%table.table.table-hover.table-condensed
+		%tr
+			%th 
+				User Name
+			%th 
+				Email
+		-@admins.each do |a|
+			%tr
+				%td= a.userName
+			%tr
+				%td= a.email
