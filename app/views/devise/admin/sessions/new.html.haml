@@ -1,5 +1,5 @@
 %h2 Sign in to Form
-= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: "form-horizontal" }) do |f|
+= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {:class => "form-horizontal" }) do |f|
 	%div.form-group
 		= f.label :email, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
