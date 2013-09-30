@@ -41,6 +41,7 @@ class DeviseCreateAdmins < ActiveRecord::Migration
       t.string :userType
       t.string :organization
       t.string :user_id
+      t.belongs_to :admin
 
       t.timestamps
     end

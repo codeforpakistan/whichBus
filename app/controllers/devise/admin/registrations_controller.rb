@@ -1,6 +1,8 @@
 class Devise::Admin::RegistrationsController < Devise::RegistrationsController
 
-  
+  def index
+    @admins = Admin.all
+  end
   def create
     super
   end

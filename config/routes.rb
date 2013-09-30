@@ -24,7 +24,14 @@ RailsBoot::Application.routes.draw do
   delete "route/:id", to: 'route#destroy', as: :route_delete
   
   
-    
+  
+  
+  #rogue lines
+  
+  devise_scope :admin do
+    get 'admin/index', to: 'devise/admin/registrations#index'
+  
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
