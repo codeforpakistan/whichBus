@@ -13,7 +13,7 @@ class Devise::Admin::SessionsController < Devise::SessionsController
     super
   end
   def showAll
-    redirect_to busstop_showAll_path
+    flash[:notice] = "Sorry Wrong address"
   end
   
 end

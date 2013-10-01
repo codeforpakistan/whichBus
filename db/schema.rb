@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20130929175304) do
     t.string   "userType"
     t.string   "organization"
     t.string   "user_id"
+    t.integer  "admin_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
