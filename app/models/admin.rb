@@ -4,5 +4,7 @@ class Admin < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+
+         has_one :approval, class_name: "Admin", foreign_key: "admin_id"
          belongs_to :admin
 end
