@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130929175304) do
+ActiveRecord::Schema.define(version: 20131002224104) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20130929175304) do
     t.string   "secContactNumber"
     t.string   "userType"
     t.string   "organization"
-    t.string   "user_id"
     t.integer  "admin_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -52,6 +51,13 @@ ActiveRecord::Schema.define(version: 20130929175304) do
     t.datetime "updated_at"
   end
 
+  create_table "route_busstops", force: true do |t|
+    t.integer  "route_id"
+    t.integer  "busstop_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "routes", force: true do |t|
     t.string   "routeName"
     t.decimal  "routeDistance"
@@ -61,6 +67,13 @@ ActiveRecord::Schema.define(version: 20130929175304) do
     t.string   "user_id"
     t.time     "routeStartTime"
     t.time     "routeStopTime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "routes_busstops", force: true do |t|
+    t.integer  "route_id"
+    t.integer  "busstop_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

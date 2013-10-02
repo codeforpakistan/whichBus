@@ -40,7 +40,6 @@ class DeviseCreateAdmins < ActiveRecord::Migration
       t.string :secContactNumber
       t.string :userType
       t.string :organization
-      t.belongs_to :admin
 
       t.timestamps
     end

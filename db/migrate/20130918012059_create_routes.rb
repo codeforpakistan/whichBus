@@ -7,7 +7,6 @@ class CreateRoutes < ActiveRecord::Migration
       t.string  :routeSourceLatlong
       t.string  :routeDestLatLong
       t.decimal  :routeTravelTime
-      t.string  :user_id
       t.time    :routeStartTime
       t.time    :routeStopTime
       

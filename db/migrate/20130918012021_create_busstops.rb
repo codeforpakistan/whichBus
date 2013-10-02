@@ -5,7 +5,6 @@ class CreateBusstops < ActiveRecord::Migration
       t.string :busStopName
       t.string :busStopLatLong
       t.string :busStopSecName
-      t.string :user_id
       
       t.timestamps
     end
