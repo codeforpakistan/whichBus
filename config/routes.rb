@@ -29,7 +29,7 @@ RailsBoot::Application.routes.draw do
   #rogue lines
   
   devise_scope :admin do
-    get 'admin/index', to: 'devise/admin/registrations#index'
+    get 'admin/index', to: 'devise/admin/registrations#index', as: :admin_index
   
   end
   
