@@ -18,8 +18,7 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
     redirect_to busstop_showAll_path
   end
   
-  def approveUser
+  def pendingUser
     @adminPendingUsers = Admin.where( :approved => false)
   end
-  
 end

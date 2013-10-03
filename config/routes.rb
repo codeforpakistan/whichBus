@@ -30,7 +30,7 @@ RailsBoot::Application.routes.draw do
   
   devise_scope :admin do
     get 'admin/index', to: 'devise/admin/registrations#index', as: :admin_index
-    get 'admin/approveUser', to: 'devise/admin/registrations#approveUser', as: :admin_approve_user
+    get 'admin/pendingUser', to: 'devise/admin/registrations#pendingUser', as: :admin_pending_user
   
   end
   
