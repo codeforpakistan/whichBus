@@ -31,6 +31,7 @@ RailsBoot::Application.routes.draw do
   devise_scope :admin do
     get 'admin/index', to: 'devise/admin/registrations#index', as: :admin_index
     get 'admin/approveUser', to: 'devise/admin/registrations#approveUser', as: :admin_approve_user
+    root 'devise/admin/registrations#index'
   
   end
   
@@ -38,7 +39,7 @@ RailsBoot::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'super_admin#dashboard'
+   
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

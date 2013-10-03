@@ -18,59 +18,54 @@
 		= f.label :password, {:class => 'col-lg-2 control-label'}
 		%i (leave blank if you don't want to change it)
 		%div.col-lg-3
-			=f.password_field :password, :autocomplete => "off"
-	
+			=f.password_field :password, :autocomplete => "off", :class => 'form-control'	
 	%div.form-group
 		=f.label :password_confirmation, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			=f.password_field :password_confirmation, {:class => 'form-control', :id => 'inputEmail'}
+			=f.password_field :password_confirmation, {:class => 'form-control'}
 	%div.form-group
 		=f.label :current_password, {:class => 'col-lg-2 control-label'}
 		%i (we need your current password to confirm your changes)
 		%div.col-lg-3
-			=f.password_field :current_password, {:class => 'form-control', :id => 'inputEmail'}
+			=f.password_field :current_password, {:class => 'form-control'}
 		
 	%div.form-group
 		=f.label :userName, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			=f.text_field :userName, {:class => 'form-control', :id => 'inputEmail'}
+			=f.text_field :userName, {:class => 'form-control'}
 
 	%div.form-group
 		=f.label :firstName, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			=f.text_field :firstName, {:class => 'form-control', :id => 'inputEmail'}
+			=f.text_field :firstName, {:class => 'form-control'}
 	%div.form-group
 		=f.label :lastName, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			=f.text_field :lastName, {:class => 'form-control', :id => 'inputEmail'}
+			=f.text_field :lastName, {:class => 'form-control'}
 	%div.form-group
 		=f.label :streetAddress, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			=f.text_field :streetAddress, {:class => 'form-control', :id => 'inputEmail'}
+			=f.text_field :streetAddress, {:class => 'form-control'}
 	%div.form-group
 		=f.label :city, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			=f.text_field :city, {:class => 'form-control', :id => 'inputEmail'}
+			=f.text_field :city, {:class => 'form-control'}
 	%div.form-group
 		=f.label :town, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			=f.text_field :town, {:class => 'form-control', :id => 'inputEmail'}
+			=f.text_field :town, {:class => 'form-control'}
 	%div.form-group
 		=f.label :contactNumber, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			=f.text_field :contactNumber, {:class => 'form-control', :id => 'inputEmail'}
+			=f.text_field :contactNumber, {:class => 'form-control'}
 	%div.form-group
 		=f.label :secContactNumber, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			=f.text_field :secContactNumber, {:class => 'form-control', :id => 'inputEmail'}
-	%div.form-group
-		=f.label :userType, {:class => 'col-lg-2 control-label'}
-		%div.col-lg-3
-			=f.text_field :userType, {:class => 'form-control', :id => 'inputEmail'}
+			=f.text_field :secContactNumber, {:class => 'form-control'}
 	%div.form-group
 		=f.label :organizaton, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			=f.text_field :organization, {:class => 'form-control', :id => 'inputEmail'}	
+			=f.text_field :organization, {:class => 'form-control'}	
 	%div.form-group
 		%div.col-lg-offset-2.col-lg-10
 			=f.submit :class => "btn btn-primary", :value => "Update"

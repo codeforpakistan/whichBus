@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
     protected
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:sign_up) << :userName << :firstName << :lastName << :streetAddress << :city << :town << :contactNumber << :secContactNumber << :userType << :organization << :admin_id
-      devise_parameter_sanitizer.for(:account_update) << :userName << :firstName << :lastName << :streetAddress << :city << :town << :contactNumber << :secContactNumber << :userType << :organization << :admin_id
+      devise_parameter_sanitizer.for(:sign_up) << :userName << :firstName << :lastName << :streetAddress << :city << :town << :contactNumber << :secContactNumber << :organization << :admin_id
+      devise_parameter_sanitizer.for(:account_update) << :userName << :firstName << :lastName << :streetAddress << :city << :town << :contactNumber << :secContactNumber << :organization << :admin_id
       
     end
 end
