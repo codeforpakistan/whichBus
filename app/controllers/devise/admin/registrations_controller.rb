@@ -23,7 +23,7 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
     #redirect_to busstop_showAll_path
   end
   
-  def pendingUser
+  def pendingUser     #find a way to check logged in user via before_filter
     if admin_signed_in?
       @adminPendingUsers = Admin.where( :approved => false)
     else
