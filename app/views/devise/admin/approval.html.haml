@@ -1,6 +1,6 @@
 %h1 Show All Users
--if @admins.blank?
-	%h3= "No User found."
+-if @adminPendingUsers.blank?
+	%h3= "No User Found."
 -else
 	%p 
 		These are the Users
@@ -14,9 +14,13 @@
 				First Name
 			%td
 				Last Name
-		-@admins.each do |a|
+		-@adminPendingUsers.each do |a|
 			%tr
 				%td= a.userName
 				%td= a.email
 				%td= a.firstName
 				%td= a.lastName
+				%td
+					= link_to admin_index_path do
+						= content_tag :span, class: "glyphicon glyphicon-ok" do
+							=""
