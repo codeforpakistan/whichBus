@@ -1,7 +1,12 @@
 class Devise::Admin::RegistrationsController < Devise::RegistrationsController
-
+  before_filter :authenticate_admin!
   def index
-    @admins = Admin.all
+    if admin_signed_in?
+     @admins = Admin.all
+    else
+      redirect_to new_admin_session_path
+    end
+    
   end
   def create
     super
@@ -15,10 +20,14 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
     super
   end
   def showAll
-    redirect_to busstop_showAll_path
+    #redirect_to busstop_showAll_path
   end
   
   def pendingUser
-    @adminPendingUsers = Admin.where( :approved => false)
+    if admin_signed_in?
+      @adminPendingUsers = Admin.where( :approved => false)
+    else
+      redirect_to new_admin_session_path
+    end
   end
 end
