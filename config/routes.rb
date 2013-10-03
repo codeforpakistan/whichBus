@@ -31,7 +31,8 @@ RailsBoot::Application.routes.draw do
   devise_scope :admin do
     get 'admin/index', to: 'devise/admin/registrations#index', as: :admin_index
     get 'admin/pendingUser', to: 'devise/admin/registrations#pendingUser', as: :admin_pending_user
-     root 'devise/admin/registrations#index'
+    root 'devise/admin/registrations#index'
+    post 'admin/approveUser/:id', to: 'devise/admin/registrations#approveUser', as: :admin_approve_user
   end
   
   # The priority is based upon order of creation: first created -> highest priority.
