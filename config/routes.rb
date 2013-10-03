@@ -23,7 +23,7 @@ RailsBoot::Application.routes.draw do
   patch "route/edit/:id", :to => "route#edit", as: :route_edit
   delete "route/:id", to: 'route#destroy', as: :route_delete
   
-  
+  get "route/routeDetails", to: 'route#routeDetails'
   
   
   #rogue lines

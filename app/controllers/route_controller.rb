@@ -27,6 +27,7 @@ class RouteController < ApplicationController
   end
   
   def edit
+    #action to show route edit page
   end
   
   def destroy

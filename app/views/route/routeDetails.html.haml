@@ -1,0 +1,22 @@
+%h1= "Showing Route Details For#{@routeBusStops.routeName}"
+-if @busStops.blank?
+	%h3 No Route Added
+-else
+	%table
+		%tr
+			%th 
+				Bus Stop Name
+			%th
+				Bus Stop Lat Long
+			%th
+				Bus Stop Sec Name
+		-@busStops.each do |b|
+			%tr
+				%td
+					@busStops.busStopName
+				%td
+					@busStops.busStopLatLong
+				%td
+					@busStops.busStopSecName
+
+ 
