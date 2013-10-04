@@ -5,15 +5,15 @@
 -else
 	%p 
 		These are the bus stops
-	%table.table.table-hover.table-condensed
+	%table.table.table-hover.table-condensed.text-center
 		%tr
-			%th
+			%th.text-center
 				Bus Stop Name
-			%th
+			%th.text-center
 				Bus Stop LatLong
-			%th
+			%th.text-center
 				Bus Stop Secondary Name
-			%th
+			%th.text-center
 				Options
 		- @busstops.each do |c|
 			%tr
@@ -21,7 +21,7 @@
 					= link_to c.busStopName, {:action => 'view', :id => c.id}
 				%td
 					= c.busStopLatLong
-					%td
+				%td
 					= c.busStopSecName
 				%td
 					= link_to busstop_view_path(c.id) do

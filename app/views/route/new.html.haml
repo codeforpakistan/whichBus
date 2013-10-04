@@ -9,6 +9,10 @@
 		%div.col-lg-3	
 			=f.text_field :routeDistance, {:class => 'form-control'}
 	%div.form-group
+		=f.label :routeSourceLatLong, {:class => 'col-lg-2 control-label'}
+		%div.col-lg-3
+			=f.text_field :routeSourceLatLong, {:class => 'form-control'}
+	%div.form-group
 		=f.label :routeDestLatLong, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :routeDestLatLong, {:class => 'form-control'}

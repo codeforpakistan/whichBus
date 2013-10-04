@@ -4,25 +4,25 @@
 %div
 	=link_to 'Add new route', {:action => 'new'}
 %div
-	%table.table.table-hover.table-condensed
+	%table.table.table-hover.table-condensed.text-center
 		%tr
-			%th 
+			%th.text-center 
 				Route Id
-			%th
+			%th.text-center
 				Route Name
-			%th
+			%th.text-center
 				Route Distance
-			%th
+			%th.text-center
 				Route Travel Time
-			%th
+			%th.text-center
 				Route Source LatLong
-			%th
+			%th.text-center
 				Route Dest LatLong
-			%th
+			%th.text-center
 				Route Start Time
-			%th
+			%th.text-center
 				Route Stop Time
-			%th
+			%th.text-center 
 				Delete
 		-@routes.each do |r|
 			%tr
@@ -30,7 +30,7 @@
 				%td= link_to r.routeName, {:contoller => 'route', :action => 'routeDetails', :id => r.id}
 				%td= r.routeDistance
 				%td= r.routeTravelTime
-				%td= r.routeSourceLatlong
+				%td= r.routeSourceLatLong
 				%td= r.routeDestLatLong
 				%td= r.routeStartTime
 				%td= r.routeStopTime

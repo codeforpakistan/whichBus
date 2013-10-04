@@ -2,13 +2,13 @@
 -if @busStops.blank?
 	%h3 No Route Added
 -else
-	%table
+	%table.table.table-hover.table-condensed.text-center
 		%tr
-			%th 
+			%th.text-center 
 				Bus Stop Name
-			%th
+			%th.text-center
 				Bus Stop Lat Long
-			%th
+			%th.text-center
 				Bus Stop Sec Name
 		-@busStops.each do |b|
 			%tr
