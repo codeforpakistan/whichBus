@@ -24,7 +24,7 @@ RailsBoot::Application.routes.draw do
   post "route/update/:id", :to => "route#update", as: :route_update
   delete "route/:id", to: 'route#destroy', as: :route_delete
   
-  get "route/routeDetails/:id", to: 'route#routeDetails'
+  get "route/routeDetails", to: 'route#routeDetails'
   
   
   #rogue lines
