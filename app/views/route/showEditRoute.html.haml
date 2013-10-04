@@ -10,27 +10,27 @@
 		%div.form-group
 			=f.label :routeDistance, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3	
-				=f.text_field :routeDistance, {:class => 'form-control'}
+				=f.text_field :routeDistance, {:class => 'form-control', :value => @editRoute.routeDistance}
 		%div.form-group
 			=f.label :routeDestLatLong, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :routeDestLatLong, {:class => 'form-control'}
+				=f.text_field :routeDestLatLong, {:class => 'form-control', :value => @editRoute.routeDestLatLong}
 		%div.form-group
 			=f.label :routeTravelTime, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :routeTravelTime, {:class => 'form-control'}
+				=f.text_field :routeTravelTime, {:class => 'form-control', :value => @editRoute.routeTravelTime}
 		%div.form-group
 			=f.label :user_id, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :user_id, {:class => 'form-control'}
+				=f.text_field :user_id, {:class => 'form-control', :value => @editRoute.user_id}
 		%div.form-group
 			=f.label :routeStartTime, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :routeStartTime, {:class => 'form-control'}
+				=f.text_field :routeStartTime, {:class => 'form-control', :value => @editRoute.routeStartTime}
 		%div.form-group
 			=f.label :routeStopTime, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :routeStopTime, {:class => 'form-control'}
+				=f.text_field :routeStopTime, {:class => 'form-control', :value => @editRoute.routeStopTime}
 		%div.form-group
 			%div.col-lg-offset-2.col-lg-10
 				=f.submit :class => 'btn btn-default'
