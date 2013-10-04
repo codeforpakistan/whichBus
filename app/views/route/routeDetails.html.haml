@@ -1,10 +1,11 @@
-
+%br
+%br
+%br
+=link_to "Show all routes", route_showAll_path, :class => "btn btn-primary"
 -if @busStops.blank?
 	%h4 Route Empty
 -else
-	%p= @busStops
-	%p= @busStops.class
-	%p= @busStops.count
+	
 	
 	%h4= "Showing route details for: \'#{@route.routeName}\'"
 	%table.table.table-hover.table-condensed.text-center
@@ -16,12 +17,19 @@
 			%th.text-center
 				Bus Stop Sec Name
 		-@busStops.each do |b|
-			%tr
-				%td
-					=b#.busStopName
-				%td
-					=#b.busStopLatLong
-				%td
-					=#b.busStopSecName
+			-if(b.nil?)
+				%tr
+					%td
+						%p Empty Object
+					%td
+					%td
+			-else
+				%tr
+					%td
+						=link_to b.busStopName, busstop_view_path(b.id)
+					%td
+						=b.busStopLatLong
+					%td
+						=b.busStopSecName
 
  
