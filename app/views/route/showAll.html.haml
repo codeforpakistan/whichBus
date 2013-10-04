@@ -27,7 +27,7 @@
 		-@routes.each do |r|
 			%tr
 				%td= r.id
-				%td= link_to r.routeName, {:contoller => 'route', :action => 'routeDetails', :id => r.id}
+				%td= link_to r.routeName, {:action => 'routeDetails', :id => r.id}
 				%td= r.routeDistance
 				%td= r.routeTravelTime
 				%td= r.routeSourceLatLong
