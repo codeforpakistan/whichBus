@@ -47,4 +47,18 @@ class RouteController < ApplicationController
       redirect_to route_showAll_path
     end
   end
+  
+  def routeDetails
+    @route = Route.find(params[:id])
+    routeBus = RouteBusstop.where(:route_id => @route.id)
+    busstopIDs = Array.new
+    routeBus.each do |r|
+      busstopIDs << r.busstop_id
+    end
+    @busStops = Array.new
+    busstopIDs.each do |r|
+      @busStops << Busstop.where(:id => r)
+    end
+  end
+  
 end

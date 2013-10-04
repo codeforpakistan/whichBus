@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20131004131626) do
     t.string   "contactNumber"
     t.string   "secContactNumber"
     t.string   "organization"
-    t.string   "user_id"
+    t.integer  "admin_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "isAdmin"
@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 20131004131626) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "routeSourceLatLong"
+  end
+
+  create_table "routes_busstops", force: true do |t|
+    t.integer  "route_id"
+    t.integer  "busstop_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

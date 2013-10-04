@@ -5,6 +5,6 @@ class Admin < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
-         has_one :approval, class_name: "Admin", foreign_key: "admin_id"
+         has_one :admin, class_name: "Admin", foreign_key: "admin_id"
          belongs_to :admin
 end

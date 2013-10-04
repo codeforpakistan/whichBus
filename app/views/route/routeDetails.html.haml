@@ -1,7 +1,9 @@
-%h1= "Showing Route Details For#{@routeBusStops.routeName}"
+
 -if @busStops.blank?
-	%h3 No Route Added
+	%h4 Route Empty
 -else
+	/%p= @busStops
+	%h4= "Showing Route Details For#{@route.routeName}"
 	%table.table.table-hover.table-condensed.text-center
 		%tr
 			%th.text-center 
@@ -13,10 +15,10 @@
 		-@busStops.each do |b|
 			%tr
 				%td
-					@busStops.busStopName
+					=#b.busStopName
 				%td
-					@busStops.busStopLatLong
+					=#b.busStopLatLong
 				%td
-					@busStops.busStopSecName
+					=#b.busStopSecName
 
  
