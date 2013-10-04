@@ -14,8 +14,6 @@
 				Route Travel Time
 			%th
 				Route Distance
-			%th
-				User
 		%tr
 			%td
 				=@routes.id
@@ -25,8 +23,6 @@
 				=@routes.routeTravelTime
 			%td
 				=@routes.routeDistance
-			%td
-				=@routes.user_id
 			%td
 				= link_to route_delete_path(@routes.id), method: :delete, data: { :confirm => 'Are you sure?' } do
 					= content_tag :span, class: "glyphicon glyphicon-remove" do

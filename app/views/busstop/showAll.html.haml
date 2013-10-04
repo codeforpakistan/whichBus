@@ -14,8 +14,6 @@
 			%th
 				Bus Stop Secondary Name
 			%th
-				user
-			%th
 				Options
 		- @busstops.each do |c|
 			%tr
@@ -25,8 +23,6 @@
 					= c.busStopLatLong
 					%td
 					= c.busStopSecName
-				%td
-					= c.user_id
 				%td
 					= link_to busstop_view_path(c.id) do
 						= content_tag :span, class: "glyphicon glyphicon-list" do

@@ -13,8 +13,6 @@
 			%th
 				Bus Stop Secondary Name
 			%th
-				user
-			%th
 				Options
 		%tr
 			%td
@@ -23,8 +21,6 @@
 				=@busstop.busStopLatLong
 			%td
 				=@busstop.busStopSecName
-			%td
-				=@busstop.user_id
 			%td
 				= link_to busstop_delete_path, method: :delete, data: { :confirm => 'Are you sure?' } do
 					= content_tag :span, class: "glyphicon glyphicon-remove" do
