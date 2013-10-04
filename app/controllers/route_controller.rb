@@ -26,8 +26,18 @@ class RouteController < ApplicationController
     @routes = Route.find(params[:id])   
   end
   
-  def edit
+  def showEditRoute
     #action to show route edit page
+    # 
+    @editRoute = Route.find(params[:id])
+  end
+  def update
+    @editRoute = Route.find(params[:id])
+    @editRoute.update_attributes!(params.require(:route).permit(:routeName, :routeDistance, :routeSourceLatLong, :routeDestLatLong, :routeTravellTime, :routeStartTime, :routeStopTime))
+    redirect_to route_view_path(@editRoute.id)
+    
+  #  if(@editRoute.save?)
+   #   redirect_to route_view_path(:id)
   end
   
   def destroy

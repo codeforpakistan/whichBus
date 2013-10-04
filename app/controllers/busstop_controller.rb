@@ -27,6 +27,15 @@ class BusstopController < ApplicationController
       render 'showAll'
     end  
   end
+  def showEdit
+    @editBusstop = Busstop.find(params[:id])
+  end
+  
+  def update
+    @editBusstop = Busstop.find(params[:id])
+    @editBusstop.update_attributes!(params.require(:busstop).permit(:busStopName, :busStopLatLong, :busStopSecName))
+    redirect_to busstop_view_path(@editBusstop.id)
+  end
   
   
   def destroy

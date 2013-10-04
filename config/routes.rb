@@ -10,23 +10,26 @@ RailsBoot::Application.routes.draw do
   get "busstop/new"
   get "busstop/view/:id", to: 'busstop#view', as: :busstop_view
   delete "busstop/:id", to: 'busstop#destroy', as: :busstop_delete
-  patch "busstop/edit/:id", :to => "busstop#edit", as: :busstop_edit
+  get "busstop/showEdit/:id", :to => "busstop#showEdit", as: :busstop_show_edit
+  post "busstop/update/:id", :to => "busstop#update", as: :busstop_update
   post "busstop/createBusstop"
   
-  get "hello/index"
   get "route/showAllRoute"
   get "route/addRoute"
   get "route/showAll", as: :route_showAll
   get "route/view/:id", to: 'route#view', as: :route_view
   post "route/createRoute"
   get "route/new"
-  patch "route/edit/:id", :to => "route#edit", as: :route_edit
+  get 'route/showEditRoute/:id', :to => 'route#showEditRoute', as: :route_show_edit_route
+  post "route/update/:id", :to => "route#update", as: :route_update
   delete "route/:id", to: 'route#destroy', as: :route_delete
   
   get "route/routeDetails", to: 'route#routeDetails'
   
   
   #rogue lines
+  
+  #
   
   devise_scope :admin do
     get 'admin/index', to: 'devise/admin/registrations#index', as: :admin_index

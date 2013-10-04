@@ -32,7 +32,7 @@
 						= content_tag :span, class: "glyphicon glyphicon-list" do
 							=""
 					|
-					= link_to busstop_edit_path(c.id), method: :patch, data: { :confirm => 'Are you sure?' } do
+					= link_to busstop_show_edit_path(c.id) do
 						= content_tag :span, class: "glyphicon glyphicon-pencil" do
 							=""
 					|

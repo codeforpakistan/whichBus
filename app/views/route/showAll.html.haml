@@ -42,7 +42,7 @@
 						= content_tag :span, class: "glyphicon glyphicon-list" do
 							=""
 					|
-					= link_to route_edit_path(r.id), method: :patch, data: { :confirm => 'Are you sure?' } do
+					= link_to route_show_edit_route_path(r.id) do
 						= content_tag :span, class: "glyphicon glyphicon-pencil" do
 							=""
 					|
