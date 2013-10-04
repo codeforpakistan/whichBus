@@ -22,7 +22,8 @@
 				%td= a.userName
 				%td= a.email
 				%td= "#{a.firstName} #{a.lastName}"
-				%td= time_ago_in_words(a.last_sign_in_at, include_seconds: true)
+				if(a.last_sign_in_at != nil)
+					%td= time_ago_in_words(a.last_sign_in_at, include_seconds: true)
 				%td.text-center
 					= link_to admin_approve_user_path(a.id), :method => :post do
 						= content_tag :span, class: "glyphicon glyphicon-ok" do
