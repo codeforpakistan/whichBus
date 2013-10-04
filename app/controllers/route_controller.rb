@@ -14,7 +14,7 @@ class RouteController < ApplicationController
   end
   
   def createRoute
-    @route = Route.new(params[:route].permit(:routeName, :routeDistance, :user_id))
+    @route = Route.new(params[:route].permit(:routeName, :routeDistance, :routeSourceLatLong, :routeDestLatLong, :routeTravellTime, :routeStartTime, :routeStopTime))
     if @route.save
       redirect_to :action => 'showAll'
     else

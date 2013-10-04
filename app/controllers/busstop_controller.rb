@@ -48,6 +48,6 @@ class BusstopController < ApplicationController
   private
   def busstop_params
     
-    params.require(:busstop).permit(:busStopName, :busStopLatLong)
+    params.require(:busstop).permit(:busStopName, :busStopLatLong, :busStopSecName)
   end
 end
