@@ -4,11 +4,12 @@ class CreateRoutes < ActiveRecord::Migration
       
       t.string  :routeName
       t.decimal  :routeDistance
-      t.string  :routeSourceLatlong
+      t.string  :routeSourceLatLong
       t.string  :routeDestLatLong
       t.decimal  :routeTravelTime
       t.time    :routeStartTime
       t.time    :routeStopTime
+      t.belongs_to :admin
       
       t.timestamps
     end

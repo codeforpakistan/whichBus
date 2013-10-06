@@ -29,7 +29,8 @@ class DeviseCreateAdmins < ActiveRecord::Migration
       # t.integer  :failed_attempts, :default => 0, :null => false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
+      t.belongs_to :admin
+      t.string :type
       t.string :userName
       t.string :firstName
       t.string :lastName
@@ -38,8 +39,9 @@ class DeviseCreateAdmins < ActiveRecord::Migration
       t.string :town
       t.string :contactNumber
       t.string :secContactNumber
-      t.string :userType
       t.string :organization
+      t.boolean :approved,      :default => false, :null => false
+      t.boolean :isAdmin,       :default => false, :null => false
 
       t.timestamps
     end

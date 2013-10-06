@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20131005072650) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "admin_id"
+    t.string   "type"
     t.string   "userName"
     t.string   "firstName"
     t.string   "lastName"
@@ -33,11 +35,10 @@ ActiveRecord::Schema.define(version: 20131005072650) do
     t.string   "contactNumber"
     t.string   "secContactNumber"
     t.string   "organization"
-    t.integer  "admin_id"
+    t.boolean  "approved",               default: false, null: false
+    t.boolean  "isAdmin",                default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "isAdmin"
-    t.boolean  "approved",               default: false
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 20131005072650) do
     t.string   "busStopName"
     t.string   "busStopLatLong"
     t.string   "busStopSecName"
+    t.integer  "admin_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,6 +56,7 @@ ActiveRecord::Schema.define(version: 20131005072650) do
   create_table "route_busstops", force: true do |t|
     t.integer  "route_id"
     t.integer  "busstop_id"
+    t.integer  "admin_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,18 +66,12 @@ ActiveRecord::Schema.define(version: 20131005072650) do
   create_table "routes", force: true do |t|
     t.string   "routeName"
     t.decimal  "routeDistance"
+    t.string   "routeSourceLatLong"
     t.string   "routeDestLatLong"
     t.decimal  "routeTravelTime"
     t.time     "routeStartTime"
     t.time     "routeStopTime"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "routeSourceLatLong"
-  end
-
-  create_table "routes_busstops", force: true do |t|
-    t.integer  "route_id"
-    t.integer  "busstop_id"
+    t.integer  "admin_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
