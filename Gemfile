@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 1.2'
 
 #Testing for bootstrap 3.0RC
 gem 'bootstrap-sass-rails'
+#Used by Blower.io for Text Messaging
+gem 'rest-client'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
