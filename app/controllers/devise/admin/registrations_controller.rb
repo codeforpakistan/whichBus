@@ -10,9 +10,6 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
   end
   def create
     super
-    
-    blowerio = RestClient::Resource.new(ENV['BLOWERIO_URL'])
-    blowerio['/messages'].post :to => '+923219428808', :message => 'Hello from Blower.io'
   end
   
   def new
