@@ -1,5 +1,5 @@
 %h1 Showing All Routes
--if @companyRoutes.blank?
+-if @routes.blank?
 	%h3= "No routes to show"
 %div
 	%table.table.table-hover.table-condensed.text-center
@@ -36,6 +36,6 @@
 					= link_to route_view_path(r.id) do
 						= content_tag :span, class: "glyphicon glyphicon-list" do
 							=""	
-					= link_to :url => {:action => 'addCompanyRoute'} do
+					= link_to company_add_company_route_path(r.id), :method => :post do
 						= content_tag :span, class: "glyphicon glyphicon-ok" do
 							=""

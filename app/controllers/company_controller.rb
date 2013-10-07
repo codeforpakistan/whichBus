@@ -11,8 +11,9 @@ class CompanyController < Devise::RegistrationsController
   end
   
   def addCompanyRoute
-      @companyRoute = CompanyRoute.new(params[:company_route].permit(:company_id, :route_id)
-      if(@companyRoute.save)
+      companyId = current_admin.id
+      @companyRoute = CompanyRoute.new(:company_id => companyId, :route_id => :id)
+      if(@companyRoute.save == true)
           flash[:notice] = 'Record saved successfully'
           redirect_to :back
       else
