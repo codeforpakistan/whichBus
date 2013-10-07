@@ -1,4 +1,6 @@
 %h1 Showing All Routes
+=@companyRouteRelations.to_yaml
+
 -if(flash[:notice].blank? == false)
 	%div.alert.alert-warning.alert-dismissable
 		%span
@@ -27,7 +29,9 @@
 			%th.text-center
 				Route Stop Time
 			%th.text-center 
-				Delete
+				Include Route
+			%th.text-center
+				Remove Route
 		-@routes.each do |r|
 			%tr
 				%td= r.id
@@ -38,10 +42,19 @@
 				%td= r.routeDestLatLong
 				%td= r.routeStartTime
 				%td= r.routeStopTime
-				%td
-					= link_to route_view_path(r.id) do
-						= content_tag :span, class: "glyphicon glyphicon-list" do
-							=""	
-					= link_to company_add_company_route_path(r.id), :method => :post do
-						= content_tag :span, class: "glyphicon glyphicon-ok" do
-							=""
+				-ids = Array.new
+				- @companyRouteRelations.each do |u|
+					-ids << u.route_id
+				
+				-if(ids.include?(r.id) == false)
+					%td
+						= link_to company_include_company_route_path(r.id), :method => :post do
+							= content_tag :span, class: "glyphicon glyphicon-ok" do
+								=""
+				-else
+					%td
+					%td
+						= link_to company_remove_company_route_path(r.id), :method => :post do
+							= content_tag :span, class: "glyphicon glyphicon-remove" do
+								=""
+						
