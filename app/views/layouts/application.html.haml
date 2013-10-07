@@ -15,7 +15,28 @@
 		= link_to "Manage Routes", route_showAll_path
 		|
 		= link_to "Manage Bus Stops", busstop_showAll_path
-		%p.navbar-text.pull-right
+		%div.navbar-text.pull-right
+			%div.btn-group
+				%button.btn.btn-danger{ :type => "button" } Action
+				%button.btn.btn-danger.dropdown-toggle{ :type => "button", :data => {:toggle => "dropdown"}}
+					%span.caret
+				%ul.dropdown-menu{role: "menu"}
+					%li
+						%a{ :href => "#" }
+							Action
+					%li
+						%a{ :href => "#" }
+							Another action
+					%li
+						%a{ :href => "#" }
+							Something else here
+					%li.divider
+		
+					%li
+						%a{ :href => "#" }
+							Separated link
+					
+
 			-if admin_signed_in?
 				- user = current_admin
 				= "#{ user.userName}"
@@ -30,6 +51,7 @@
 			
 		/= link_to 'Manage Routes', {:controller => 'route', :action => 'showAll'}
 		/= link_to 'Manage Bus Stops', {:controller => 'busstop', :action => 'showAll'}
+		%a.close{:href => "#", :data => {:dismiss=>"alert"}, :aria => {:hidden => "true"}} &times;
 		= yield
 		
 		
