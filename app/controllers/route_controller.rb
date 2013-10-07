@@ -55,10 +55,8 @@ class RouteController < ApplicationController
     routeBus.each do |r|
       busstopIDs << r.busstop_id
     end
-    @total = busstopIDs.count
     stop = Busstop.new
     @busStops = []
-    i = @total
     busstopIDs.each do |r|
        @busStops << Busstop.find(r)
     end
