@@ -1,0 +1,65 @@
+%h1 Showing All Routes
+-if @companyRoutes.blank?
+	%h3= "Nothing to show"
+-else
+	%div
+		%a.btn.btn-primary.btn-lg{:href => "#myModal", :data => {:toggle => "modal"}} 
+			Add
+		%div.modal.fade#myModal{:tabindex => "-1", :role => "dialog", :aria =>{:labelledby => "myModalLabel"}, :aria =>{:hidden => "true"}}
+			%div.modal-dialog
+				%div.modal-content
+					%div.modal-header
+						%button.close{:type => "button", :data =>{:dismiss => "modal"}, :aria =>{:hidden => "true"}}
+							&times;
+						%h4.modal-title
+							Choose Routes
+					%div.modal-body
+						%h1
+							hello world
+							its body
+					%div.modal-footer
+						%button.btn.btn-default{:type => "button", :data =>{:dismiss => "modal"}}
+							Close
+						%button.btn.btn-primary{:type => "button"} 
+							Save changes
+
+	%div
+		%table.table.table-hover.table-condensed.text-center
+			%tr
+				%th.text-center 
+					Route Id
+				%th.text-center
+					Route Name
+				%th.text-center
+					Route Distance
+				%th.text-center
+					Route Travel Time
+				%th.text-center
+					Route Source LatLong
+				%th.text-center
+					Route Dest LatLong
+				%th.text-center
+					Route Start Time
+				%th.text-center
+					Route Stop Time
+				%th.text-center 
+					Delete
+			-@companyRoutes.each do |r|
+				%tr
+					%td= r.id
+					%td= link_to r.routeName, route_route_details_path(r.id)
+					%td= r.routeDistance
+					%td= r.routeTravelTime
+					%td= r.routeSourceLatLong
+					%td= r.routeDestLatLong
+					%td= r.routeStartTime
+					%td= r.routeStopTime
+					%td
+						= link_to route_view_path(r.id) do
+							= content_tag :span, class: "glyphicon glyphicon-list" do
+								=""
+						|
+						= link_to route_delete_path(r.id), method: :delete, data: { :confirm => 'Are you sure?' } do
+							= content_tag :span, class: "glyphicon glyphicon-remove" do
+								=""
+					

@@ -1,0 +1,38 @@
+%h1 Showing All Routes
+-if @companyRoutes.blank?
+	%h3= "No routes to show"
+%div
+	%table.table.table-hover.table-condensed.text-center
+		%tr
+			%th.text-center 
+				Route Id
+			%th.text-center
+				Route Name
+			%th.text-center
+				Route Distance
+			%th.text-center
+				Route Travel Time
+			%th.text-center
+				Route Source LatLong
+			%th.text-center
+				Route Dest LatLong
+			%th.text-center
+				Route Start Time
+			%th.text-center
+				Route Stop Time
+			%th.text-center 
+				Delete
+		-@routes.each do |r|
+			%tr
+				%td= r.id
+				%td= link_to r.routeName, route_route_details_path(r.id)
+				%td= r.routeDistance
+				%td= r.routeTravelTime
+				%td= r.routeSourceLatLong
+				%td= r.routeDestLatLong
+				%td= r.routeStartTime
+				%td= r.routeStopTime
+				%td
+					= link_to route_view_path(r.id) do
+						= content_tag :span, class: "glyphicon glyphicon-list" do
+							=""	

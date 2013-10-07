@@ -27,6 +27,7 @@ RailsBoot::Application.routes.draw do
   get "route/routeDetails/:id", to: 'route#routeDetails', as: :route_route_details
   
   
+  
   #rogue lines
   
   #
@@ -36,6 +37,7 @@ RailsBoot::Application.routes.draw do
     get 'admin/pendingUser', to: 'devise/admin/registrations#pendingUser', as: :admin_pending_user
     root 'devise/admin/registrations#index'
     post 'admin/approveUser/:id', to: 'devise/admin/registrations#approveUser', as: :admin_approve_user
+    get "company/index"
   end
   
   # The priority is based upon order of creation: first created -> highest priority.
