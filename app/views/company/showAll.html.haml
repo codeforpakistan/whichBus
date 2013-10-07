@@ -1,4 +1,10 @@
 %h1 Showing All Routes
+-if(flash[:notice].blank? == false)
+	%div.alert.alert-warning.alert-dismissable
+		%span
+			=flash[:notice]
+			%a.close{:href => "#", :data => {:dismiss => "alert"}, :aria=> {:hidden => "true"}}
+				&times;
 -if @routes.blank?
 	%h3= "No routes to show"
 %div

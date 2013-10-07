@@ -1,4 +1,5 @@
 %h1 Showing All Routes
+=@companyRoutes.to_yaml
 -if @companyRoutes.blank?
 	%h3= "Nothing to show"
 -else
@@ -24,6 +25,7 @@
 							%button.btn.btn-primary{:type => "button"} 
 								Save changes
 
+	
 	%div
 		%table.table.table-hover.table-condensed.text-center
 			%tr
