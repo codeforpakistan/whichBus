@@ -2,26 +2,27 @@
 -if @companyRoutes.blank?
 	%h3= "Nothing to show"
 -else
-	%div
-		%a.btn.btn-primary.btn-lg{:href => "#myModal", :data => {:toggle => "modal"}} 
-			Add
-		%div.modal.fade#myModal{:tabindex => "-1", :role => "dialog", :aria =>{:labelledby => "myModalLabel"}, :aria =>{:hidden => "true"}}
-			%div.modal-dialog
-				%div.modal-content
-					%div.modal-header
-						%button.close{:type => "button", :data =>{:dismiss => "modal"}, :aria =>{:hidden => "true"}}
-							&times;
-						%h4.modal-title
-							Choose Routes
-					%div.modal-body
-						%h1
-							hello world
-							its body
-					%div.modal-footer
-						%button.btn.btn-default{:type => "button", :data =>{:dismiss => "modal"}}
-							Close
-						%button.btn.btn-primary{:type => "button"} 
-							Save changes
+	/
+		%div
+			%a.btn.btn-primary.btn-lg{:href => "#myModal", :data => {:toggle => "modal"}} 
+				Add
+			%div.modal.fade#myModal{:tabindex => "-1", :role => "dialog", :aria =>{:labelledby => "myModalLabel"}, :aria =>{:hidden => "true"}}
+				%div.modal-dialog
+					%div.modal-content
+						%div.modal-header
+							%button.close{:type => "button", :data =>{:dismiss => "modal"}, :aria =>{:hidden => "true"}}
+								&times;
+							%h4.modal-title
+								Choose Routes
+						%div.modal-body
+							%h1
+								hello world
+								its body
+						%div.modal-footer
+							%button.btn.btn-default{:type => "button", :data =>{:dismiss => "modal"}}
+								Close
+							%button.btn.btn-primary{:type => "button"} 
+								Save changes
 
 	%div
 		%table.table.table-hover.table-condensed.text-center

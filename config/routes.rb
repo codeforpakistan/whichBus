@@ -38,6 +38,7 @@ RailsBoot::Application.routes.draw do
     root 'devise/admin/registrations#index'
     post 'admin/approveUser/:id', to: 'devise/admin/registrations#approveUser', as: :admin_approve_user
     get "company/index"
+    get "company/showAll"
   end
   
   # The priority is based upon order of creation: first created -> highest priority.
