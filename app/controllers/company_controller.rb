@@ -4,7 +4,7 @@ class CompanyController < Devise::RegistrationsController
       user = current_admin
       
     @companyRoutes = user.routes.all
-    @companyRoutes = user.company_routes.all
+    @companyRouteRelations = user.company_routes.all
   end
   
   def showAll
