@@ -1,10 +1,15 @@
 - require 'active_support/core_ext'
-%h1 Show All Users
--if @adminPendingUsers.blank?
-	%h3= "No User Found."
+
+-if(flash[:notice].blank? == false)
+	%div.alert.alert-warning.alert-dismissable
+		%span
+			=flash[:notice]
+			%a.close{:href => "#", :data => {:dismiss => "alert"}, :aria=> {:hidden => "true"}}
+				&times;
+-if @allUsers.blank?
+	%h3= "No User returned."
+	=@allUsers.class
 -else
-	%p 
-		These are the Users
 	%table.table.table-hover.table-condensed.text-center
 		%tr
 			%th.text-center
@@ -16,8 +21,9 @@
 			%td.text-center
 				Last Sign in
 			%td.text-center
-				Approve User
-		-@adminPendingUsers.each do |a|
+				Approve User?
+			
+		-@allUsers.each do |a|
 			%tr
 				%td= a.userName
 				%td= a.email
@@ -28,5 +34,9 @@
 					%td= ""
 				%td.text-center
 					= link_to admin_approve_user_path(a.id), :method => :post do
-						= content_tag :span, class: "glyphicon glyphicon-ok" do
-							=""
+						-if a.approved?
+							= content_tag :span, class: "glyphicon glyphicon-check" do
+								=""
+						-else
+							= content_tag :span, class: "glyphicon glyphicon-ok" do
+								=""

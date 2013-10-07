@@ -25,7 +25,13 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
   
   def pendingUser     #find a way to check logged in user via before_filter
     if admin_signed_in?
-      @adminPendingUsers = Admin.where( :approved => false)
+        user = current_admin
+        if user.isAdmin?
+            @allUsers = Admin.all(:order => :approved)
+        else
+            flash[:notice] = "You are not authorized to view this page"
+            redirect_to :back
+        end
     else
       redirect_to new_admin_session_path
     end
@@ -37,6 +43,7 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
       @user = Admin.find(params[:id])
       if(@user.approved?)
         flash[:notice] = "User Already Verified."
+        redirect_to :back
       else
         @user.approved = true
         current_admin_id = current_admin.id
