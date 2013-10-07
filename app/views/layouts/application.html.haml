@@ -35,6 +35,8 @@
 					%li
 						%a{ :href => "#" }
 							Separated link
+							
+				%a.close{:href => "#", :data => {:dismiss=>"alert"}, :aria => {:hidden => "true"}} &times;
 					
 
 			-if admin_signed_in?
@@ -51,7 +53,6 @@
 			
 		/= link_to 'Manage Routes', {:controller => 'route', :action => 'showAll'}
 		/= link_to 'Manage Bus Stops', {:controller => 'busstop', :action => 'showAll'}
-		%a.close{:href => "#", :data => {:dismiss=>"alert"}, :aria => {:hidden => "true"}} &times;
 		= yield
 		
 		
