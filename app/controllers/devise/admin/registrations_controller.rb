@@ -33,7 +33,8 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
             redirect_to :back
         end
     else
-      redirect_to new_admin_session_path
+        flash[:notice] = "You should be signed in first."
+        redirect_to new_admin_session_path
     end
   end
   
