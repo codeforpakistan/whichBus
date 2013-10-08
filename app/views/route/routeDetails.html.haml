@@ -2,7 +2,7 @@
 %br
 %br
 =link_to "Show all routes", route_showAll_path, :class => "btn btn-primary"
-=link_to "Edit This Route", {:action => 'editRoute', @route.id}, :class => "btn btn-default"
+=link_to "Edit This Route",  route_edit_route_properties_path(@route.id), :class => "btn btn-primary"
 -if @busStops.blank?
 	%h4 Route Empty
 -else

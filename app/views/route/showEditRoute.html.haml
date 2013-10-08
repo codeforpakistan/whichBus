@@ -1,40 +1,46 @@
--if @editRoute.blank?
-	="No such Route Found."
+%h1 Show All Bus Stops
+=link_to 'Edit Routes Properties', route_edit_route_properties_path, :class => "btn btn-primary"
+-if(flash[:notice].blank? == false)
+	%div.alert.alert-warning.alert-dismissable
+		%span
+			=flash[:notice]
+			%a.close{:href => "#", :data => {:dismiss => "alert"}, :aria=> {:hidden => "true"}}
+				&times;
+- if @busstops.blank?
+	%p No bus stop currently exist.
 -else
-	%h1= "Edit Route: #{@editRoute.routeName}"
-	=form_for :route, url:{action: "update"}, html:{class: "form-horizontal"} do |f|
-		%div.form-group
-			=f.label :routeName, {:class => 'col-lg-2 control-label'}
-			%div.col-lg-3
-				=f.text_field :routeName,{:class => 'form-control', :value => @editRoute.routeName}
-		%div.form-group
-			=f.label :routeDistance, {:class => 'col-lg-2 control-label'}
-			%div.col-lg-3	
-				=f.text_field :routeDistance, {:class => 'form-control', :value => @editRoute.routeDistance}
-		%div.form-group
-			=f.label :routeSourceLatLong, {:class => 'col-lg-2 control-label'}
-			%div.col-lg-3
-				=f.text_field :routeSourceLatLong, {:class => 'form-control', :value => @editRoute.routeSourceLatLong}
-		%div.form-group
-			=f.label :routeDestLatLong, {:class => 'col-lg-2 control-label'}
-			%div.col-lg-3
-				=f.text_field :routeDestLatLong, {:class => 'form-control', :value => @editRoute.routeDestLatLong}
-		%div.form-group
-			=f.label :routeTravelTime, {:class => 'col-lg-2 control-label'}
-			%div.col-lg-3
-				=f.text_field :routeTravelTime, {:class => 'form-control', :value => @editRoute.routeTravelTime}
-		%div.form-group
-			=f.label :routeStartTime, {:class => 'col-lg-2 control-label'}
-			%div.col-lg-3
-				=f.text_field :routeStartTime, {:class => 'form-control', :value => @editRoute.routeStartTime}
-		%div.form-group
-			=f.label :routeStopTime, {:class => 'col-lg-2 control-label'}
-			%div.col-lg-3
-				=f.text_field :routeStopTime, {:class => 'form-control', :value => @editRoute.routeStopTime}
-		%div.form-group
-			%div.col-lg-offset-2.col-lg-10
-				=f.submit :class => 'btn btn-default'
-				%button.btn.btn-default{:type => 'button'}
-					="Cancel"
-			
-	
+	%p 
+		These are the bus stops
+	%table.table.table-hover.table-condensed.text-center
+		%tr
+			%th.text-center
+				Bus Stop Name
+			%th.text-center
+				Bus Stop LatLong
+			%th.text-center
+				Bus Stop Secondary Name
+			%th.text-center
+				Include
+			%th.text-center
+				Remove
+		- @busstops.each do |c|		#all bussstops in data base
+			%tr
+				%td= link_to c.busStopName, {:action => 'view', :id => c.id}
+				%td= c.busStopLatLong
+				%td= c.busStopSecName
+				-ids = Array.new
+				- @routeBusstopRelations.each do |u|
+					-ids << u.busstop_id
+
+				-if(ids.include?(c.id) == false)
+					%td
+						= link_to route_include_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
+							= content_tag :span, class: "glyphicon glyphicon-ok" do
+								=""
+					%td
+				-else
+					%td
+					%td
+						= link_to route_remove_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
+							= content_tag :span, class: "glyphicon glyphicon-remove" do
+								=""

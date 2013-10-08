@@ -20,12 +20,15 @@ RailsBoot::Application.routes.draw do
   get "route/view/:id", to: 'route#view', as: :route_view
   post "route/createRoute"
   get "route/new"
-  get 'route/showEditRoute/:id', :to => 'route#showEditRoute', as: :route_show_edit_route
+  get 'route/editRouteProperties/:id', :to => 'route#editRouteProperties', as: :route_edit_route_properties
   post "route/update/:id", :to => "route#update", as: :route_update
   delete "route/:id", to: 'route#destroy', as: :route_delete
-  
+  get 'route/showEditRoute/:id', to: 'route#showEditRoute', as: :route_show_edit_route
   get "route/routeDetails/:id", to: 'route#routeDetails', as: :route_route_details
   
+  post 'route/removeRouteBusstop/:id', to: 'route#removeRouteBusstop', as: :route_remove_route_busstop 
+  post 'route/includeRouteBusstop/:id', to: 'route#includeRouteBusstop', as: :route_include_route_busstop 
+
   
   
   #rogue lines

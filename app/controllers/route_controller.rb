@@ -22,7 +22,7 @@ class RouteController < ApplicationController
     @routes = Route.find(params[:id])   
   end
   
-  def showEditRoute
+  def editRouteProperties
     #action to show route edit page
     # 
     @editRoute = Route.find(params[:id])
@@ -55,6 +55,43 @@ class RouteController < ApplicationController
     @busStops = []
     busstopIDs.each do |r|
        @busStops << Busstop.find(r)
+    end
+  end
+  
+  def showEditRoute
+    id = params[:id]
+    @busstops = Busstop.all
+    @routeBusstopRelations = RouteBusstop.where(:route_id => id)
+    @route = Route.find(params[:id])
+  end
+  
+  def includeRouteBusstop
+    busstop = Busstop.find(params[:busstop_id])
+    route = Route.find(params[:route_id])
+    route_id = params[:route_id]
+    busstop_id = params[:busstop_id]
+    @routeBusstopRelations = RouteBusstop.new(:route_id => route_id, :busstop_id => busstop_id)
+    if(@routeBusstopRelations.save)
+      flash[:notice] = "Busstop: #{busstop.busStopName} added to route: #{route.routeName}"
+      redirect_to :back
+    else
+      flash[:notice] = "Could not update record."
+      redirect_to :back
+    end
+  end
+  
+  def removeRouteBusstop
+    busstop = Busstop.find(params[:busstop_id])
+    route = Route.find(params[:route_id])
+    route_id = params[:route_id]
+    busstop_id = params[:busstop_id]
+    @routeBusstopRelations = RouteBusstop.where(:route_id => route_id, :busstop_id => busstop_id)
+    if(@routeBusstopRelations.destroy_all)
+      flash[:notice] = "Busstop: #{busstop.busStopName} removed from route: #{route.routeName}"
+      redirect_to :back
+    else
+      flash[:notice] = "Could not delete record."
+      redirect_to :back
     end
   end
   
