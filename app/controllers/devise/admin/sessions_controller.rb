@@ -12,8 +12,5 @@ class Devise::Admin::SessionsController < Devise::SessionsController
   def edit
     super
   end
-  def showAll
-    flash[:notice] = "Sorry Wrong address"
-  end
   
 end
