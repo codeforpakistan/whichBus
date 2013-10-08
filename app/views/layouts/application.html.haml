@@ -16,6 +16,8 @@
 			= link_to "Manage Routes", route_showAll_path
 			|
 			= link_to "Manage Bus Stops", busstop_showAll_path
+			|
+			= link_to "Company", company_index_path
 			%div.navbar-text.pull-right
 				-if admin_signed_in?
 					- user = current_admin

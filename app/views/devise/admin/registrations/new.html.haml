@@ -50,6 +50,10 @@
 		%div.col-lg-3
 			=f.text_field :organization, {:class => 'form-control'}
 	%div.form-group
+		=f.label :type, {:class => 'col-lg-2 control-label'}
+		%div.col-lg-3
+			=f.select(:type, ['Company', 'Admin'], {}, { :class => 'form-control' })
+	%div.form-group
 		%div.col-lg-offset-2.col-lg-10
 			=f.submit :class => "btn btn-primary", :value => "Sign Up"
 

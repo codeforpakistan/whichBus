@@ -3,6 +3,7 @@ class CompanyController < Devise::RegistrationsController
   def index
       user = current_admin
       
+      
     @companyRoutes = user.routes.all
     
   end
@@ -49,9 +50,12 @@ class CompanyController < Devise::RegistrationsController
         if user.type == 'Company'
             true
         else
-            flash[:notice] = 'Sign in as a partner to access this page.'
-            redirect_to new_admin_session_path
+            flash[:notice] = 'Sign in as a \'Company\' to access this page.'
+            redirect_to :back
         end
+      else
+        flash[:notice] = 'You need to sign in first'
+        redirect_to new_admin_session_path
     end
   end
 end
