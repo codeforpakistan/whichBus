@@ -5,8 +5,7 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
      @admins = Admin.all
     else
       redirect_to new_admin_session_path
-    end
-    
+    end 
   end
   def create
     super
@@ -19,19 +18,11 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
   def edit
     super
   end
-  def showAll
-    #redirect_to busstop_showAll_path
-  end
   
   def pendingUser     #find a way to check logged in user via before_filter
-    if admin_signed_in?
-        user = current_admin
-        if user.isAdmin?
-            @allUsers = Admin.all(:order => :approved)
-        else
-            flash[:notice] = "You are not authorized to view this page"
-            redirect_to :back
-        end
+    if(admin_signed_in?)
+        authenticate_isAdmin
+        @allUsers = Admin.all(:order => :approved)
     else
         flash[:notice] = "You should be signed in first."
         redirect_to new_admin_session_path
@@ -39,6 +30,7 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
   end
   
   def approveUser
+      authenticate_isAdmin
     if(admin_signed_in?)
       
       @user = Admin.find(params[:id])
@@ -62,4 +54,24 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
       redirect_to :back
     end
   end
+  
+  protected
+  def authenticate_isAdmin
+      user = current_admin
+      if(user.isAdmin?)
+          true
+      else
+          flash[:notice] = 'You dont have admin privileges. Please login as \'Admin\''
+          redirect_to :back
+  end
+  
+  def admin_logged_in
+     if(admin_signed_in?)
+         true
+     else
+         flash[:notice] = 'You need to login to perform this action'
+         redirect_to new_admin_session_path
+     end
+  end
+  
 end
