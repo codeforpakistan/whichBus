@@ -10,7 +10,7 @@ class RouteController < ApplicationController
   end
   
   def createRoute
-    @route = Route.new(params[:route].permit(:routeName, :routeDistance, :routeSourceLatLong, :routeDestLatLong, :routeTravelTime, :routeStartTime, :routeStopTime))
+    @route = Route.new(params[:route].permit(:routeName, :routeDistance, :routeSourceName, :routeDestName, :routeSourceLatLong, :routeDestLatLong, :routeTravelTime, :routeStartTime, :routeStopTime))
     if @route.save
       redirect_to :action => 'showAll'
     else
@@ -29,8 +29,8 @@ class RouteController < ApplicationController
   end
   def update
     @editRoute = Route.find(params[:id])
-    @editRoute.update_attributes!(params.require(:route).permit(:routeName, :routeDistance, :routeSourceLatLong, :routeDestLatLong, :routeTravelTime, :routeStartTime, :routeStopTime))
-    redirect_to route_view_path(@editRoute.id)
+    @editRoute.update_attributes!(params.require(:route).permit(:routeName, :routeDistance, :routeSourceName, :routeDestName, :routeSourceLatLong, :routeDestLatLong, :routeTravelTime, :routeStartTime, :routeStopTime))
+    redirect_to route_route_details_path(@editRoute.id)
     
   #  if(@editRoute.save?)
    #   redirect_to route_view_path(:id)

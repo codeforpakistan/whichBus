@@ -7,7 +7,7 @@ RailsBoot::Application.routes.draw do
   get "super_admin/dashboard"
   get "busstop/showAll", as: :busstop_showAll
   get "busstop/index"
-  get "busstop/new"
+  get "busstop/new", to: 'busstop#new', as: :busstop_new
   get "busstop/view/:id", to: 'busstop#view', as: :busstop_view
   delete "busstop/:id", to: 'busstop#destroy', as: :busstop_delete
   get "busstop/showEdit/:id", :to => "busstop#showEdit", as: :busstop_show_edit
@@ -19,7 +19,7 @@ RailsBoot::Application.routes.draw do
   get "route/showAll", as: :route_showAll
   get "route/view/:id", to: 'route#view', as: :route_view
   post "route/createRoute"
-  get "route/new"
+  get "route/new", as: :route_new
   get 'route/editRouteProperties/:id', :to => 'route#editRouteProperties', as: :route_edit_route_properties
   post "route/update/:id", :to => "route#update", as: :route_update
   delete "route/:id", to: 'route#destroy', as: :route_delete

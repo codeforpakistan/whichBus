@@ -9,6 +9,14 @@
 			%div.col-lg-3
 				=f.text_field :routeName,{:class => 'form-control', :value => @editRoute.routeName}
 		%div.form-group
+			=f.label :routeSourceName, {:class => 'col-lg-2 control-label'}
+			%div.col-lg-3
+				=f.text_field :routeSourceName, {:class => 'form-control', :value => @editRoute.routeSourceName}
+		%div.form-group
+			=f.label :routeDestName, {:class => 'col-lg-2 control-label'}
+			%div.col-lg-3
+				=f.text_field :routeDestName, {:class => 'form-control', :value => @editRoute.routeDestName}
+		%div.form-group
 			=f.label :routeDistance, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3	
 				=f.text_field :routeDistance, {:class => 'form-control', :value => @editRoute.routeDistance}

@@ -1,11 +1,6 @@
 %h1 Show All Bus Stops
 =link_to 'Edit Routes Properties', route_edit_route_properties_path, :class => "btn btn-primary"
--if(flash[:notice].blank? == false)
-	%div.alert.alert-warning.alert-dismissable
-		%span
-			=flash[:notice]
-			%a.close{:href => "#", :data => {:dismiss => "alert"}, :aria=> {:hidden => "true"}}
-				&times;
+
 - if @busstops.blank?
 	%p No bus stop currently exist.
 -else

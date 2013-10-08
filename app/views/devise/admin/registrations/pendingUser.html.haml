@@ -1,11 +1,6 @@
 - require 'active_support/core_ext'
 
--if(flash[:notice].blank? == false)
-	%div.alert.alert-warning.alert-dismissable
-		%span
-			=flash[:notice]
-			%a.close{:href => "#", :data => {:dismiss => "alert"}, :aria=> {:hidden => "true"}}
-				&times;
+
 -if @allUsers.blank?
 	%h3= "No User returned."
 	=@allUsers.class
