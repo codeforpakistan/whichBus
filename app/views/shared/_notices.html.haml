@@ -1,6 +1,12 @@
 -if(flash[:notice].blank? == false)
-	%div.alert.alert-warning.alert-dismissable.text-center
+	%div.alert.alert-dismissable.alert-warning.text-center
 		%span
 			=flash[:notice]
+			%a.close{:href => "#", :data => {:dismiss => "alert"}, :aria=> {:hidden => "true"}}
+				&times;
+-if(flash[:alert].blank? == false)
+	%div.alert.alert-dismissable.alert-warning.text-center
+		%span
+			=flash[:alert]
 			%a.close{:href => "#", :data => {:dismiss => "alert"}, :aria=> {:hidden => "true"}}
 				&times;
