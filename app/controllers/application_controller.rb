@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
                     if (!request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["HTTP_URI"])
                         rediriect_to :back
                     else
-                        redirect_to ({:controller => 'devise/admin/registrations' ,:action => 'unApprovedAdmin'})
+                        redirect_to admin_unapproved_account
                     end
                 end
             else
@@ -63,4 +63,29 @@ class ApplicationController < ActionController::Base
             
         end
     end
+    
+    def authenticate_company
+        if(admin_signed_in?)
+            user = current_admin
+            if user.type == 'Company'
+                if(user.approved?)
+                    true
+                else
+                    flash[:notice] = 'Your account is awaiting approval. Please be patient.'
+                    if (!request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["HTTP_URI"])
+                        redirect_to :back
+                    else
+                        redirect_to admin_unapproved_account
+                    end
+                end
+            else
+                flash[:notice] = 'Sign in as a \'Company\' to access this page.'
+                redirect_to :back
+            end
+        else
+            flash[:notice] = 'You need to sign in or sign up before continuing.'
+            redirect_to new_admin_session_path
+        end
+    end
+
 end

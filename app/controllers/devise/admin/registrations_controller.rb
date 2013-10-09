@@ -71,6 +71,6 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
   end
   
   def unApprovedAdmin
-  
+  #show this page for users with pending acount approval.
   end
 end

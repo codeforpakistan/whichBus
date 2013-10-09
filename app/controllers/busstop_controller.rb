@@ -1,7 +1,7 @@
 class BusstopController < ApplicationController
     before_filter :authenticate_admin!
     before_filter :authenticate_isAdmin, :except => [:showAll, :view]
-
+    before_filter :authenticate_company, :only => [:showAll, :view]
 
     def index  
     end
