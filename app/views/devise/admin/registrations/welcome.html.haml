@@ -1,0 +1,15 @@
+%br
+%br
+%br
+%div.jumbotron
+	%div.container
+		%h1 
+			Welcome to whichBUS!
+
+		-if(admin_signed_in?)
+			=link_to "Add Routes and Bus Stop", path, :class => "btn btn-primary"
+			-if(current_admin.type == 'Company')
+				=link_to "Add Routes to Your Profile", path, :class => "btn btn-primary"
+		-else
+			=link_to "Login", login_path, :class => "btn btn-primary"
+			=link_to "signUp", signUp_path, :class => "btn btn-primary"
