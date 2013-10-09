@@ -50,7 +50,7 @@
 								= content_tag :span, class: "glyphicon glyphicon-list" do
 									=""
 						|
-						= link_to company_remove_company_route_path(r.id), method: :delete, data: { :confirm => 'Are you sure?' } do
+						= link_to company_remove_company_route_path(r.id), method: :post, data: { :confirm => 'Are you sure?' } do
 							= content_tag :button, :class => "btn btn-danger" do
 								= content_tag :span, class: "glyphicon glyphicon-remove" do
 									=""
