@@ -1,5 +1,5 @@
 class Devise::Admin::RegistrationsController < Devise::RegistrationsController
-  before_filter :authenticate_isAdmin, except: [:create, :new, :edit, :unApprovedAdmin]
+  before_filter :authenticate_isAdmin, except: [:create, :new, :edit, :unApprovedAdmin, :welcome]
   
   def welcome
       
