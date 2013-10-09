@@ -39,9 +39,9 @@ class ApplicationController < ActionController::Base
                 else
                     flash[:notice] = 'Your account is awaiting approval. Please be patient.'
                     if (!request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["HTTP_URI"])
-                        rediriect_to :back
+                        redirect_to :back
                     else
-                        redirect_to admin_unapproved_account
+                        redirect_to admin_unapproved_account_path
                     end
                 end
             else
@@ -75,7 +75,7 @@ class ApplicationController < ActionController::Base
                     if (!request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["HTTP_URI"])
                         redirect_to :back
                     else
-                        redirect_to admin_unapproved_account
+                        redirect_to admin_unapproved_account_path
                     end
                 end
             else

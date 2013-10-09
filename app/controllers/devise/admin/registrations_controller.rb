@@ -41,7 +41,7 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
     end
   end
   
-  def approveUser
+  def approveAdmin
       @user = Admin.find(params[:id])
       if(@user.approved?)
         flash[:notice] = "User Already Verified."
