@@ -19,7 +19,7 @@
 			%td.text-center
 				Account Type
 			%td.text-center
-				Approve User?
+				User Approval
 		
 		-@allUsers.each do |a|
 			%tr
@@ -32,7 +32,7 @@
 					%td= ""
 				%td= a.type
 				%td.text-center
-					= link_to admin_approve_user_path(a.id), :method => :post do
+					= link_to admin_approve_admin_path(a.id), :method => :post do
 						-if a.approved?
 							= content_tag :span, class: "glyphicon glyphicon-check" do
 								=""

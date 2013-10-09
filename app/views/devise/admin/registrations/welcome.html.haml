@@ -7,8 +7,12 @@
 			Welcome to whichBUS!
 
 		-if(admin_signed_in?)
-			=link_to "Add Bus Stop", busstop_showAll_path, :class => "btn btn-primary"
-			=link_to "Add Route", route_new_path, :class => "btn btn-primary"
+			-if(current_admin.approved?)
+				=link_to "Add Bus Stop", busstop_showAll_path, :class => "btn btn-primary"
+				=link_to "Add Route", route_new_path, :class => "btn btn-primary"
+			-else
+				%p
+					Please wait for your account to be approved.
 			-if(current_admin.type == 'Company')
 				=link_to "Add Routes to Your Profile", path, :class => "btn btn-primary"
 		-else
