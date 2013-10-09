@@ -60,6 +60,15 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
   end
   protected
   
+  
+  def admin_logged_in
+     if(admin_signed_in?)
+         true
+     else
+         flash[:notice] = 'You need to login to perform this action'
+         redirect_to new_admin_session_path
+     end
+  end
   def authenticate_isAdmin
       if(admin_signed_in?)
           user = current_admin
@@ -72,21 +81,12 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
               end
           else
               flash[:notice] = 'You dont have admin privileges. Please login as \'Admin\''
-              redirect_to_back(resource)
+              redirect_to_back()
           end
       else
-          flash[:notice] = 'You have to sign in as \'Admin\'.'
-          redirect_to new_admin_session_path and return
+          flash[:notice] = 'You need to sign in or sign up before continuing.'
+          redirect_to new_admin_session_path
       end
-  end
-  
-  def admin_logged_in
-     if(admin_signed_in?)
-         true
-     else
-         flash[:notice] = 'You need to login to perform this action'
-         redirect_to new_admin_session_path
-     end
   end
   
 end

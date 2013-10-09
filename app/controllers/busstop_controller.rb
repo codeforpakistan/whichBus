@@ -47,7 +47,7 @@ class BusstopController < ApplicationController
     def busstop_params
         params.require(:busstop).permit(:busStopName, :busStopLatLong, :busStopSecName)
     end
-
+    
     def authenticate_isAdmin
         if(admin_signed_in?)
             user = current_admin

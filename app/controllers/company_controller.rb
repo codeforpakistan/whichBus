@@ -38,8 +38,7 @@ class CompanyController < Devise::RegistrationsController
             redirect_to :back
             redirect_to_back()
         end
-    end  
-
+    end
     def authenticate_company
         if(admin_signed_in?)
             user = current_admin
@@ -54,5 +53,6 @@ class CompanyController < Devise::RegistrationsController
             redirect_to new_admin_session_path
         end
     end
+    
 
 end
