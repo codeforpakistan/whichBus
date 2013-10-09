@@ -10,17 +10,9 @@
 			%th.text-center
 				Route Name
 			%th.text-center
-				Route Distance
+				Route Source
 			%th.text-center
-				Route Travel Time
-			%th.text-center
-				Route Source LatLong
-			%th.text-center
-				Route Dest LatLong
-			%th.text-center
-				Route Start Time
-			%th.text-center
-				Route Stop Time
+				Route Destination
 			%th.text-center 
 				Include Route
 			%th.text-center
@@ -29,12 +21,8 @@
 			%tr
 				%td= r.id
 				%td= link_to r.routeName, route_route_details_path(r.id)
-				%td= r.routeDistance
-				%td= r.routeTravelTime
-				%td= r.routeSourceLatLong
-				%td= r.routeDestLatLong
-				%td= r.routeStartTime
-				%td= r.routeStopTime
+				%td= r.routeSourceName
+				%td= r.routeDestName
 				-ids = Array.new
 				- @companyRouteRelations.each do |u|
 					-ids << u.route_id
@@ -42,12 +30,14 @@
 				-if(ids.include?(r.id) == false)
 					%td
 						= link_to company_include_company_route_path(r.id), :method => :post do
-							= content_tag :span, class: "glyphicon glyphicon-ok" do
-								=""
+							= content_tag :button, :class => "btn btn-primary" do
+								= content_tag :span, class: "glyphicon glyphicon-ok" do
+									=""
 				-else
 					%td
 					%td
 						= link_to company_remove_company_route_path(r.id), :method => :post do
-							= content_tag :span, class: "glyphicon glyphicon-remove" do
-								=""
+							= content_tag :button, :class => "btn btn-danger" do	
+								= content_tag :span, class: "glyphicon glyphicon-remove" do
+									=""
 						
