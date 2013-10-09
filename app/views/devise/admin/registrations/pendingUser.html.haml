@@ -17,8 +17,6 @@
 				Account Type
 			%td.text-center
 				Approve User?
-			%td.text-center
-				Admin Options
 		
 		-@allUsers.each do |a|
 			%tr
@@ -36,15 +34,5 @@
 							= content_tag :span, class: "glyphicon glyphicon-check" do
 								=""
 						-else
-							= content_tag :span, class: "glyphicon glyphicon-ok" do
-								=""
-				-if(a.isAdmin?)
-					%td
-						= link_to admin_approve_admin_path(a.id), :method => :post do
-							= content_tag :span, class: "glyphicon glyphicon-check" do
-								=""
-				-else
-					%td
-						= link_to admin_approve_user_path(a.id), :method => :post do
 							= content_tag :span, class: "glyphicon glyphicon-ok" do
 								=""
