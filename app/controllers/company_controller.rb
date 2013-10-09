@@ -26,8 +26,19 @@ class CompanyController < Devise::RegistrationsController
     end
 
     def removeCompanyRoute
-        
-    protected
+        id = params[:id]
+        user = current_admin
+        @companyRoute = CompanyRoute.where(:route_id => id, :company_id => user.id)
+        if(@companyRoute.destroy_all)
+            flash[:notice] = 'Route removed.'
+            redirect_to :back
+            redirect_to_back()
+        else
+            flash[:notice] = 'Route could not be removed.'
+            redirect_to :back
+            redirect_to_back()
+        end
+    end  
 
     def authenticate_company
         if(admin_signed_in?)
@@ -43,4 +54,5 @@ class CompanyController < Devise::RegistrationsController
             redirect_to new_admin_session_path
         end
     end
+
 end
