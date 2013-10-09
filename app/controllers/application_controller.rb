@@ -87,5 +87,14 @@ class ApplicationController < ActionController::Base
             redirect_to new_admin_session_path
         end
     end
+    
+    def current_user_isAdmin?
+       user = current_admin
+       if(user.type == 'Admin')
+           return true
+       else
+           return false
+       end
+    end
 
 end

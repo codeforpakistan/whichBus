@@ -1,6 +1,7 @@
 class CompanyController < Devise::RegistrationsController
     before_filter :authenticate_admin!
     before_filter :authenticate_company
+    
     def index
         user = current_admin
         @companyRoutes = user.routes.all

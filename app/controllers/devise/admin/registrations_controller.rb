@@ -51,10 +51,11 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
         current_admin_id = current_admin.id
         @user.admin_id = current_admin_id
         if(@user.save)
-          redirect_to_back()
+          flash[:notice] = 'User Approved.'
+          redirect_to :back
         else
           flash[:alert] = "Error Occured while updating record"
-          redirect_to_back()
+          redirect_to :back
         end
       end
   end
