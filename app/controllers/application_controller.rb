@@ -26,7 +26,12 @@ class ApplicationController < ActionController::Base
             user = current_admin
             if(user.type == 'Admin')
                 if(user.isAdmin?)
-                    true
+                    if(user.approved?)
+                        true
+                    else
+                        flash[:notice] = 'Your account is awaiting approval. Please be patient'
+                        redirect_back_to({:controller => 'registrations' ,:action => 'unApprovedAdmin'})
+                    end
                 else
                     flash[:notice] = 'Your account is not approved.'
                     redirect_to_back()
