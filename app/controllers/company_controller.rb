@@ -39,6 +39,9 @@ class CompanyController < Devise::RegistrationsController
             redirect_to_back()
         end
     end
+    
+    protected
+    
     def authenticate_company
         if(admin_signed_in?)
             user = current_admin

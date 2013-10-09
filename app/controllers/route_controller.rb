@@ -96,25 +96,4 @@ class RouteController < ApplicationController
         end
     end
     
-    def authenticate_isAdmin
-          if(admin_signed_in?)
-              user = current_admin
-              if(user.type == 'Admin')
-                  if(user.isAdmin?)
-                      true
-                  else
-                      flash[:notice] = 'Your account is not approved.'
-                      redirect_to_back()
-                  end
-              else
-                  flash[:notice] = 'You dont have admin privileges. Please login as \'Admin\''
-                  redirect_to_back()
-              end
-          else
-              flash[:notice] = 'You need to sign in or sign up before continuing.'
-              redirect_to new_admin_session_path
-          end
-      end
-
-
 end
