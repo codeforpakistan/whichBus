@@ -50,7 +50,7 @@ class CompanyController < Devise::RegistrationsController
             flash[:notice] = 'Sign in as a \'Company\' to access this page.'
             redirect_to :back
         end
-      else
+    else
         flash[:notice] = 'You need to sign in or sign up before continuing.'
         redirect_to new_admin_session_path
     end
