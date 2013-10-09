@@ -20,28 +20,19 @@ class ApplicationController < ActionController::Base
             redirect_to default and return
         end
     end
-    
+
     def authenticate_isAdmin
         if(admin_signed_in?)
             user = current_admin
             if(user.type == 'Admin')
-                if(user.isAdmin?)
-                    if(user.approved?)
-                        true
-                    else
-                        flash[:notice] = 'Your account is awaiting approval. Please be patient.'
-                        if (!request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["HTTP_URI"])
-                            redirect_to :back
-                        else
-                            redirect_to ({:controller => 'devise/admin/registrations' ,:action => 'unApprovedAdmin'})
-                        end
-                    end
+                if(user.approved?)
+                    true
                 else
                     flash[:notice] = 'Your account is awaiting approval. Please be patient.'
                     if (!request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["HTTP_URI"])
                         redirect_to :back
                     else
-                        redirect_to admin_unapproved_account_path
+                        redirect_to ({:controller => 'devise/admin/registrations' ,:action => 'unApprovedAdmin'})
                     end
                 end
             else
@@ -51,7 +42,7 @@ class ApplicationController < ActionController::Base
                 else
                     redirect_to company_index_path
                 end
-                
+
             end
         else
             flash[:notice] = 'You need to sign in or sign up before continuing.'
@@ -60,10 +51,10 @@ class ApplicationController < ActionController::Base
             else
                 redirect_to new_admin_session_path
             end
-            
+
         end
     end
-    
+
     def authenticate_company
         if(admin_signed_in?)
             user = current_admin
@@ -87,14 +78,14 @@ class ApplicationController < ActionController::Base
             redirect_to new_admin_session_path
         end
     end
-    
+
     def current_user_isAdmin?
-       user = current_admin
-       if(user.type == 'Admin')
-           return true
-       else
-           return false
-       end
+        user = current_admin
+        if(user.type == 'Admin')
+            return true
+        else
+            return false
+        end
     end
 
 end
