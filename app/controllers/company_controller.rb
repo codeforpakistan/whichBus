@@ -1,4 +1,5 @@
 class CompanyController < Devise::RegistrationsController
+    before_filter :authenticate_admin!
     before_filter :authenticate_company
     def index
         user = current_admin
@@ -31,11 +32,9 @@ class CompanyController < Devise::RegistrationsController
         @companyRoute = CompanyRoute.where(:route_id => id, :company_id => user.id)
         if(@companyRoute.destroy_all)
             flash[:notice] = 'Route removed.'
-            redirect_to :back
             redirect_to_back()
         else
             flash[:notice] = 'Route could not be removed.'
-            redirect_to :back
             redirect_to_back()
         end
     end

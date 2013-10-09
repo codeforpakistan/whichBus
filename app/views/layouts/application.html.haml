@@ -24,9 +24,9 @@
 					%div.btn-group
 						%button.btn.btn-default.dropdown-toggle{ :type => "button", :data => {:toggle => "dropdown"}}
 							-if user.userName.blank?
-								="#{user.firstName} #{user.lastName}"
+								="#{user.type}: #{user.firstName} #{user.lastName}"
 							-else
-								="#{user.userName}"
+								="#{user.type}: #{user.userName}"
 							%span.glyphicon.glyphicon-chevron-down
 						%ul.dropdown-menu{role: "menu"}
 							%li

@@ -14,6 +14,8 @@
 			%td.text-center
 				Last Sign in
 			%td.text-center
+				Account Type
+			%td.text-center
 				Approve User?
 			%td.text-center
 				Admin Options
@@ -27,6 +29,7 @@
 					%td= time_ago_in_words(a.last_sign_in_at, include_seconds: true)
 				-else
 					%td= ""
+				%td= a.type
 				%td.text-center
 					= link_to admin_approve_user_path(a.id), :method => :post do
 						-if a.approved?

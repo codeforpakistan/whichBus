@@ -30,19 +30,35 @@ class ApplicationController < ActionController::Base
                         true
                     else
                         flash[:notice] = 'Your account is awaiting approval. Please be patient.'
-                        redirect_to ({:controller => 'devise/admin/registrations' ,:action => 'unApprovedAdmin'})
+                        if (!request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["HTTP_URI"])
+                            redirect_to :back
+                        else
+                            redirect_to ({:controller => 'devise/admin/registrations' ,:action => 'unApprovedAdmin'})
+                        end
                     end
                 else
                     flash[:notice] = 'Your account is awaiting approval. Please be patient.'
-                    redirect_to ({:controller => 'devise/admin/registrations' ,:action => 'unApprovedAdmin'})
+                    if (!request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["HTTP_URI"])
+                        rediriect_to :back
+                    else
+                        redirect_to ({:controller => 'devise/admin/registrations' ,:action => 'unApprovedAdmin'})
+                    end
                 end
             else
-                flash[:notice] = 'You dont have admin privileges. Please login as \'Admin\''
-                redirect_to_back()
+                if (!request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["HTTP_URI"])
+                    redirect_to :back
+                else
+                    redirect_to company_index_path
+                end
+                
             end
         else
-            flash[:notice] = 'You need to sign in or sign up before continuing.'
-            redirect_to new_admin_session_path
+            if (!request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["HTTP_URI"])
+                redirect_to :back
+            else
+                redirect_to new_admin_session_path
+            end
+            
         end
     end
 end
