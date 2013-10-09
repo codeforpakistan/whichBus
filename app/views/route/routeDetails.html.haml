@@ -13,10 +13,6 @@
 		%tr
 			%th.text-center 
 				Bus Stop Name
-			%th.text-center
-				Bus Stop Lat Long
-			%th.text-center
-				Bus Stop Sec Name
 		-@busStops.each do |b|
 			-if(b.nil?)
 				%tr
@@ -28,9 +24,4 @@
 				%tr
 					%td
 						=link_to b.busStopName, busstop_view_path(b.id)
-					%td
-						=b.busStopLatLong
-					%td
-						=b.busStopSecName
-
  
