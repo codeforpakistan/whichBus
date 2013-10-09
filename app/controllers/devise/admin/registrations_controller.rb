@@ -1,5 +1,5 @@
 class Devise::Admin::RegistrationsController < Devise::RegistrationsController
-  before_filter :authenticate_isAdmin, except: [:create, :new, :edit, :index]
+  before_filter :authenticate_isAdmin, except: [:create, :new, :edit, :index, :unApprovedAdmin]
   def index
      @admins = Admin.all 
   end
