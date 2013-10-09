@@ -26,13 +26,16 @@
 					= c.busStopSecName
 				%td
 					= link_to busstop_view_path(c.id) do
-						= content_tag :span, class: "glyphicon glyphicon-list" do
-							=""
+						= content_tag :button, :class => "btn btn-primary" do
+							= content_tag :span, class: "glyphicon glyphicon-list" do
+								=""
 					|
 					= link_to busstop_show_edit_path(c.id) do
-						= content_tag :span, class: "glyphicon glyphicon-pencil" do
-							=""
+						= content_tag :button, :class => "btn btn-warning" do	
+							= content_tag :span, class: "glyphicon glyphicon-pencil" do
+								=""
 					|
 					= link_to busstop_delete_path(c.id), method: :delete, data: { :confirm => 'Are you sure?' } do
-						= content_tag :span, class: "glyphicon glyphicon-remove" do
-							=""
+						= content_tag :button, :class => "btn btn-danger" do
+							= content_tag :span, class: "glyphicon glyphicon-remove" do
+								=""
