@@ -73,10 +73,10 @@ class RouteController < ApplicationController
     @routeBusstopRelations = RouteBusstop.new(:route_id => route_id, :busstop_id => busstop_id)
     if(@routeBusstopRelations.save)
       flash[:notice] = "Busstop: #{busstop.busStopName} added to route: #{route.routeName}"
-      redirect_to :back
+      redirect_to_back()
     else
       flash[:notice] = "Could not update record."
-      redirect_to :back
+      redirect_to_back()
     end
   end
   
@@ -88,10 +88,10 @@ class RouteController < ApplicationController
     @routeBusstopRelations = RouteBusstop.where(:route_id => route_id, :busstop_id => busstop_id)
     if(@routeBusstopRelations.destroy_all)
       flash[:notice] = "Busstop: #{busstop.busStopName} removed from route: #{route.routeName}"
-      redirect_to :back
+      redirect_to_back()
     else
       flash[:notice] = "Could not delete record."
-      redirect_to :back
+      redirect_to_back()
     end
   end
   

@@ -1,51 +1,47 @@
 - require 'active_support/core_ext'
-
--if(current_user_isAdmin?)
-	-if @allUsers.blank?
-		%h3= "No User returned."
-		=@allUsers.class
-	-else
-		%table.table.table-hover.table-condensed.text-center
-			%tr
-				%th.text-center
-					User Name
-				%th.text-center
-					Email
-				%td.text-center
-					Name
-				%td.text-center
-					Last Sign in
-				%td.text-center
-					Approve User?
-				%td.text-center
-					Admin Options
-			
-			-@allUsers.each do |a|
-				%tr
-					%td= a.userName
-					%td= a.email
-					%td= "#{a.firstName} #{a.lastName}"
-					-if(a.last_sign_in_at?)
-						%td= time_ago_in_words(a.last_sign_in_at, include_seconds: true)
-					-else
-						%td= ""
-					%td.text-center
-						= link_to admin_approve_user_path(a.id), :method => :post do
-							-if a.approved?
-								= content_tag :span, class: "glyphicon glyphicon-check" do
-									=""
-							-else
-								= content_tag :span, class: "glyphicon glyphicon-ok" do
-									=""
-					-if(a.isAdmin?)
-						%td
-							= link_to admin_approve_admin_path(a.id), :method => :post do
-								= content_tag :span, class: "glyphicon glyphicon-check" do
-									=""
-					-else
-						%td
-							= link_to admin_approve_admin_path(a.id), :method => :post do
-								= content_tag :span, class: "glyphicon glyphicon-ok" do
-									=""
+-if @allUsers.blank?
+	%h3= "No User returned."
+	=@allUsers.class
 -else
-	=redirect_to :back
+	%table.table.table-hover.table-condensed.text-center
+		%tr
+			%th.text-center
+				User Name
+			%th.text-center
+				Email
+			%td.text-center
+				Name
+			%td.text-center
+				Last Sign in
+			%td.text-center
+				Approve User?
+			%td.text-center
+				Admin Options
+		
+		-@allUsers.each do |a|
+			%tr
+				%td= a.userName
+				%td= a.email
+				%td= "#{a.firstName} #{a.lastName}"
+				-if(a.last_sign_in_at?)
+					%td= time_ago_in_words(a.last_sign_in_at, include_seconds: true)
+				-else
+					%td= ""
+				%td.text-center
+					= link_to admin_approve_user_path(a.id), :method => :post do
+						-if a.approved?
+							= content_tag :span, class: "glyphicon glyphicon-check" do
+								=""
+						-else
+							= content_tag :span, class: "glyphicon glyphicon-ok" do
+								=""
+				-if(a.isAdmin?)
+					%td
+						= link_to admin_approve_admin_path(a.id), :method => :post do
+							= content_tag :span, class: "glyphicon glyphicon-check" do
+								=""
+				-else
+					%td
+						= link_to admin_approve_admin_path(a.id), :method => :post do
+							= content_tag :span, class: "glyphicon glyphicon-ok" do
+								=""

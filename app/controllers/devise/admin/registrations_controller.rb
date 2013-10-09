@@ -1,12 +1,9 @@
 class Devise::Admin::RegistrationsController < Devise::RegistrationsController
   before_filter :authenticate_isAdmin, except: [:create, :new, :edit]
   def index
-    if admin_signed_in?
-     @admins = Admin.all
-    else
-      redirect_to new_admin_session_path
-    end 
+     @admins = Admin.all 
   end
+  
   def create
     build_resource(sign_up_params)
 
@@ -45,49 +42,41 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
   end
   
   def approveUser
-      authenticate_isAdmin
-    if(admin_signed_in?)
-      
       @user = Admin.find(params[:id])
       if(@user.approved?)
         flash[:notice] = "User Already Verified."
-        redirect_to :back
+        redirect_to_back()
       else
         @user.approved = true
         current_admin_id = current_admin.id
-      
         @user.admin_id = current_admin_id
         if(@user.save)
-          redirect_to :back
+          redirect_to_back()
         else
           flash[:alert] = "Error Occured while updating record"
-          redirect_to :back
+          redirect_to_back()
         end
       end
-    else
-      flash[:notice] = "You need to login to perform this action"
-      redirect_to :back
-    end
   end
   protected
   
   def authenticate_isAdmin
       if(admin_signed_in?)
           user = current_admin
-          if(user.type == 'Company')
+          if(user.type == 'Admin')
               if(user.isAdmin?)
                   true
               else
                   flash[:notice] = 'Your account is not approved.'
-                  redirect_to :back
+                  redirect_to_back()
               end
           else
               flash[:notice] = 'You dont have admin privileges. Please login as \'Admin\''
-              redirect_to :back
+              redirect_to_back(resource)
           end
       else
           flash[:notice] = 'You have to sign in as \'Admin\'.'
-          redirect_to new_admin_session_path
+          redirect_to new_admin_session_path and return
       end
   end
   

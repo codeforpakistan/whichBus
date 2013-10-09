@@ -18,10 +18,10 @@ class CompanyController < Devise::RegistrationsController
       route = Route.find(id)
       if(@companyRoute.save == true)
           flash[:notice] = "Route: #{route.routeName}  added successfully"
-          redirect_to :back
+          redirect_to_back()
       else
           flash[:notice] = 'Record could not be saved. Check for any errors'
-          redirect_to :back
+          redirect_to_back()
       end
   end
   
@@ -31,10 +31,10 @@ class CompanyController < Devise::RegistrationsController
     @companyRoute = CompanyRoute.where(:route_id => id, :company_id => user.id)
     if(@companyRoute.destroy_all)
       flash[:notice] = 'Route removed.'
-      redirect_to :back
+      redirect_to_back()
     else
       flash[:notice] = 'Route could not be removed.'
-      redirect_to :back
+      redirect_to_back()
     end
   end
 
@@ -48,7 +48,7 @@ class CompanyController < Devise::RegistrationsController
             true
         else
             flash[:notice] = 'Sign in as a \'Company\' to access this page.'
-            redirect_to :back
+            redirect_to_back()
         end
     else
         flash[:notice] = 'You need to sign in or sign up before continuing.'
