@@ -45,6 +45,7 @@ class ApplicationController < ActionController::Base
                     end
                 end
             else
+                flash[:notice] = 'Please sign in as \'Company\' to view this page.'
                 if (!request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["HTTP_URI"])
                     redirect_to :back
                 else
@@ -53,6 +54,7 @@ class ApplicationController < ActionController::Base
                 
             end
         else
+            flash[:notice] = 'You need to sign in or sign up before continuing.'
             if (!request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["HTTP_URI"])
                 redirect_to :back
             else

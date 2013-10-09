@@ -1,11 +1,12 @@
-%h1 Show All Bus Stops
-=link_to 'Edit Routes Properties', route_edit_route_properties_path, :class => "btn btn-primary"
-
 - if @busstops.blank?
+	%hr
 	%p No bus stop currently exist.
 -else
-	%p 
-		These are the bus stops
+	%hr
+	%h3= "Choose busstops for route: '#{@route.routeName}'"
+	=link_to 'Edit Routes Properties', route_edit_route_properties_path, :class => "btn btn-primary"
+	%br
+	%hr
 	%table.table.table-hover.table-condensed.text-center
 		%tr
 			%th.text-center

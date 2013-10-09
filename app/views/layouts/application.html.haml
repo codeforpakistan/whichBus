@@ -41,9 +41,9 @@
 				-else
 					= link_to "Sign up", new_admin_registration_path, :class => 'navbar-link'
 					= link_to "Login", new_admin_session_path, :class => 'navbar-link'	
-			
-			=render "shared/notices"
-			= yield
+			%div.container.well
+				=render "shared/notices"
+				= yield
 		
 		
 			/ Footer Implementation
