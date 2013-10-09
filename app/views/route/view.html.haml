@@ -1,9 +1,10 @@
-%h3= "Showing Information of Route: #{@routes.routeName}"
+
 =link_to 'Show All Routes', {:action => 'showAll'}
 
 - if @routes.blank?
 	%p= "Route not found"
 - else
+	%h3= "Showing Information of Route: #{@routes.routeName}"
 	%table.table.table-hover.table-condensed.text-center
 		%tr
 			%th.text-center
