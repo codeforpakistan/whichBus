@@ -29,8 +29,9 @@ class ApplicationController < ActionController::Base
                     if(user.approved?)
                         true
                     else
+                        #link = link_to {:controller => 'registrations' ,:action => 'unApprovedAdmin'}
                         flash[:notice] = 'Your account is awaiting approval. Please be patient'
-                        redirect_back_to({:controller => 'registrations' ,:action => 'unApprovedAdmin'})
+                        redirect_to ({:controller => 'devise/admin/registrations' ,:action => 'unApprovedAdmin'})
                     end
                 else
                     flash[:notice] = 'Your account is not approved.'
