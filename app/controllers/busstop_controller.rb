@@ -1,5 +1,5 @@
 class BusstopController < ApplicationController
-  before_filter :authenticate_admin!
+  before_filter :authenticate_isAdmin
   
   
   def index
@@ -51,3 +51,24 @@ class BusstopController < ApplicationController
     params.require(:busstop).permit(:busStopName, :busStopLatLong, :busStopSecName)
   end
 end
+
+def authenticate_isAdmin
+      if(admin_signed_in?)
+          user = current_admin
+          if(user.type == 'Company')
+              if(user.isAdmin?)
+                  true
+              else
+                  flash[:notice] = 'Your account is not approved.'
+                  redirect_to :back
+              end
+          else
+              flash[:notice] = 'You dont have admin privileges. Please login as \'Admin\''
+              redirect_to :back
+          end
+      else
+          flash[:notice] = 'You need to sign in or sign up before continuing.'
+          redirect_to new_admin_session_path
+      end
+  end
+

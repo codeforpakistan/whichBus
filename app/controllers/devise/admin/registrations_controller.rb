@@ -1,5 +1,5 @@
 class Devise::Admin::RegistrationsController < Devise::RegistrationsController
-  before_filter :authenticate_admin!
+  before_filter :authenticate_isAdmin, except: [:create, :new, :edit]
   def index
     if admin_signed_in?
      @admins = Admin.all
@@ -69,15 +69,25 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
       redirect_to :back
     end
   end
-  
   protected
+  
   def authenticate_isAdmin
-      user = current_admin
-      if(user.isAdmin?)
-          true
+      if(admin_signed_in?)
+          user = current_admin
+          if(user.type == 'Company')
+              if(user.isAdmin?)
+                  true
+              else
+                  flash[:notice] = 'Your account is not approved.'
+                  redirect_to :back
+              end
+          else
+              flash[:notice] = 'You dont have admin privileges. Please login as \'Admin\''
+              redirect_to :back
+          end
       else
-          flash[:notice] = 'You dont have admin privileges. Please login as \'Admin\''
-          redirect_to :back
+          flash[:notice] = 'You have to sign in as \'Admin\'.'
+          redirect_to new_admin_session_path
       end
   end
   

@@ -2,10 +2,7 @@ class CompanyController < Devise::RegistrationsController
     before_filter :authenticate_company
   def index
       user = current_admin
-      
-      
-    @companyRoutes = user.routes.all
-    
+      @companyRoutes = user.routes.all
   end
   
   def showAll
@@ -54,7 +51,7 @@ class CompanyController < Devise::RegistrationsController
             redirect_to :back
         end
       else
-        flash[:notice] = 'You need to sign in first'
+        flash[:notice] = 'You need to sign in or sign up before continuing.'
         redirect_to new_admin_session_path
     end
   end
