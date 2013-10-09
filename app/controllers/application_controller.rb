@@ -87,5 +87,14 @@ class ApplicationController < ActionController::Base
             return false
         end
     end
+    
+    def current_admin_approved?
+        user = current_admin
+        if(user.approved?)
+            true
+        else
+            false
+        end
+    end
 
 end
