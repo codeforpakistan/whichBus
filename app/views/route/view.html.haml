@@ -11,18 +11,18 @@
 			%th.text-center
 				Route Name
 			%th.text-center
-				Route Travel Time
+				Route Source Name
 			%th.text-center
-				Route Distance
+				Route Destination Name
 		%tr
 			%td
 				=@routes.id
 			%td
 				=@routes.routeName
 			%td
-				=@routes.routeTravelTime
+				=@routes.routeSourceName
 			%td
-				=@routes.routeDistance
+				=@routes.routeDestName
 			%td
 				= link_to route_delete_path(@routes.id), method: :delete, data: { :confirm => 'Are you sure?' } do
 					= content_tag :span, class: "glyphicon glyphicon-remove" do

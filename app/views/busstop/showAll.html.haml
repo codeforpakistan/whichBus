@@ -10,20 +10,11 @@
 		%tr
 			%th.text-center
 				Bus Stop Name
-			%th.text-center
-				Bus Stop LatLong
-			%th.text-center
-				Bus Stop Secondary Name
-			%th.text-center
 				Options
 		- @busstops.each do |c|
 			%tr
 				%td
 					= c.busStopName
-				%td
-					= c.busStopLatLong
-				%td
-					= c.busStopSecName
 				%td
 					= link_to busstop_view_path(c.id) do
 						= content_tag :button, :class => "btn btn-primary" do
