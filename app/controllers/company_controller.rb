@@ -26,22 +26,21 @@ class CompanyController < Devise::RegistrationsController
     end
 
     def removeCompanyRoute
+        
+    protected
 
-        protected
-
-        def authenticate_company
-            if(admin_signed_in?)
-                user = current_admin
-                if user.type == 'Company'
-                    true
-                else
-                    flash[:notice] = 'Sign in as a \'Company\' to access this page.'
-                    redirect_to_back()
-                end
+    def authenticate_company
+        if(admin_signed_in?)
+            user = current_admin
+            if user.type == 'Company'
+                true
             else
-                flash[:notice] = 'You need to sign in or sign up before continuing.'
-                redirect_to new_admin_session_path
+                flash[:notice] = 'Sign in as a \'Company\' to access this page.'
+                redirect_to_back()
             end
+        else
+            flash[:notice] = 'You need to sign in or sign up before continuing.'
+            redirect_to new_admin_session_path
         end
     end
 end
