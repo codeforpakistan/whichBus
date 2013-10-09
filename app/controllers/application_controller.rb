@@ -15,9 +15,9 @@ class ApplicationController < ActionController::Base
 
     def redirect_to_back(default = root_url)
         if !request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
-            redirect_to :back
+            redirect_to :back and return
         else
-            redirect_to default
+            redirect_to default and return
         end
     end
     
@@ -29,13 +29,12 @@ class ApplicationController < ActionController::Base
                     if(user.approved?)
                         true
                     else
-                        #link = link_to {:controller => 'registrations' ,:action => 'unApprovedAdmin'}
-                        flash[:notice] = 'Your account is awaiting approval. Please be patient'
+                        flash[:notice] = 'Your account is awaiting approval. Please be patient.'
                         redirect_to ({:controller => 'devise/admin/registrations' ,:action => 'unApprovedAdmin'})
                     end
                 else
-                    flash[:notice] = 'Your account is not approved.'
-                    redirect_to_back()
+                    flash[:notice] = 'Your account is awaiting approval. Please be patient.'
+                    redirect_to ({:controller => 'devise/admin/registrations' ,:action => 'unApprovedAdmin'})
                 end
             else
                 flash[:notice] = 'You dont have admin privileges. Please login as \'Admin\''
