@@ -26,7 +26,8 @@
 				=@routes.routeDestName
 			%td
 				= link_to route_delete_path(@routes.id), method: :delete, data: { :confirm => 'Are you sure?' } do
-					= content_tag :span, class: "glyphicon glyphicon-remove" do
-						=""
+					= content_tag :button, :class => "btn btn-danger" do
+						= content_tag :span, class: "glyphicon glyphicon-remove" do
+							=""
 
 /	= button_to 'Destroy', {:controller => 'busstop', :action => 'destroy', :id => @routes.id}, method: :delete, data: { :confirm => 'Are you sure?' }

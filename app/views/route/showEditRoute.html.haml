@@ -18,7 +18,7 @@
 				Remove
 		- @busstops.each do |c|		#all bussstops in data base
 			%tr
-				%td= link_to c.busStopName, {:action => 'view', :id => c.id}
+				%td= c.busStopName
 				-ids = Array.new
 				- @routeBusstopRelations.each do |u|
 					-ids << u.busstop_id
@@ -26,12 +26,14 @@
 				-if(ids.include?(c.id) == false)
 					%td
 						= link_to route_include_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
-							= content_tag :span, class: "glyphicon glyphicon-ok" do
-								=""
+							= content_tag :button, :class => "btn btn-primary" do
+								= content_tag :span, class: "glyphicon glyphicon-ok" do
+									=""
 					%td
 				-else
 					%td
 					%td
 						= link_to route_remove_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
-							= content_tag :span, class: "glyphicon glyphicon-remove" do
-								=""
+							= content_tag :button, :class => "btn btn-danger" do
+								= content_tag :span, class: "glyphicon glyphicon-remove" do
+									=""

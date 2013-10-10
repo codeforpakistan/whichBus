@@ -1,7 +1,7 @@
 class RouteController < ApplicationController
     before_filter :authenticate_admin!
-    before_filter :authenticate_isAdmin, :except => [:showAll, :view, :routeDetails]
-    before_filter :authenticate_company, :only => [:showAll, :view, :routeDetails], unless: :current_user_isAdmin?
+    before_filter :authenticate_isAdmin#, :except => [:showAll, :view, :routeDetails]
+    #before_filter :authenticate_company, :only => [:showAll, :view, :routeDetails], unless: :current_user_isAdmin?
     def new
 
     end

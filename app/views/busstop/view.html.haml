@@ -18,8 +18,9 @@
 				=@busstop.busStopName
 			%td
 				= link_to busstop_delete_path, method: :delete, data: { :confirm => 'Are you sure?' } do
-					= content_tag :span, class: "glyphicon glyphicon-remove" do
-						=""
+					= content_tag :button, :class => "btn btn-danger" do
+						= content_tag :span, class: "glyphicon glyphicon-remove" do
+							=""
 %br
 
 

@@ -37,7 +37,7 @@
 				%th.text-center
 					Route Destination
 				%th.text-center 
-					Delete
+					Options
 			-@companyRoutes.each do |r|
 				%tr
 					%td= r.id
@@ -45,7 +45,7 @@
 					%td= r.routeSourceName
 					%td= r.routeDestName
 					%td
-						= link_to route_view_path(r.id) do
+						= link_to company_route_details_path(r.id) do
 							= content_tag :button, :class => "btn btn-primary" do
 								= content_tag :span, class: "glyphicon glyphicon-list" do
 									=""

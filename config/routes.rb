@@ -28,14 +28,14 @@ RailsBoot::Application.routes.draw do
   
   post 'route/removeRouteBusstop/:id', to: 'route#removeRouteBusstop', as: :route_remove_route_busstop 
   post 'route/includeRouteBusstop/:id', to: 'route#includeRouteBusstop', as: :route_include_route_busstop 
-
-  
+  get 'welcome', to: 'welcome#welcome', as: :welcome_welcome
   
   #rogue lines
   
   #
   
   devise_scope :admin do
+
     get 'admin/index', to: 'devise/admin/registrations#index', as: :admin_index
     get 'admin/pendingUser', to: 'devise/admin/registrations#pendingUser', as: :admin_pending_user
     root 'devise/admin/registrations#welcome'
@@ -44,7 +44,7 @@ RailsBoot::Application.routes.draw do
     get 'unApprovedAccount', to: 'devise/admin/registrations#unApprovedAdmin', as: :admin_unapproved_account  
     get "company/index", as: :company_index
     get "company/showAll", as: :company_showAll
-    get "company/routeDetails", as: :company_route_details
+    get 'company/routeDetails/:id', to: 'company#routeDetails', as: :company_route_details
     post "company/addCompanyRoute/:id", to: 'company#addCompanyRoute', as: :company_include_company_route
     post "company/removeCompanyRoute/:id", to: 'company#removeCompanyRoute', as: :company_remove_company_route
   end

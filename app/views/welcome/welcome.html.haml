@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+%html
+	%head
+		%title RailsBoot
+		/%link{:href => 'http://fonts.googleapis.com/css?family=Stint+Ultra+Expanded',  :rel => 'stylesheet', :type => 'text/css'}
+		= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+		= javascript_include_tag "application", "data-turbolinks-track" => true
+		= csrf_meta_tags
+	%body.custom
+		%div
+			%div.jumbotron
+				%div.container
+					%h1 
+						Welcome to whichBUS
+					%p  
+						=link_to "Login", new_admin_session_path, :class => "btn btn-primary"
+						=link_to "signUp", new_admin_registration_path, :class => "btn btn-primary"
