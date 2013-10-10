@@ -14,7 +14,7 @@
 				%p
 					Please wait for your account to be approved.
 			-if(current_admin.type == 'Company')
-				=link_to "Add Routes to Your Profile", path, :class => "btn btn-primary"
+				=link_to "Add Routes to Your Profile", company_route_details_path, :class => "btn btn-primary"
 		-else
 			=link_to "Login", new_admin_session_path, :class => "btn btn-primary"
 			=link_to "signUp", new_admin_registration_path, :class => "btn btn-primary"

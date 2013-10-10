@@ -27,6 +27,23 @@ class CompanyController < Devise::RegistrationsController
         end
     end
 
+
+    # route details for company
+    
+    def routeDetails
+        @route = Route.find(params[:id])
+        routeBus = RouteBusstop.where(:route_id => @route.id)
+        busstopIDs = Array.new
+        routeBus.each do |r|
+            busstopIDs << r.busstop_id
+        end
+        stop = Busstop.new
+        @busStops = []
+        busstopIDs.each do |r|
+            @busStops << Busstop.find(r)
+        end
+    end
+
     def removeCompanyRoute
         id = params[:id]
         user = current_admin
