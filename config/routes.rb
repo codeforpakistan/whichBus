@@ -43,7 +43,7 @@ RailsBoot::Application.routes.draw do
     post 'admin/approveAdmin/:id', to: 'devise/admin/registrations#approveAdmin', as: :admin_approve_admin 
     get 'unApprovedAccount', to: 'devise/admin/registrations#unApprovedAdmin', as: :admin_unapproved_account  
     get "company/index", as: :company_index
-    get "company/showAll"
+    get "company/showAll", as: :company_showAll
     get "company/routeDetails", as: :company_route_details
     post "company/addCompanyRoute/:id", to: 'company#addCompanyRoute', as: :company_include_company_route
     post "company/removeCompanyRoute/:id", to: 'company#removeCompanyRoute', as: :company_remove_company_route
