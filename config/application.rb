@@ -22,5 +22,6 @@ module RailsBoot
     # 
     # required by devise for heroku deploy
      config.assets.initialize_on_precompile = false
+     
   end
 end

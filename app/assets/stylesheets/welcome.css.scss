@@ -2,11 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body 
+.custom
 {
-	.custom
+	background-image: image-url("bg.png");
+	background-repeat:y-repeat;
+	background-position:center top;
+}
+
+.jumbotron
+{
+	opacity: 0.75;
+	.container
 	{
-		background-image: url('./assets/images/bg.png');
+		opacity: 0.95;
 	}
 }
+
+.btn 
+{
+	opacity: 1;
+}
+
  
