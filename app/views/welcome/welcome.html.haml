@@ -7,11 +7,57 @@
 		= javascript_include_tag "application", "data-turbolinks-track" => true
 		= csrf_meta_tags
 	%body.custom
-		%div
-			%div.jumbotron
-				%div.container
-					%h1 
-						Welcome to whichBUS
-					%p  
-						=link_to "Login", new_admin_session_path, :class => "btn btn-primary"
-						=link_to "signUp", new_admin_registration_path, :class => "btn btn-primary"
+		%div.container.push-center
+			%div.well.transparent
+				%h1.text-center 
+					%div.page-header
+						%h1 
+							whichBUS
+							%small 
+								Know Your Way
+				%br
+				%p.text-center
+					= link_to "Sign up", new_admin_registration_path, :class => 'btn btn-primary'
+					= link_to "Login", new_admin_session_path, :class => 'btn btn-primary'
+				/
+					%div.text-center
+						%a.btn.btn-primary.btn-lg{:href => "#loginModel", :data => {:toggle => "modal"}} 
+							Login
+
+						%a.btn.btn-primary.btn-lg{:href => "#signupModel", :data => {:toggle => "modal"}} 
+							Sign up
+					
+					%div.modal.fade#loginModel{:tabindex => "-1", :role => "dialog", :aria =>{:labelledby => "myModalLabel"}, :aria =>{:hidden => "true"}}
+						%div.modal-dialog
+							%div.modal-content
+								%div.modal-header
+									%button.close{:type => "button", :data =>{:dismiss => "modal"}, :aria =>{:hidden => "true"}}
+										&times;
+									%h4.modal-title
+										Login
+								%div.modal-body
+									
+								%div.modal-footer
+									%button.btn.btn-default{:type => "button", :data =>{:dismiss => "modal"}}
+										Cancel
+									%button.btn.btn-primary{:type => "button"} 
+										Login
+															
+			
+					%div.modal.fade#signupModel{:tabindex => "-1", :role => "dialog", :aria =>{:labelledby => "myModalLabel"}, :aria =>{:hidden => "true"}}
+						%div.modal-dialog
+							%div.modal-content
+								%div.modal-header
+									%button.close{:type => "button", :data =>{:dismiss => "modal"}, :aria =>{:hidden => "true"}}
+										&times;
+									%h4.modal-title
+										Sign Up
+								%div.modal-body
+									%h1
+										hello world
+										its body
+								%div.modal-footer
+									%button.btn.btn-default{:type => "button", :data =>{:dismiss => "modal"}}
+										Cancel
+									%button.btn.btn-primary{:type => "button"} 
+										Sign up
