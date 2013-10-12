@@ -15,7 +15,8 @@ class RouteController < ApplicationController
         if @route.save
             redirect_to :action => 'showAll'
         else
-            render 'addRoute'
+            @errors = @route.errors
+            render 'new'
         end 
     end
 

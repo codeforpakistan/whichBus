@@ -6,4 +6,8 @@ class Route < ActiveRecord::Base
   
   has_many :companies, through: :company_routes
   has_many :company_routes
+  
+  
+  
+  validates :routeName, presence: true
 end
