@@ -23,7 +23,7 @@ class BusstopController < ApplicationController
         if @busstops.save
             redirect_to busstop_showAll_path
         else
-            render 'showAll'
+            render 'new'
         end  
     end
     def showEdit
