@@ -1,5 +1,5 @@
 class Route < ActiveRecord::Base
-  has_many :route_busstops
+  has_many :route_busstops, :dependent => :destroy
   has_many :busstops, through: :route_busstops
   
   has_one :admin
