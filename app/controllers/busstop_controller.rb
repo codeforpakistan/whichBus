@@ -11,16 +11,16 @@ class BusstopController < ApplicationController
     end
 
     def view
-        @busstops = Busstop.find(params[:id])
+        @busstop = Busstop.find(params[:id])
     end
 
     def new
-        @busstops = Busstop.new
+        @busstop = Busstop.new
     end
 
     def createBusstop
-        @busstops = Busstop.new(busstop_params)
-        if @busstops.save
+        @busstop = Busstop.new(busstop_params)
+        if @busstop.save
             redirect_to busstop_showAll_path
         else
             render 'new'

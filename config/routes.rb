@@ -1,6 +1,6 @@
 RailsBoot::Application.routes.draw do
   #devise_for :admin
-  devise_for :admin, :controllers => { :registrations => "devise/admin/registrations", :sessions => "devise/admin/sessions" }
+  devise_for :admin, :controllers => { :registrations => "devise/admin/registrations", :sessions => "devise/admin/sessions", :passwords => "devise/admin/passwords" }
   
  # devise_for :admins
   get "super_admin/index"
@@ -36,6 +36,7 @@ RailsBoot::Application.routes.draw do
   
   devise_scope :admin do
 
+    #get 'admin/passwords/new', to: 'devise/admin/passwords#new', as: :admin_passwords_new
     get 'admin/index', to: 'devise/admin/registrations#index', as: :admin_index
     get 'admin/pendingUser', to: 'devise/admin/registrations#pendingUser', as: :admin_pending_user
     root 'devise/admin/registrations#welcome'

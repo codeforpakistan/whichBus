@@ -7,17 +7,17 @@
 		%div.col-lg-3
 			=f.text_field :busStopName, {:class => 'form-control'}
 			%div.error_message
-				- if(@busstops.errors[:busStopName].blank?)
+				- if(@busstop.errors[:busStopName].blank?)
 				-else
-				=@busstops.errors[:busStopName].to_s
+				=@busstop.errors[:busStopName].to_s
 	%div.form-group
 		=f.label :busStopLatLong, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :busStopLatLong, {:class => 'form-control'}
 			%div.error_message
-				- if(@busstops.errors[:busStopLatLong].blank?)
+				- if(@busstop.errors[:busStopLatLong].blank?)
 				-else
-				=@busstops.errors[:busStopLatLong].to_s
+				=@busstop.errors[:busStopLatLong].to_s
 	%div.form-group
 		=f.label :busStopSecName, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
