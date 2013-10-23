@@ -1,6 +1,9 @@
 
 -if @routes.blank?
 	%h3= "No routes to show"
+	%div
+		=link_to 'Add new route', route_new_path, :class => "btn btn-primary"
+	%br
 -else
 	%h3= "Showing the list of all Routes in Lahore"
 	%div
