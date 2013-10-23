@@ -31,6 +31,7 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
 
     def new
         super
+        @admins = Admin.new
     end
 
     def edit

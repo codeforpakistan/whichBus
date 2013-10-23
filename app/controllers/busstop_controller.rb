@@ -11,11 +11,11 @@ class BusstopController < ApplicationController
     end
 
     def view
-        @busstop = Busstop.find(params[:id])
+        @busstops = Busstop.find(params[:id])
     end
 
     def new
-        @busstop = Busstop.new
+        @busstops = Busstop.new
     end
 
     def createBusstop

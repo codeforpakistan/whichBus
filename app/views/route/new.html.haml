@@ -12,10 +12,18 @@
 		=f.label :routeSourceName, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :routeSourceName, {:class => 'form-control'}
+			%div.error_message
+				- if(@route.errors[:routeSourceName].blank?)
+				-else
+				=@route.errors[:routeSourceName].to_s
 	%div.form-group
 		=f.label :routeDestName, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :routeDestName, {:class => 'form-control'}
+			%div.error_message
+				- if(@route.errors[:routeDestName].blank?)
+				-else
+				=@route.errors[:routeDestName].to_s
 	%div.form-group
 		=f.label :routeDistance, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3	

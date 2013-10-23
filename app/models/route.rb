@@ -10,4 +10,7 @@ class Route < ActiveRecord::Base
   
   
   validates :routeName, presence: true
+  validates :routeSourceName, presence: true
+  validates :routeDestName, presence: true
+  
 end

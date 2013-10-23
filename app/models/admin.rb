@@ -10,4 +10,13 @@ class Admin < ActiveRecord::Base
     has_one :route_busstop
     belongs_to :admin
     
+    validates :firstName, presence: true
+    validates :lastName, presence: true
+    validates :email, presence: true
+    validates :password, presence: true
+    validates :password_confirmation, presence: true
+    validates :userName, presence: true
+    validates :contactNumber, presence: true
+    
+    
 end
