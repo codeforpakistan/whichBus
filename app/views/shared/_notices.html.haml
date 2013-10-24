@@ -5,7 +5,7 @@
 		%span
 			=flash[:notice]
 -if(flash[:alert].blank? == false)
-	%div.alert.alert-dismissable.alert-warning.text-center
+	%div.alert.alert-dismissable.alert-danger.text-center
 		%button.close{:href => "#", :data => {:dismiss => "alert"}, :aria=> {:hidden => "true"}}
 			&times;
 		%span

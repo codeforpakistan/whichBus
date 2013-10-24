@@ -37,10 +37,15 @@ class BusstopController < ApplicationController
     end
 
     def destroy
-
-        @busstops = Busstop.find(params[:id])
-        @busstops.destroy
-        redirect_to busstop_showAll_path
+        begin
+            @busstops = Busstop.find(params[:id])
+            @busstops.destroy
+            flash[:notice] = "Bus stop: \'#{@busstops.busStopName}\' deleted."
+        rescue ActiveRecord::DeleteRestrictionError => e
+            flash[:alert] = "Action Restricted. Please remove this busstop from every route it appears in, then try again."
+        ensure
+            redirect_to busstop_showAll_path
+        end
     end
     #Private Members for Busstop  
     private
