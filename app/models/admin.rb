@@ -10,11 +10,11 @@ class Admin < ActiveRecord::Base
     has_one :route_busstop
     belongs_to :admin
     
-    validates :firstName, presence: true
-    validates :lastName, presence: true
-    validates :email, presence: true
-    validates :userName, presence: true
-    validates :contactNumber, presence: true
+    validates :firstName, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, length: {minimum: 3, maximum: 8,}
+    validates :lastName, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, length: {minimum: 3, maximum: 8,}
+    validates :email, presence: true, uniqueness: true
+    validates :userName, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, length: {minimum: 4, maximum: 10,}
+    validates :contactNumber, presence: true, numericality: true
     
     
 end

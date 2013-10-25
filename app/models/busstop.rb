@@ -4,6 +4,6 @@ class Busstop < ActiveRecord::Base
     belongs_to   :admin
     
     
-    validates :busStopName, presence: true
-    validates :busStopLatLong, presence: true
+    validates :busStopName, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+    validates :busStopLatLong, presence: true, numericality: true
 end
