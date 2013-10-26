@@ -28,14 +28,27 @@
 		=f.label :routeDistance, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3	
 			=f.text_field :routeDistance, {:class => 'form-control'}
+			%div.error_message
+				- if(@route.errors[:routeDistance].blank?)
+				-else
+				=@route.errors[:routeDistance].to_s
 	%div.form-group
 		=f.label :routeSourceLatLong, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :routeSourceLatLong, {:class => 'form-control'}
+			%div.error_message
+				- if(@route.errors[:routeSourceLatLong].blank?)
+				-else
+				=@route.errors[:routeSourceLatLong].to_s
 	%div.form-group
 		=f.label :routeDestLatLong, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :routeDestLatLong, {:class => 'form-control'}
+			%div.error_message
+				- if(@route.errors[:routeDestLatLong].blank?)
+				-else
+				=@route.errors[:routeDestLatLong].to_s
+			
 	%div.form-group
 		=f.label :routeTravelTime, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
