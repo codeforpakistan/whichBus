@@ -6,5 +6,5 @@ class Busstop < ActiveRecord::Base
     
     validates :busStopName, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
     validates :busStopLatLong, presence: true, numericality: true
-    validates :busStopSecName, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+    validates :busStopSecName, :allow_blank => true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
 end

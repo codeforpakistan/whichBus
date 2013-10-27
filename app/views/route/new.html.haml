@@ -33,6 +33,10 @@
 				-else
 				=@route.errors[:routeDistance].to_s
 	%div.form-group
+		=f.label :routeTravelTime, {:class => 'col-lg-2 control-label'}
+		%div.col-lg-3
+			=f.text_field :routeTravelTime, {:class => 'form-control'}
+	%div.form-group
 		=f.label :routeSourceLatLong, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :routeSourceLatLong, {:class => 'form-control'}
@@ -47,20 +51,15 @@
 			%div.error_message
 				- if(@route.errors[:routeDestLatLong].blank?)
 				-else
-				=@route.errors[:routeDestLatLong].to_s
-			
-	%div.form-group
-		=f.label :routeTravelTime, {:class => 'col-lg-2 control-label'}
-		%div.col-lg-3
-			=f.text_field :routeTravelTime, {:class => 'form-control'}
+				=@route.errors[:routeDestLatLong].to_s			
 	%div.form-group
 		=f.label :routeStartTime, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			=f.text_field :routeStartTime, {:class => 'form-control'}
+			= f.time_field :routeStartTime, {:class => 'form-control'}
 	%div.form-group
 		=f.label :routeStopTime, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			=f.text_field :routeStopTime, {:class => 'form-control'}
+			= f.time_field :routeStopTime, {:class => 'form-control'}
 	%div.form-group
 		%div.col-lg-offset-2.col-lg-10
 			=f.submit :class => 'btn btn-primary'
