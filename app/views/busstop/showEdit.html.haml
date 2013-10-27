@@ -7,15 +7,27 @@
 			=f.label :busStopName, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
 				=f.text_field :busStopName, {:class => 'form-control', :value => @editBusstop.busStopName}
+				%div.error_message
+					- if(@editBusstop.errors[:busStopName].blank?)
+					-else
+					=@editBusstop.errors[:busStopName].to_s
 		%div.form-group
 			=f.label :busStopLatLong, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
 				=f.text_field :busStopLatLong, {:class => 'form-control', :value => @editBusstop.busStopLatLong}
+				%div.error_message
+					- if(@editBusstop.errors[:busStopLatLong].blank?)
+					-else
+					=@editBusstop.errors[:busStopLatLong].to_s
 		%div.form-group
 			=f.label :busStopSecName, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
 				=f.text_field :busStopSecName, {:class => 'form-control', :value => @editBusstop.busStopSecName}
+				%div.error_message	
+					- if(@editBusstop.errors[:busStopSecName].blank?)
+					-else
+					=@editBusstop.errors[:busStopSecName].to_s
 		%div.form-group
 			%div.col-lg-offset-2.col-lg-10
-				=f.submit :class => 'btn btn-default'
+				=f.submit :class => 'btn btn-primary'
 	

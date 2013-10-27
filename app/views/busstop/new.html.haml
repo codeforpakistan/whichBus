@@ -22,6 +22,10 @@
 		=f.label :busStopSecName, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :busStopSecName, {:class => 'form-control'}
+			%div.error_message	
+				- if(@busstop.errors[:busStopSecName].blank?)
+				-else
+				=@busstop.errors[:busStopSecName].to_s
 	%div.form-group
 		%div.col-lg-offset-2.col-lg-10
 			=f.submit :class => 'btn btn-primary'
