@@ -29,7 +29,8 @@ RailsBoot::Application.routes.draw do
   post 'route/removeRouteBusstop/:id', to: 'route#removeRouteBusstop', as: :route_remove_route_busstop 
   post 'route/includeRouteBusstop/:id', to: 'route#includeRouteBusstop', as: :route_include_route_busstop 
   get 'welcome', to: 'welcome#welcome', as: :welcome_welcome
-  
+
+  root 'welcome#welcome'
   #rogue lines
   
   #
@@ -39,7 +40,6 @@ RailsBoot::Application.routes.draw do
     #get 'admin/passwords/new', to: 'devise/admin/passwords#new', as: :admin_passwords_new
     get 'admin/index', to: 'devise/admin/registrations#index', as: :admin_index
     get 'admin/pendingUser', to: 'devise/admin/registrations#pendingUser', as: :admin_pending_user
-    root 'devise/admin/registrations#welcome'
     post 'admin/approveUser/:id', to: 'devise/admin/registrations#approveUser', as: :admin_approve_user
     post 'admin/approveAdmin/:id', to: 'devise/admin/registrations#approveAdmin', as: :admin_approve_admin 
     get 'unApprovedAccount', to: 'devise/admin/registrations#unApprovedAdmin', as: :admin_unapproved_account  
