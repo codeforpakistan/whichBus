@@ -1,4 +1,4 @@
-%h2 Sign in to Form
+%h2 Sign in to your Account
 = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {:class => "form-horizontal", :role => 'form'}) do |f|
 	%div.form-group
 		= f.label :email, {:class => 'col-lg-2 control-label'}
@@ -12,7 +12,7 @@
 	- if devise_mapping.rememberable?
 		%div.form-group
 			=f.label :remember_me, :class => "control-label col-lg-2"
-			%div.col-lg-offset-2
+			%div.col-lg-3
 				=f.check_box :remember_me, class: "form-control"
 	%div.form-group
 		%div.col-lg-offset-2.col-lg-10
