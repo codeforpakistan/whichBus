@@ -31,11 +31,15 @@ class RouteController < ApplicationController
     
     def update
         @editRoute = Route.find(params[:id])
-        @editRoute.update_attributes!(params.require(:route).permit(:routeName, :routeDistance, :routeSourceName, :routeDestName, :routeSourceLatLong, :routeDestLatLong, :routeTravelTime, :routeStartTime, :routeStopTime))
-        redirect_to route_route_details_path(@editRoute.id)
-
-        #  if(@editRoute.save?)
-        #   redirect_to route_view_path(:id)
+        begin
+            @editRoute.update_attributes!(params.require(:route).permit(:routeName, :routeDistance, :routeSourceName, :routeDestName, :routeSourceLatLong, :routeDestLatLong, :routeTravelTime, :routeStartTime, :routeStopTime))
+            redirect_to route_route_details_path(@editRoute.id)
+        rescue => e
+            flash[:alert] = "#{e}. Please fill the form correctly"
+            redirect_to :back and return
+        ensure
+            
+        end    
     end
 
     def destroy

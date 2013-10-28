@@ -32,8 +32,15 @@ class BusstopController < ApplicationController
 
     def update
         @editBusstop = Busstop.find(params[:id])
-        @editBusstop.update_attributes!(params.require(:busstop).permit(:busStopName, :busStopLatLong, :busStopSecName))
-        redirect_to busstop_view_path(@editBusstop.id)
+        begin
+            @editBusstop.update_attributes!(params.require(:busstop).permit(:busStopName, :busStopLatLong, :busStopSecName))
+            redirect_to busstop_view_path(@editBusstop.id)
+        rescue => e
+            flash[:alert] = "#{e}. Please fill the form correctly"
+            redirect_to :back and return
+        ensure
+            
+        end
     end
 
     def destroy

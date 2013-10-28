@@ -23,7 +23,7 @@
 							=link_to "Add Route", route_new_path, :class => "btn btn-primary"
 						-else
 							%p
-								Please wait for your account to be approved.
+								=render 'shared/notices'
 						-if(current_admin.type == 'Company')
 							=link_to "See Routes for your company", company_showAll_path, :class => "btn btn-primary"
 					-else
