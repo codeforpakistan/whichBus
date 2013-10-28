@@ -36,6 +36,10 @@
 		=f.label :routeTravelTime, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :routeTravelTime, {:class => 'form-control'}
+			%div.error_message
+				- if(@route.errors[:routeTravelTime].blank?)
+				-else
+				=@route.errors[:routeTravelTime].to_s
 	%div.form-group
 		=f.label :routeSourceLatLong, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3

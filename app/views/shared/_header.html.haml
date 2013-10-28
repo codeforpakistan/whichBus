@@ -1,68 +1,69 @@
-%ul.nav.nav-pills
-	%li.dropdown.active
-		=link_to root_path, class: 'dropdown-toggle' do
-			whichBus.pk
-			%span.caret
-	%li.dropdown
-		=link_to admin_index_path, class: 'dropdown-toggle', :data => {:toggle => "dropdown"} do
-			Manage Users
-			%span.caret
-		%ul.dropdown-menu
-			%li
-				=link_to 'All Users', admin_index_path
-			%li.divider			
-			%li
-				=link_to 'Search User'
-	%li.dropdown
-		=link_to route_showAll_path, class: 'dropdown-toggle', :data => {:toggle => "dropdown"} do
-			Manage Route
-			%span.caret
-		%ul.dropdown-menu
-			%li
-				=link_to 'All Routes', route_showAll_path
-			%li.divider			
-			%li
-				=link_to 'Add Bus Stop', route_new_path
-	%li.dropdown
-		=link_to busstop_showAll_path, class: 'dropdown-toggle', :data => {:toggle => "dropdown"} do
-			Manage Bus Stop
-			%span.caret
-		%ul.dropdown-menu
-			%li
-				=link_to 'All Bus Stop', busstop_showAll_path
-			%li.divider	
-			%li
-				=link_to 'Add Bus Stop', busstop_new_path			
-	%li.dropdown
-		=link_to company_index_path, class: 'dropdown-toggle', :data => {:toggle => "dropdown"} do
-			Company
-			%span.caret
-		%ul.dropdown-menu
-			%li
-				=link_to 'Company Details', company_index_path
-			%li.divider	
-			%li
-				=link_to 'Search Company'
-%div.navbar-text.pull-right
-	-if admin_signed_in?
-		- user = current_admin
-		%div.btn-group
-			%button.btn.btn-default.dropdown-toggle{ :type => "button", :data => {:toggle => "dropdown"}}
-				-if user.userName.blank?
-					="#{user.type}: #{user.firstName} #{user.lastName}"
-				-else
-					="#{user.type}: #{user.userName}"
-				%span.glyphicon.glyphicon-chevron-down
-			%ul.dropdown-menu{role: "menu"}
+%div.header.container
+	%ul.nav.nav-pills.pull-left
+		%li.dropdown.active
+			=link_to root_path, class: 'dropdown-toggle' do
+				whichBus.pk
+				%span.caret
+		%li.dropdown
+			=link_to admin_index_path, class: 'dropdown-toggle', :data => {:toggle => "dropdown"} do
+				Manage Users
+				%span.caret
+			%ul.dropdown-menu
 				%li
-					=link_to 'Edit Profile', edit_admin_registration_path
-				%li.divider
+					=link_to 'All Users', admin_index_path
+				%li.divider			
+				%li
+					=link_to 'Search User'
+		%li.dropdown
+			=link_to route_showAll_path, class: 'dropdown-toggle', :data => {:toggle => "dropdown"} do
+				Manage Route
+				%span.caret
+			%ul.dropdown-menu
+				%li
+					=link_to 'All Routes', route_showAll_path
+				%li.divider			
+				%li
+					=link_to 'Add Bus Stop', route_new_path
+		%li.dropdown
+			=link_to busstop_showAll_path, class: 'dropdown-toggle', :data => {:toggle => "dropdown"} do
+				Manage Bus Stop
+				%span.caret
+			%ul.dropdown-menu
+				%li
+					=link_to 'All Bus Stop', busstop_showAll_path
+				%li.divider	
+				%li
+					=link_to 'Add Bus Stop', busstop_new_path			
+		%li.dropdown
+			=link_to company_index_path, class: 'dropdown-toggle', :data => {:toggle => "dropdown"} do
+				Company
+				%span.caret
+			%ul.dropdown-menu
+				%li
+					=link_to 'Company Details', company_index_path
+				%li.divider	
+				%li
+					=link_to 'Search Company'
+	%div.navbar-text.pull-right
+		-if admin_signed_in?
+			- user = current_admin
+			%div.btn-group
+				%button.btn.btn-default.dropdown-toggle{ :type => "button", :data => {:toggle => "dropdown"}}
+					-if user.userName.blank?
+						="#{user.type}: #{user.firstName} #{user.lastName}"
+					-else
+						="#{user.type}: #{user.userName}"
+					%span.glyphicon.glyphicon-chevron-down
+				%ul.dropdown-menu{role: "menu"}
+					%li
+						=link_to 'Edit Profile', edit_admin_registration_path
+					%li.divider
 
-				%li
-					=link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'navbar-link'
-				%li.divider
-				%li
-					=link_to "Cancel Account", cancel_admin_registration_path, :class => "navbar-link", :data => { :confirm => "Are you sure?" }, :method => :delete
-	-else
-		= link_to "Sign up", new_admin_registration_path, :class => 'navbar-link'
-		= link_to "Login", new_admin_session_path, :class => 'navbar-link'	
+					%li
+						=link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'navbar-link'
+					%li.divider
+					%li
+						=link_to "Cancel Account", cancel_admin_registration_path, :class => "navbar-link", :data => { :confirm => "Are you sure?" }, :method => :delete
+		-else
+			= link_to "Sign up", new_admin_registration_path, :class => 'navbar-link'
+			= link_to "Login", new_admin_session_path, :class => 'navbar-link'	

@@ -32,3 +32,12 @@
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); }
   
 }
+.header 
+{
+	margin-top: 20px;
+	background-color: #C9C9C9;
+	opacity: 0.70;
+	padding-top: 10px;
+	border-radius:10px;
+	margin-bottom:20px;
+}
