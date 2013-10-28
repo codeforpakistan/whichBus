@@ -13,39 +13,39 @@
 		%div.form-group
 			=f.label :routeName, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :routeName,{:class => 'form-control', :value => @route.routeName}
+				=f.text_field :routeName,{:class => 'form-control', :disabled => 'disabled', :value => @route.routeName}
 		%div.form-group
 			=f.label :routeSourceName, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :routeSourceName, {:class => 'form-control', :value => @route.routeSourceName}
+				=f.text_field :routeSourceName, {:class => 'form-control', :disabled => 'disabled', :value => @route.routeSourceName}
 		%div.form-group
 			=f.label :routeDestName, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :routeDestName, {:class => 'form-control', :value => @route.routeDestName}
+				=f.text_field :routeDestName, {:class => 'form-control', :disabled => 'disabled', :value => @route.routeDestName}
 		%div.form-group
 			=f.label :routeDistance, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3	
-				=f.text_field :routeDistance, {:class => 'form-control', :value => @route.routeDistance}
+				=f.text_field :routeDistance, {:class => 'form-control', :disabled => 'disabled', :value => @route.routeDistance}
 		%div.form-group
 			=f.label :routeSourceLatLong, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :routeSourceLatLong, {:class => 'form-control', :value => @route.routeSourceLatLong}
+				=f.text_field :routeSourceLatLong, {:class => 'form-control', :disabled => 'disabled', :value => @route.routeSourceLatLong}
 		%div.form-group
 			=f.label :routeDestLatLong, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :routeDestLatLong, {:class => 'form-control', :value => @route.routeDestLatLong}
+				=f.text_field :routeDestLatLong, {:class => 'form-control', :disabled => 'disabled', :value => @route.routeDestLatLong}
 		%div.form-group
 			=f.label :routeTravelTime, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :routeTravelTime, {:class => 'form-control', :value => @route.routeTravelTime}
+				=f.text_field :routeTravelTime, {:class => 'form-control', :disabled => 'disabled', :value => @route.routeTravelTime}
 		%div.form-group
 			=f.label :routeStartTime, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :routeStartTime, {:class => 'form-control', :value => @route.routeStartTime}
+				=f.text_field :routeStartTime, {:class => 'form-control', :disabled => 'disabled', :value => @route.routeStartTime}
 		%div.form-group
 			=f.label :routeStopTime, {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :routeStopTime, {:class => 'form-control', :value => @route.routeStopTime}
+				=f.text_field :routeStopTime, {:class => 'form-control', :disabled => 'disabled', :value => @route.routeStopTime}
 	%hr
 	%h3
 		="Bus Stops on route: #{@route.routeName}"
