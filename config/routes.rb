@@ -50,6 +50,8 @@ RailsBoot::Application.routes.draw do
     post "company/removeCompanyRoute/:id", to: 'company#removeCompanyRoute', as: :company_remove_company_route
   end
   
+  get 'api/showRoute/:id', to: 'api/api#showRoute'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
