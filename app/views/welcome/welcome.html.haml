@@ -8,7 +8,9 @@
 		= csrf_meta_tags
 	%body.custom
 		=render "shared/header"
+		
 		%div.container.push-center
+			=render 'shared/notices'
 			%div.well.transparent
 				%h1.text-center 
 					%div.page-header
@@ -22,9 +24,6 @@
 						-if(current_admin.approved? and current_admin.type == 'Admin')
 							=link_to "Add Bus Stop", busstop_new_path, :class => "btn btn-primary"
 							=link_to "Add Route", route_new_path, :class => "btn btn-primary"
-						-else
-							%p
-								=render 'shared/notices'
 						-if(current_admin.type == 'Company')
 							=link_to "See Routes for your company", company_showAll_path, :class => "btn btn-primary"
 					-else

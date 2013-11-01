@@ -49,7 +49,7 @@ RailsBoot::Application.routes.draw do
     get 'company/routeDetails/:id', to: 'company#routeDetails', as: :company_route_details
     post "company/addCompanyRoute/:id", to: 'company#addCompanyRoute', as: :company_include_company_route
     post "company/removeCompanyRoute/:id", to: 'company#removeCompanyRoute', as: :company_remove_company_route
-    delete 'admin/:id', to: 'devise/admin/registrations#destroy', as: :admin_destroy
+    delete 'admin/:id', to: 'devise/admin/registrations#destroyUser', as: :admin_destroy
   end
   
   get 'api/showRoute/:id', to: 'api/api#showRoute'

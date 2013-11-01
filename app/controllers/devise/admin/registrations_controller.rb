@@ -1,6 +1,6 @@
 class Devise::Admin::RegistrationsController < Devise::RegistrationsController
     before_filter :authenticate_admin!
-    before_filter :authenticate_isAdmin, except: [:create, :new, :edit, :unApprovedAdmin, :welcome, :userProfile]
+    before_filter :authenticate_isAdmin, except: [:create, :new, :edit, :unApprovedAdmin, :welcome, :userProfile, :destroyUser]
 
     def welcome
 
@@ -28,23 +28,21 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
             respond_with resource
         end 
     end
-  
-  def destroyUser
-    user = current_admin
-    if not (user.id == params(:id))
-      userToBeDeleted = Admin.find(params(:id))
-      if(userToBeDeleted.destroy)
-        set_flash_message :notice, :destroyed if is_navigational_format?
-        redirect_to admin_index_path and return
-      end
-    else
-      if(userToBeDeleted.destroy)
-        Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
-        set_flash_message :notice, :destroyed if is_navigational_format?
-        respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
-      end
+
+    def destroyUser
+        userToBeDeleted = Admin.find(params[:id])
+        if not (current_admin.id == userToBeDeleted.id)
+            if(userToBeDeleted.destroy)
+                flash[:alert] = "#{userToBeDeleted.userName} has been deleted."
+                redirect_to admin_index_path and return
+            end
+        else
+            if(userToBeDeleted.destroy)
+                flash[:alert] = "#{userToBeDeleted.userName} has been deleted."
+                redirect_to root_path and return
+            end
+        end
     end
-  end
 
     def new
         super
