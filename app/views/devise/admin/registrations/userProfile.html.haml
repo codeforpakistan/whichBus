@@ -5,7 +5,7 @@
 %h2
 	= "User Profile: #{@user.userName}"
 %br
-%div
+%div.container
 	%div.list-group.col-lg-5
 		%a.list-group-item
 			%p.list-group-item-heading
@@ -24,24 +24,6 @@
 					="--"
 				-else
 					=@user.lastName.capitalize
-	%div.list-group.col-lg-5
-		%a.list-group-item
-			%p.list-group-item-heading
-				City 
-			%h4.list-group-item-text
-				-if(@user.city.blank?)
-					="--"
-				-else
-					=@user.city.capitalize
-	%div.list-group.col-lg-5
-		%a.list-group-item
-			%p.list-group-item-heading
-				Town
-			%h4.list-group-item-text
-				-if(@user.town.blank?)
-					="--"
-				-else
-					=@user.town.capitalize
 	%div.list-group.col-lg-5
 		%a.list-group-item
 			%p.list-group-item-heading
@@ -72,6 +54,33 @@
 	%div.list-group.col-lg-5
 		%a.list-group-item
 			%p.list-group-item-heading
+				Street Address 
+			%h4.list-group-item-text
+				-if(@user.streetAddress.blank?)
+					="--"
+				-else
+					=@user.streetAddress.capitalize
+	%div.list-group.col-lg-5
+		%a.list-group-item
+			%p.list-group-item-heading
+				Town
+			%h4.list-group-item-text
+				-if(@user.town.blank?)
+					="--"
+				-else
+					=@user.town.capitalize
+	%div.list-group.col-lg-5
+		%a.list-group-item
+			%p.list-group-item-heading
+				City 
+			%h4.list-group-item-text
+				-if(@user.city.blank?)
+					="--"
+				-else
+					=@user.city.capitalize
+	%div.list-group.col-lg-5
+		%a.list-group-item
+			%p.list-group-item-heading
 				Organization
 			%h4.list-group-item-text
 				-if(@user.organization.blank?)
@@ -84,3 +93,4 @@
 				Type
 			%h4.list-group-item-text
 				=@user.type.capitalize
+	=link_to "Delete This Account", cancel_admin_registration_path(@user.id), :class => "pull-right btn btn-danger", :data => { :confirm => "Are you sure?" }, :method => :delete

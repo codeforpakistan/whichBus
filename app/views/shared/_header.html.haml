@@ -62,7 +62,7 @@
 						=link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'navbar-link'
 					%li.divider
 					%li
-						=link_to "Cancel Account", cancel_admin_registration_path, :class => "navbar-link", :data => { :confirm => "Are you sure?" }, :method => :delete
+						=link_to "Delete My Account", cancel_admin_registration_path, :class => "navbar-link", :data => { :confirm => "Are you sure?" }, :method => :delete
 		-else
 			= link_to "Sign up", new_admin_registration_path, :class => 'btn btn-primary navbar-link'
 			= link_to "Login", new_admin_session_path, :class => 'btn btn-primary navbar-link'	
