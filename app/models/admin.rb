@@ -5,10 +5,12 @@ class Admin < ActiveRecord::Base
 
 
     has_one :admin, class_name: "Admin", foreign_key: "admin_id"
+    belongs_to :admin
+    
     has_one :busstop
     has_one :route
     has_one :route_busstop
-    belongs_to :admin
+    
     
     validates :firstName, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, length: {minimum: 3, maximum: 8,}
     validates :lastName, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, length: {minimum: 3, maximum: 8,}

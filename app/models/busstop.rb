@@ -3,8 +3,11 @@ class Busstop < ActiveRecord::Base
     has_many     :routes, through: :route_busstops
     belongs_to   :admin
     
-    
-    validates :busStopName, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+    #errors.add(:busStopName, 'heelo' )
+    validates :busStopName, presence: true, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }
     validates :busStopLatLong, presence: true, numericality: true
-    validates :busStopSecName, :allow_blank => true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+    validates :busStopSecName, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }, :allow_blank => true
+    
 end
+
+

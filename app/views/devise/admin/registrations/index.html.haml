@@ -2,26 +2,31 @@
 %br
 %br
 =link_to "Pending Users", admin_pending_user_path, :class => "btn btn-primary"
-
-%h1 Show All Users
+-# user = current_admin
+%h1 Users
 -if @admins.blank?
 	%h3= "No User found."
 -else
-	%p 
+	%p.text-center
 		These are the list of Users
+	%br
 	%table.table.table-hover.table-condensed.text-center
 		%tr
 			%th.text-center
-				User Name
+				User Name 
 			%th.text-center
 				Email
 			%td.text-center
 				First Name
 			%td.text-center
 				Last Name
+			%td.text-center
+				Approved By
 		-@admins.each do |a|
 			%tr
-				%td= a.userName
+				%td= link_to a.userName, admin_user_profile_path(a.id)
 				%td= a.email
 				%td= a.firstName
 				%td= a.lastName
+				%td= a.admin
+				

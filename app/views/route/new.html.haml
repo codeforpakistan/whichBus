@@ -2,60 +2,53 @@
 =form_for :route, url:{action: "createRoute"}, html:{class: "form-horizontal"} do |f|
 	%div.form-group
 		=f.label :routeName, {:class => 'col-lg-2 control-label'}
+		%span.error_message
+			- if not (@route.errors[:routeName].blank?)
+				=@route.errors[:routeName].to_s
 		%div.col-lg-3
 			=f.text_field :routeName, {:class => 'form-control'}
-			%div.error_message
-				- if(@route.errors[:routeName].blank?)
-				-else
-				=@route.errors[:routeName].to_s
 	%div.form-group
 		=f.label :routeSourceName, {:class => 'col-lg-2 control-label'}
+		%span.error_message
+			- if not (@route.errors[:routeSourceName].blank?)
+				=@route.errors[:routeSourceName].to_s
 		%div.col-lg-3
 			=f.text_field :routeSourceName, {:class => 'form-control'}
-			%div.error_message
-				- if(@route.errors[:routeSourceName].blank?)
-				-else
-				=@route.errors[:routeSourceName].to_s
 	%div.form-group
 		=f.label :routeDestName, {:class => 'col-lg-2 control-label'}
+		%span.error_message
+			- if not (@route.errors[:routeDestName].blank?)
+				=@route.errors[:routeDestName].to_s
 		%div.col-lg-3
 			=f.text_field :routeDestName, {:class => 'form-control'}
-			%div.error_message
-				- if(@route.errors[:routeDestName].blank?)
-				-else
-				=@route.errors[:routeDestName].to_s
 	%div.form-group
-		=f.label :routeDistance, {:class => 'col-lg-2 control-label'}
+		=f.label :routeDistance, 'Route Distance in KM' , {:class => 'col-lg-2 control-label'}
+		%span.error_message
+			- if not (@route.errors[:routeDistance].blank?)
+				=@route.errors[:routeDistance].to_s
 		%div.col-lg-3	
 			=f.text_field :routeDistance, {:class => 'form-control'}
-			%div.error_message
-				- if(@route.errors[:routeDistance].blank?)
-				-else
-				=@route.errors[:routeDistance].to_s
 	%div.form-group
 		=f.label :routeTravelTime, {:class => 'col-lg-2 control-label'}
+		%span.error_message
+			- if not (@route.errors[:routeTravelTime].blank?)
+				=@route.errors[:routeTravelTime].to_s
 		%div.col-lg-3
 			=f.text_field :routeTravelTime, {:class => 'form-control'}
-			%div.error_message
-				- if(@route.errors[:routeTravelTime].blank?)
-				-else
-				=@route.errors[:routeTravelTime].to_s
 	%div.form-group
 		=f.label :routeSourceLatLong, {:class => 'col-lg-2 control-label'}
+		%span.error_message
+			- if not (@route.errors[:routeSourceLatLong].blank?)
+				=@route.errors[:routeSourceLatLong].to_s
 		%div.col-lg-3
 			=f.text_field :routeSourceLatLong, {:class => 'form-control'}
-			%div.error_message
-				- if(@route.errors[:routeSourceLatLong].blank?)
-				-else
-				=@route.errors[:routeSourceLatLong].to_s
 	%div.form-group
 		=f.label :routeDestLatLong, {:class => 'col-lg-2 control-label'}
+		%span.error_message
+			- if not (@route.errors[:routeDestLatLong].blank?)
+				=@route.errors[:routeDestLatLong].to_s
 		%div.col-lg-3
 			=f.text_field :routeDestLatLong, {:class => 'form-control'}
-			%div.error_message
-				- if(@route.errors[:routeDestLatLong].blank?)
-				-else
-				=@route.errors[:routeDestLatLong].to_s			
 	%div.form-group
 		=f.label :routeStartTime, {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3

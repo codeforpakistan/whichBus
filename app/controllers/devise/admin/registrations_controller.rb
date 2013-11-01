@@ -1,13 +1,13 @@
 class Devise::Admin::RegistrationsController < Devise::RegistrationsController
     before_filter :authenticate_admin!
-    before_filter :authenticate_isAdmin, except: [:create, :new, :edit, :unApprovedAdmin, :welcome]
+    before_filter :authenticate_isAdmin, except: [:create, :new, :edit, :unApprovedAdmin, :welcome, :userProfile]
 
     def welcome
 
     end
 
     def index
-        @admins = Admin.all 
+        @admins = Admin.all       #send all admins for listing. 
     end
 
     def create
@@ -55,8 +55,8 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
             redirect_to_back()
         else
             @user.approved = true
-            current_admin_id = current_admin.id
-            @user.admin_id = current_admin_id
+            #current_admin = current_admin.id
+            @user.admin_id = current_admin.id
             if(@user.save)
                 flash[:notice] = 'User Approved.'
                 redirect_to :back
@@ -66,9 +66,16 @@ class Devise::Admin::RegistrationsController < Devise::RegistrationsController
             end
         end
     end
+    
+    def userProfile
+      @user = Admin.find(params[:id])
+    end
+    
     protected
 
     def unApprovedAdmin
         #show this page for users with pending acount approval.
     end
+    
+    
 end

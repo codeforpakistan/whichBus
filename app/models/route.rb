@@ -10,8 +10,8 @@ class Route < ActiveRecord::Base
   
   
   validates :routeName, presence: true, uniqueness: true, format: { with: /\A[\sa-z0-9]+\Z/i, message: "only allows alphanumeric" }
-  validates :routeSourceName, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
-  validates :routeDestName, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+  validates :routeSourceName, presence: true, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }
+  validates :routeDestName, presence: true, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters numbers and space" }
   validates :routeDistance, numericality: true, :allow_blank => true
   validates :routeSourceLatLong, numericality: true, :allow_blank => true
   validates :routeDestLatLong, numericality: true, :allow_blank => true

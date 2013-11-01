@@ -1,9 +1,8 @@
 %div.header.container
-	%ul.nav.nav-pills.pull-left
-		%li.dropdown.active
+	%ul.nav.nav-pills.navbar-text.pull-left
+		%li.active
 			=link_to root_path, class: 'dropdown-toggle' do
 				whichBus.pk
-				%span.caret
 		%li.dropdown
 			=link_to admin_index_path, class: 'dropdown-toggle', :data => {:toggle => "dropdown"} do
 				Manage Users
@@ -65,5 +64,5 @@
 					%li
 						=link_to "Cancel Account", cancel_admin_registration_path, :class => "navbar-link", :data => { :confirm => "Are you sure?" }, :method => :delete
 		-else
-			= link_to "Sign up", new_admin_registration_path, :class => 'navbar-link'
-			= link_to "Login", new_admin_session_path, :class => 'navbar-link'	
+			= link_to "Sign up", new_admin_registration_path, :class => 'btn btn-primary navbar-link'
+			= link_to "Login", new_admin_session_path, :class => 'btn btn-primary navbar-link'	

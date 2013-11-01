@@ -1,31 +1,29 @@
 %hr
 %h3 Add a new bus stop
 %hr
+-@busstop.errors.full_messages
 =form_for :busstop, url:{action: "createBusstop"}, html:{class: "form-horizontal"} do |f|
 	%div.form-group
 		=f.label :busStopName, {:class => 'col-lg-2 control-label'}
+		%span.error-message
+			- if not (@busstop.errors[:busStopName].blank?)
+				=@busstop.errors[:busStopName].second
 		%div.col-lg-3
 			=f.text_field :busStopName, {:class => 'form-control'}
-			%div.error_message
-				- if(@busstop.errors[:busStopName].blank?)
-				-else
-				=@busstop.errors[:busStopName].to_s
 	%div.form-group
 		=f.label :busStopLatLong, {:class => 'col-lg-2 control-label'}
+		%span.error-message	
+			- if not (@busstop.errors[:busStopLatLong].blank?)
+				=@busstop.errors[:busStopLatLong].second
 		%div.col-lg-3
 			=f.text_field :busStopLatLong, {:class => 'form-control'}
-			%div.error_message
-				- if(@busstop.errors[:busStopLatLong].blank?)
-				-else
-				=@busstop.errors[:busStopLatLong].to_s
 	%div.form-group
 		=f.label :busStopSecName, {:class => 'col-lg-2 control-label'}
+		%span.error-message
+			- if not (@busstop.errors[:busStopSecName].blank?)
+				=@busstop.errors[:busStopSecName].second
 		%div.col-lg-3
 			=f.text_field :busStopSecName, {:class => 'form-control'}
-			%div.error_message	
-				- if(@busstop.errors[:busStopSecName].blank?)
-				-else
-				=@busstop.errors[:busStopSecName].to_s
 	%div.form-group
 		%div.col-lg-offset-2.col-lg-10
 			=f.submit :class => 'btn btn-primary'

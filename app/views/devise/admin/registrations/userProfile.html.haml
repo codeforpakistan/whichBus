@@ -1,0 +1,86 @@
+%br
+%br
+=link_to "All Users", admin_index_path, :class => "btn btn-primary"
+%br
+%h2
+	= "User Profile: #{@user.userName}"
+%br
+%div
+	%div.list-group.col-lg-5
+		%a.list-group-item
+			%p.list-group-item-heading
+				First Name
+			%h4.list-group-item-text
+				-if(@user.firstName.blank?)
+					="--"
+				-else
+					=@user.firstName.capitalize
+	%div.list-group.col-lg-5
+		%a.list-group-item
+			%p.list-group-item-heading
+				Last Name
+			%h4.list-group-item-text
+				-if(@user.lastName.blank?)
+					="--"
+				-else
+					=@user.lastName.capitalize
+	%div.list-group.col-lg-5
+		%a.list-group-item
+			%p.list-group-item-heading
+				City 
+			%h4.list-group-item-text
+				-if(@user.city.blank?)
+					="--"
+				-else
+					=@user.city.capitalize
+	%div.list-group.col-lg-5
+		%a.list-group-item
+			%p.list-group-item-heading
+				Town
+			%h4.list-group-item-text
+				-if(@user.town.blank?)
+					="--"
+				-else
+					=@user.town.capitalize
+	%div.list-group.col-lg-5
+		%a.list-group-item
+			%p.list-group-item-heading
+				User Name
+			%h4.list-group-item-text
+				=@user.userName
+	%div.list-group.col-lg-5
+		%a.list-group-item
+			%p.list-group-item-heading
+				Email
+			%h4.list-group-item-text
+				=@user.email
+	%div.list-group.col-lg-5
+		%a.list-group-item
+			%p.list-group-item-heading
+				Contact Number
+			%h4.list-group-item-text
+				=@user.contactNumber
+	%div.list-group.col-lg-5
+		%a.list-group-item
+			%p.list-group-item-heading
+				Secondary Contact Number
+			%h4.list-group-item-text
+				-if(@user.secContactNumber.blank?)
+					="--"
+				-else
+					=@user.secContactNumber
+	%div.list-group.col-lg-5
+		%a.list-group-item
+			%p.list-group-item-heading
+				Organization
+			%h4.list-group-item-text
+				-if(@user.organization.blank?)
+					="--"
+				-else
+					=@user.organization.capitalize
+	%div.list-group.col-lg-5
+		%a.list-group-item
+			%p.list-group-item-heading
+				Type
+			%h4.list-group-item-text
+				=@user.type.capitalize

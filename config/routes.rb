@@ -42,7 +42,8 @@ RailsBoot::Application.routes.draw do
     get 'admin/pendingUser', to: 'devise/admin/registrations#pendingUser', as: :admin_pending_user
     post 'admin/approveUser/:id', to: 'devise/admin/registrations#approveUser', as: :admin_approve_user
     post 'admin/approveAdmin/:id', to: 'devise/admin/registrations#approveAdmin', as: :admin_approve_admin 
-    get 'unApprovedAccount', to: 'devise/admin/registrations#unApprovedAdmin', as: :admin_unapproved_account  
+    get 'unApprovedAccount', to: 'devise/admin/registrations#unApprovedAdmin', as: :admin_unapproved_account 
+    get 'userProfile/:id', to: 'devise/admin/registrations#userProfile', as: :admin_user_profile 
     get "company/index", as: :company_index
     get "company/showAll", as: :company_showAll
     get 'company/routeDetails/:id', to: 'company#routeDetails', as: :company_route_details
