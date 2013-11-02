@@ -17,4 +17,12 @@ class Route < ActiveRecord::Base
   validates :routeDestLatLong, numericality: true, :allow_blank => true
   validates :routeTravelTime, numericality: true, :allow_blank => true
   
+  def self.search(search)
+    if search
+      Busstop.find(:all, :conditions => ['busStopName LIKE ?', "%#{search}%"])
+    else
+       Busstop.find(:all)
+    end
+  end
+  
 end

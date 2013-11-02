@@ -14,6 +14,9 @@ RailsBoot::Application.routes.draw do
   post "busstop/update/:id", :to => "busstop#update", as: :busstop_update
   post "busstop/createBusstop"
   
+  
+  post "route/searchBusstop"
+  get "route/searchBusstop"
   get "route/showAllRoute"
   get "route/addRoute"
   get "route/showAll", as: :route_showAll

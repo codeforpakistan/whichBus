@@ -4,36 +4,71 @@
 	%h3 No bus stop currently exist.
 -else
 	%hr
+	=#@foundBusstops.to_yaml
+	%div.container.well
+		= form_tag("/route/searchBusstop", method: "post", class: "form-horizontal") do 
+		
+			%div.form-group
+				= label_tag(:search, "Search for Busstop:", :class => 'col-lg-2 control-label') 
+				%div.col-lg-3
+					= text_field_tag(:search, nil, :class => 'col-lg-3 form-control')
+				= hidden_field_tag(:id, @route.id)
+				= submit_tag("Search", class: "btn btn-default") 
 	%h3= "Choose busstops for route: '#{@route.routeName}'"
-	=link_to 'Edit Routes Properties', route_edit_route_properties_path, :class => "btn btn-primary"
+	=link_to 'Edit Routes Properties', route_edit_route_properties_path(@route.id), :class => "btn btn-primary"
 	%br
 	%hr
-	%table.table.table-hover.table-condensed.text-center
-		%tr
-			%th.text-center
-				Bus Stop Name
-			%th.text-center
-				Include
-			%th.text-center
-				Remove
-		- @busstops.each do |c|		#all bussstops in data base
+	%div.well.container
+		%h4.text-center
+			="Search Result"
+		%table.table.table-hover.table-condensed.text-center
 			%tr
-				%td= c.busStopName
-				-ids = Array.new
-				- @routeBusstopRelations.each do |u|
-					-ids << u.busstop_id
+				%th.text-center
+					Bus Stop Name
+				%th.text-center
+					Include
+				%th.text-center
+					Remove
+			- @foundBusstops.each do |c|		#all bussstops in data base
+				%tr
+					-ids = Array.new
+					- @routeBusstopRelations.each do |u|
+						-ids << u.busstop_id
 
-				-if(ids.include?(c.id) == false)
-					%td
-						= link_to route_include_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
-							= content_tag :button, :class => "btn btn-primary" do
-								= content_tag :span, class: "glyphicon glyphicon-ok" do
-									=""
-					%td
-				-else
-					%td
-					%td
-						= link_to route_remove_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
-							= content_tag :button, :class => "btn btn-danger" do
-								= content_tag :span, class: "glyphicon glyphicon-remove" do
-									=""
+					-if (ids.include?(c.id) == false)
+						%td= c.busStopName
+						%td
+							= link_to route_include_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
+								= content_tag :button, :class => "btn btn-primary" do
+									= content_tag :span, class: "glyphicon glyphicon-ok" do
+										=""
+					-else
+						%td= c.busStopName
+						%td
+						%td
+							= link_to route_remove_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
+								= content_tag :button, :class => "btn btn-danger" do
+									= content_tag :span, class: "glyphicon glyphicon-remove" do
+										=""
+	%div.well.container
+		%h4.text-center
+			="Included Busstop on This Route"
+		%table.table.table-hover.table-condensed.text-center
+			%tr
+				%th.text-center
+					Bus Stop Name
+				%th.text-center
+					Remove
+			- @busstops.each do |c|		#all bussstops in data base
+				%tr
+					-ids = Array.new
+					- @routeBusstopRelations.each do |u|
+						-ids << u.busstop_id
+
+					-if not (ids.include?(c.id) == false)
+						%td= c.busStopName
+						%td
+							= link_to route_remove_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
+								= content_tag :button, :class => "btn btn-danger" do
+									= content_tag :span, class: "glyphicon glyphicon-remove" do
+										=""

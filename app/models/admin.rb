@@ -21,7 +21,7 @@ class Admin < ActiveRecord::Base
     validates :town, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, :allow_blank => true
     validates :organization, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, :allow_blank => true
     validates :secContactNumber, numericality: true, :allow_blank => true
-    validates :streetAddress, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, :allow_blank => true
+    validates :streetAddress, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }, :allow_blank => true
     
     
 end

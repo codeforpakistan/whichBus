@@ -1,9 +1,13 @@
 - require 'active_support/core_ext'
 %h1 List of Pending Users
+%br
+=link_to "All Users", admin_index_path, :class => "btn btn-primary"
+%br
 -if @allUsers.blank?
 	%h3= "No User returned."
 	=@allUsers.class
 -else
+	%br
 	%p
 		List of Pending Users
 	%table.table.table-hover.table-condensed.text-center

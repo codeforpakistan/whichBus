@@ -94,4 +94,4 @@
 			%h4.list-group-item-text
 				=@user.type.capitalize
 %div.container
-	=link_to "Delete My Account", admin_destroy_path(@user), :class => "pull-right btn btn-danger", :data => { :confirm => "Are you sure?" }, :method => :delete
+	=link_to "Delete This Account", admin_destroy_path(@user), :class => "pull-right btn btn-danger", :data => { :confirm => "Are you sure?" }, :method => :delete
