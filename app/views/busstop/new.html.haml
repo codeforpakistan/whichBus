@@ -8,22 +8,22 @@
 		%span.error-message
 			- if not (@busstop.errors[:busStopName].blank?)
 				=@busstop.errors[:busStopName].to_s
-		%div.col-lg-3
-			=f.text_field :busStopName, {:class => 'form-control'}
+		%div.col-lg-4
+			=f.text_field :busStopName, {:class => "form-control", :placeholder => "Muslim Town"}
 	%div.form-group
 		=f.label :busStopLatLong, 'Bus Stop LatLong', {:class => 'col-lg-2 control-label'}
 		%span.error-message	
 			- if not (@busstop.errors[:busStopLatLong].blank?)
 				=@busstop.errors[:busStopLatLong].to_s
-		%div.col-lg-3
-			=f.text_field :busStopLatLong, {:class => 'form-control'}
+		%div.col-lg-4
+			=f.text_field :busStopLatLong, {:class => 'form-control', :placeholder => "111.11,222.22"}
 	%div.form-group
 		=f.label :busStopSecName, 'Bus Stop Sec Name', {:class => 'col-lg-2 control-label'}
 		%span.error-message
 			- if not (@busstop.errors[:busStopSecName].blank?)
 				=@busstop.errors[:busStopSecName].to_s
-		%div.col-lg-3
-			=f.text_field :busStopSecName, {:class => 'form-control'}
+		%div.col-lg-4
+			=f.text_field :busStopSecName, {:class => 'form-control', :placeholder => "Muslim Town 2"}
 	%div.form-group
 		%div.col-lg-offset-2.col-lg-10
 			=f.submit :class => 'btn btn-primary'

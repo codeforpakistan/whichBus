@@ -24,4 +24,28 @@ class Route < ActiveRecord::Base
     end
   end
   
+  def validateAddressWithErrors(latlong)
+      if not (latlong.blank?) 
+          if (isNumeric?(latlong))
+              return true
+          else
+              self.errors.add(:busStopLatLong, 'Use proper latlong')
+              return false
+          end
+      else
+          self.errors.add(:busStopLatLong, 'Can\'t be blank')
+          return false
+      end
+  end
+  
+  def isNumeric?(num)
+      
+     if(num =~ /\d+[.]\d+[,]\d+[.]\d+/)
+         return true
+      else
+          return false
+      end
+  end
+  
+  
 end

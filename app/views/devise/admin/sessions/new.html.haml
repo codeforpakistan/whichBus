@@ -3,12 +3,12 @@
 	%div.form-group
 		= f.label :email, 'Email', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			= f.email_field :email, {:class => 'form-control', :id => 'inputEmail'}
+			= f.email_field :email, {:class => 'form-control', :id => 'inputEmail', :placeholder => "someone@example.com"}
 
 	%div.form-group
 		= f.label :password, 'Password', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
-			= f.password_field :password, {:class => 'form-control'}
+			= f.password_field :password, {:class => 'form-control', :placeholder => "Password"}
 	- if devise_mapping.rememberable?
 		%div.form-group
 			=f.label :remember_me, 'Remember Me', :class => "control-label col-lg-2"
