@@ -1,12 +1,15 @@
+= link_to "Go Back", :back, :class => "btn btn-primary"
+%br
 %h3
 	Edit 
 	= resource_name.to_s.humanize
-
+%br
+%br
 =form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "form-horizontal" }) do |f|
 	=devise_error_messages!
 
 	%div.form-group
-		=f.label :email, {:class => 'col-lg-2 control-label'}
+		=f.label :email, 'Email', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.email_field :email, {:class => 'form-control', :id => 'inputEmail'}
 
@@ -15,62 +18,60 @@
 			Currently waiting confirmation for: 
 			= resource.unconfirmed_email
 	%div.form-group
-		= f.label :password, {:class => 'col-lg-2 control-label'}
+		= f.label :password, 'Password', {:class => 'col-lg-2 control-label'}
 		%i (leave blank if you don't want to change it)
 		%div.col-lg-3
 			=f.password_field :password, :autocomplete => "off", :class => 'form-control'	
 	%div.form-group
-		=f.label :password_confirmation, {:class => 'col-lg-2 control-label'}
+		=f.label :password_confirmation, 'Password Confirmation', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.password_field :password_confirmation, {:class => 'form-control'}
 	%div.form-group
-		=f.label :current_password, {:class => 'col-lg-2 control-label'}
+		=f.label :current_password, 'Current Password', {:class => 'col-lg-2 control-label'}
 		%i (we need your current password to confirm your changes)
 		%div.col-lg-3
 			=f.password_field :current_password, {:class => 'form-control'}
 		
 	%div.form-group
-		=f.label :userName, {:class => 'col-lg-2 control-label'}
+		=f.label :userName, 'User Name', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :userName, {:class => 'form-control'}
 
 	%div.form-group
-		=f.label :firstName, {:class => 'col-lg-2 control-label'}
+		=f.label :firstName, 'First Name', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :firstName, {:class => 'form-control'}
 	%div.form-group
-		=f.label :lastName, {:class => 'col-lg-2 control-label'}
+		=f.label :lastName, 'Last Name', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :lastName, {:class => 'form-control'}
 	%div.form-group
-		=f.label :streetAddress, {:class => 'col-lg-2 control-label'}
+		=f.label :streetAddress, 'Street Address', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :streetAddress, {:class => 'form-control'}
 	%div.form-group
-		=f.label :city, {:class => 'col-lg-2 control-label'}
+		=f.label :city, 'City', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :city, {:class => 'form-control'}
 	%div.form-group
-		=f.label :town, {:class => 'col-lg-2 control-label'}
+		=f.label :town, 'Town', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :town, {:class => 'form-control'}
 	%div.form-group
-		=f.label :contactNumber, {:class => 'col-lg-2 control-label'}
+		=f.label :contactNumber, 'Contact Number', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :contactNumber, {:class => 'form-control'}
 	%div.form-group
-		=f.label :secContactNumber, {:class => 'col-lg-2 control-label'}
+		=f.label :secContactNumber, 'Sec Contact Number', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :secContactNumber, {:class => 'form-control'}
 	%div.form-group
-		=f.label :organizaton, {:class => 'col-lg-2 control-label'}
+		=f.label :organizaton, 'Organization', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :organization, {:class => 'form-control'}	
 	%div.form-group
 		%div.col-lg-offset-2.col-lg-10
 			=f.submit :class => "btn btn-primary", :value => "Update"
-%h3 Cancel my account
-%p 
-	Unhappy? 
-	=button_to "Cancel my account", registration_path(resource_name), :class => "btn btn-primary", :data => { :confirm => "Are you sure?" }, :method => :delete
-= link_to "Back", :back
+%br
+%div.pull-right
+	=button_to "Cancel my account", registration_path(resource_name), :class => "btn btn-danger", :data => { :confirm => "Are you sure?" }, :method => :delete

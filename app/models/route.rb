@@ -15,7 +15,6 @@ class Route < ActiveRecord::Base
   validates :routeDistance, numericality: true, :allow_blank => true
   validates :routeSourceLatLong, numericality: true, :allow_blank => true
   validates :routeDestLatLong, numericality: true, :allow_blank => true
-  validates :routeTravelTime, numericality: true, :allow_blank => true
   
   def self.search(search)
     if search

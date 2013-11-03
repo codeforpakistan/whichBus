@@ -1,17 +1,17 @@
 %h3 Sign in to your Account
 = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {:class => "form-horizontal", :role => 'form'}) do |f|
 	%div.form-group
-		= f.label :email, {:class => 'col-lg-2 control-label'}
+		= f.label :email, 'Email', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			= f.email_field :email, {:class => 'form-control', :id => 'inputEmail'}
 
 	%div.form-group
-		= f.label :password, {:class => 'col-lg-2 control-label'}
+		= f.label :password, 'Password', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			= f.password_field :password, {:class => 'form-control'}
 	- if devise_mapping.rememberable?
 		%div.form-group
-			=f.label :remember_me, :class => "control-label col-lg-2"
+			=f.label :remember_me, 'Remember Me', :class => "control-label col-lg-2"
 			%div.col-lg-3
 				=f.check_box :remember_me, class: "form-control"
 	%div.form-group

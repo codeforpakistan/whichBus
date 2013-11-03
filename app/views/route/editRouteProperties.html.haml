@@ -5,7 +5,7 @@
 	%h3= "Edit Route: #{@editRoute.routeName}"
 	=form_for :route, url:{action: "update"}, html:{class: "form-horizontal"} do |f|
 		%div.form-group
-			=f.label :routeName, {:class => 'col-lg-2 control-label'}
+			=f.label :routeName, 'Route Name', {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
 				=f.text_field :routeName,{:class => 'form-control', :value => @editRoute.routeName}
 				%div.error_message
@@ -13,7 +13,7 @@
 					-else
 					=@editRoute.errors[:routeName].to_s
 		%div.form-group
-			=f.label :routeSourceName, {:class => 'col-lg-2 control-label'}
+			=f.label :routeSourceName, 'Route Source Name', {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
 				=f.text_field :routeSourceName, {:class => 'form-control', :value => @editRoute.routeSourceName}
 				%div.error_message
@@ -21,7 +21,7 @@
 					-else
 					=@editRoute.errors[:routeSourceName].to_s
 		%div.form-group
-			=f.label :routeDestName, {:class => 'col-lg-2 control-label'}
+			=f.label :routeDestName, 'Route Dest Name', {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
 				=f.text_field :routeDestName, {:class => 'form-control', :value => @editRoute.routeDestName}
 				%div.error_message
@@ -29,7 +29,7 @@
 					-else
 					=@editRoute.errors[:routeDestName].to_s
 		%div.form-group
-			=f.label :routeDistance, {:class => 'col-lg-2 control-label'}
+			=f.label :routeDistance, 'Route Distance (Km)', {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3	
 				=f.text_field :routeDistance, {:class => 'form-control', :value => @editRoute.routeDistance}
 				%div.error_message
@@ -37,7 +37,7 @@
 					-else
 					=@editRoute.errors[:routeDistance].to_s
 		%div.form-group
-			=f.label :routeSourceLatLong, {:class => 'col-lg-2 control-label'}
+			=f.label :routeSourceLatLong, 'Route Source LatLong', {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
 				=f.text_field :routeSourceLatLong, {:class => 'form-control', :value => @editRoute.routeSourceLatLong}
 				%div.error_message
@@ -45,7 +45,7 @@
 					-else
 					=@editRoute.errors[:routeSourceLatLong].to_s
 		%div.form-group
-			=f.label :routeDestLatLong, {:class => 'col-lg-2 control-label'}
+			=f.label :routeDestLatLong, 'Route Dest LatLong', {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
 				=f.text_field :routeDestLatLong, {:class => 'form-control', :value => @editRoute.routeDestLatLong}
 				%div.error_message
@@ -53,17 +53,17 @@
 					-else
 					=@editRoute.errors[:routeDestLatLong].to_s			
 		%div.form-group
-			=f.label :routeTravelTime, {:class => 'col-lg-2 control-label'}
+			=f.label :routeTravelTime, 'Route Travel Time', {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :routeTravelTime, {:class => 'form-control', :value => @editRoute.routeTravelTime}
+				=f.time_field :routeTravelTime, {:class => 'form-control', :value => @editRoute.routeTravelTime}
 		%div.form-group
-			=f.label :routeStartTime, {:class => 'col-lg-2 control-label'}
+			=f.label :routeStartTime, 'Route Start Time', {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :routeStartTime, {:class => 'form-control', :value => @editRoute.routeStartTime}
+				=f.time_field :routeStartTime, {:class => 'form-control', :value => @editRoute.routeStartTime}
 		%div.form-group
-			=f.label :routeStopTime, {:class => 'col-lg-2 control-label'}
+			=f.label :routeStopTime, 'Route Stop Time', {:class => 'col-lg-2 control-label'}
 			%div.col-lg-3
-				=f.text_field :routeStopTime, {:class => 'form-control', :value => @editRoute.routeStopTime}
+				=f.time_field :routeStopTime, {:class => 'form-control', :value => @editRoute.routeStopTime}
 		%div.form-group
 			%div.col-lg-offset-2.col-lg-10
 				=f.submit :class => 'btn btn-primary'

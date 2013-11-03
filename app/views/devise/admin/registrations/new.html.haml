@@ -2,55 +2,55 @@
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name),  :html => {:class => "form-horizontal" }) do |f|
 	=devise_error_messages!
 	%div.form-group
-		=f.label :firstName, {:class => 'col-lg-2 control-label'}
+		=f.label :firstName, 'First Name', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :firstName, {:class => 'form-control'}
 	%div.form-group
-		=f.label :lastName, {:class => 'col-lg-2 control-label'}
+		=f.label :lastName, 'Last Name', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :lastName, {:class => 'form-control'}
 	%div.form-group
-		=f.label :email, {:class => 'col-lg-2 control-label'}
+		=f.label :email, 'Email', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.email_field :email, {:class => 'form-control'}
 	%div.form-group
-		=f.label :password, {:class => 'col-lg-2 control-label'}
+		=f.label :password, 'Password', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.password_field :password, {:class => 'form-control'}
 	%div.form-group
-		=f.label :password_confirmation, {:class => 'col-lg-2 control-label'}
+		=f.label :password_confirmation, 'Password Confirmation', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.password_field :password_confirmation, {:class => 'form-control'}
 	%div.form-group
-		=f.label :userName, {:class => 'col-lg-2 control-label'}
+		=f.label :userName, 'User Name', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :userName, {:class => 'form-control'}
 	%div.form-group
-		=f.label :streetAddress, {:class => 'col-lg-2 control-label'}
+		=f.label :streetAddress, 'Street Address', {:class => 'col-lg-2 control-label'}
 		%duv.col-lg-3
 			=f.text_field :streetAddress, {:class => 'form-control'}
 	%div.form-group
-		=f.label :city, {:class => 'col-lg-2 control-label'}
+		=f.label :city, 'City', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :city, {:class => 'form-control'}
 	%div.form-group
-		=f.label :town, {:class => 'col-lg-2 control-label'}
+		=f.label :town, 'Town', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :town, {:class => 'form-control'}
 	%div.form-group
-		=f.label :contactNumber, {:class => 'col-lg-2 control-label'}
+		=f.label :contactNumber, 'Contact Number',  {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :contactNumber, {:class => 'form-control'}
 	%div.form-group
-		=f.label :secContactNumber, {:class => 'col-lg-2 control-label'}
+		=f.label :secContactNumber, 'Sec Contact Number', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :secContactNumber, {:class => 'form-control'}
 	%div.form-group
-		=f.label :organization, {:class => 'col-lg-2 control-label'}
+		=f.label :organization, 'Organization', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.text_field :organization, {:class => 'form-control'}
 	%div.form-group
-		=f.label :type, {:class => 'col-lg-2 control-label'}
+		=f.label :type, 'Type', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
 			=f.select(:type, ['Company', 'Admin'], {}, { :class => 'form-control' })
 	%div.form-group
