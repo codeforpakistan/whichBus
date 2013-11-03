@@ -1,12 +1,10 @@
-
+%h3 Bus-Stop details
+%br
 =link_to 'Show All Bus Stop', busstop_showAll_path, :class => "btn btn-primary" 
+%br
 - if @busstop.blank?
 	%p There is no bus stop currently exist
 -else
-	/
-		%h3 Bus-Stop Detail
-	%p.text-center
-		These are the list of bus stops
 	%br
 	%table.table.table-hover.table-condensed.text-center
 		%tr

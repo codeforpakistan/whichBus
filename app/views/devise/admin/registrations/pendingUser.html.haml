@@ -1,5 +1,5 @@
 - require 'active_support/core_ext'
-%h1 List of Pending Users
+%h3 List of Pending Users
 %br
 =link_to "All Users", admin_index_path, :class => "btn btn-primary"
 %br
@@ -8,8 +8,6 @@
 	=@allUsers.class
 -else
 	%br
-	%p
-		List of Pending Users
 	%table.table.table-hover.table-condensed.text-center
 		%tr
 			%th.text-center
