@@ -71,10 +71,13 @@ def showEditRoute
     @routeBusstopRelations = RouteBusstop.where(:route_id => id)
     @route = Route.find(params[:id])
     busstopArray = session[:busstopsIDs]
-    if (busstopArray.size)
-        busstopArray.each do |b|
-            @foundBusstops << Busstop.find(b)
-        end   
+    session[:busstopIDs] = []
+    if(busstopArray != nil)    
+        if (busstopArray.size)
+            busstopArray.each do |b|
+                @foundBusstops << Busstop.find(b)
+            end   
+        end
     end
 end
 

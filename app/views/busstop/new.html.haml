@@ -7,21 +7,21 @@
 		=f.label :busStopName, {:class => 'col-lg-2 control-label'}
 		%span.error-message
 			- if not (@busstop.errors[:busStopName].blank?)
-				=@busstop.errors[:busStopName].second
+				=@busstop.errors[:busStopName].to_s
 		%div.col-lg-3
 			=f.text_field :busStopName, {:class => 'form-control'}
 	%div.form-group
 		=f.label :busStopLatLong, {:class => 'col-lg-2 control-label'}
 		%span.error-message	
 			- if not (@busstop.errors[:busStopLatLong].blank?)
-				=@busstop.errors[:busStopLatLong].second
+				=@busstop.errors[:busStopLatLong].to_s
 		%div.col-lg-3
 			=f.text_field :busStopLatLong, {:class => 'form-control'}
 	%div.form-group
 		=f.label :busStopSecName, {:class => 'col-lg-2 control-label'}
 		%span.error-message
 			- if not (@busstop.errors[:busStopSecName].blank?)
-				=@busstop.errors[:busStopSecName].second
+				=@busstop.errors[:busStopSecName].to_s
 		%div.col-lg-3
 			=f.text_field :busStopSecName, {:class => 'form-control'}
 	%div.form-group
