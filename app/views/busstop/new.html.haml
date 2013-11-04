@@ -16,7 +16,7 @@
 			- if not (@busstop.errors[:busStopLatLong].blank?)
 				=@busstop.errors[:busStopLatLong].to_s
 		%div.col-lg-4
-			=f.text_field :busStopLatLong, {:class => 'form-control', :placeholder => "111.11,222.22"}
+			=f.text_field :busStopLatLong, {:class => 'form-control', :placeholder => "11.11,222.22"}
 	%div.form-group
 		=f.label :busStopSecName, 'Bus Stop Sec Name', {:class => 'col-lg-2 control-label'}
 		%span.error-message

@@ -24,24 +24,34 @@ class Route < ActiveRecord::Base
     end
   end
   
-  def validateLatLong(latLong, fieldName)
-        errors = Hash.new
-        if(isNumeric?(latLong))
-           return  errors = nil
-        else
-            fieldName[fieldName.keys[0]] = "Use Proper LatLong Address."
-            return fieldName
+  def validateLatLong(fieldName = {})
+        fieldErrors = Hash.new
+        int = 0
+        puts fieldName.size
+        fieldName.each do |key, value|
+            int +=1
+            puts "#{int} iteration"
+            if(isNumeric?(value))
+                
+            else
+                fieldErrors[key] = 'Use proper \'LatLong\' address.'
+            end
         end
+        return fieldErrors
   end
   
   def isNumeric?(num)
       
-     if(num =~ /\d+[.]\d+[,]\d+[.]\d+/)
+     if (num =~ /[+,-]?\d{1,2}[.]\d+[,]\s{0,1}[+,-]?\d{1,3}[.]\d+/)
          return true
       else
           return false
       end
   end
+  
+  
+  
+  #working latlong validation [+,-]?\d+[.]\d+[,]\s{0,1}[+,-]?\d+[.]\d+
   
   
 end

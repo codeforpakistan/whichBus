@@ -12,11 +12,12 @@ class RouteController < ApplicationController
 
     def createRoute
         @route = Route.new(params[:route].permit(:routeName, :routeDistance, :routeSourceName, :routeDestName, :routeSourceLatLong, :routeDestLatLong, :routeTravelTime, :routeStartTime, :routeStopTime))
-        @latLongSource = @route.routeSourceLatLong
-        @latLongDest = @route.routeDestLatLong
+        
+        fieldParams = Hash.new
+        fieldParams = {:routeSourceLatLong => @route.routeSourceLatLong, :routeDestLatLong => @route.routeDestLatLong}
         @route.valid?
         resultHash = Hash.new
-        errorResult = @route.validateLatLong(@latLongSource,:routeSourceLatLong => "")
+        errorResult = @route.validateLatLong(fieldParams)
         errorResult.each do |key, value|
             @route.errors.add(key, 'Improper \'LatLong\' format')
         end

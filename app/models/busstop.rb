@@ -46,7 +46,7 @@ class Busstop < ActiveRecord::Base
     
     def isNumeric?(num)
         
-       if(num =~ /\d+[.]\d+[,]\d+[.]\d+/)
+       if(num =~ /[+,-]?\d{1,2}[.]\d+[,]\s{0,1}[+,-]?\d{1,3}[.]\d+/)
            return true
         else
             return false

@@ -36,14 +36,14 @@
 			- if not (@route.errors[:routeSourceLatLong].blank?)
 				=@route.errors[:routeSourceLatLong].to_s
 		%div.col-lg-3
-			=f.text_field :routeSourceLatLong, {:class => 'form-control' , :placeholder => "11.11,11.11"}
+			=f.text_field :routeSourceLatLong, {:class => 'form-control' , :placeholder => "11.11,111.11"}
 	%div.form-group
 		=f.label :routeDestLatLong, 'Route Dest LatLong', {:class => 'col-lg-2 control-label'}
 		%span.error_message
 			- if not (@route.errors[:routeDestLatLong].blank?)
 				=@route.errors[:routeDestLatLong].to_s
 		%div.col-lg-3
-			=f.text_field :routeDestLatLong, {:class => 'form-control', :placeholder => "11.11,11.11"}
+			=f.text_field :routeDestLatLong, {:class => 'form-control', :placeholder => "11.11,111.11"}
 	%div.form-group
 		=f.label :routeTravelTime, 'Route Travel Time', {:class => 'col-lg-2 control-label'}
 		%div.col-lg-3
