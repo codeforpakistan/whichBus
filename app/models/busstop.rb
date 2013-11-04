@@ -15,35 +15,24 @@ class Busstop < ActiveRecord::Base
         else
             return Busstop.find(:all)
         end
-    end
+    end 
+    
+    def validateLatLong(fieldName = {})
+        fieldErrors = Hash.new
+        int = 0
+        puts fieldName.size
+        fieldName.each do |key, value|
+            int +=1
+            puts "#{int} iteration"
+            if(isNumeric?(value))
 
-    def validateAddressWithErrors(latlong)
-        if not (latlong.blank?) 
-            if (isNumeric?(latlong))
-                return true
             else
-                self.errors.add(:busStopLatLong, 'Use proper latlong')
-                return false
+                fieldErrors[key] = 'Use proper \'LatLong\' address.'
             end
-        else
-            self.errors.add(:busStopLatLong, 'Can\'t be blank')
-            return false
         end
+        return fieldErrors
     end
-    
-    
-    def validateLatLong(latLong, fieldName)
-          errors = Hash.new
-          if(isNumeric?(latLong))
-             return  errors = nil
-          else
-              fieldName[fieldName.keys[0]] = "Use Proper LatLong Address."
-              return fieldName
-          end
-
-      end
             
-    
     def isNumeric?(num)
         
        if(num =~ /[+,-]?\d{1,2}[.]\d+[,]\s{0,1}[+,-]?\d{1,3}[.]\d+/)

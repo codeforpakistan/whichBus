@@ -20,19 +20,22 @@ class BusstopController < ApplicationController
 
     def createBusstop
         @busstop = Busstop.new(busstop_params)
-        @latlong = @busstop.busStopLatLong
+        fieldParams = Hash.new
+        fieldParams = {:busStopLatLong => @busstop.busStopLatLong}
         @busstop.valid?
-        if @busstop.validateAddressWithErrors(@latlong)
-            if (@busstop.errors.blank?)
-                @busstop.save
-                redirect_to busstop_showAll_path
-            else
-                render 'new'
-            end
+        resultHash = Hash.new
+        errorResult = @busstop.validateLatLong(fieldParams)
+        errorResult.each do |key, value|
+            @busstop.errors.add(key, 'Improper \'LatLong\' format')
+        end
+        if (@busstop.errors.blank?)
+            @busstop.save
+            redirect_to busstop_showAll_path
         else
-            render 'new' 
-        end 
+            render 'new'
+        end        
     end
+ 
     def showEdit
         @editBusstop = Busstop.find(params[:id])
     end
