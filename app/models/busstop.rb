@@ -29,6 +29,7 @@ class Busstop < ActiveRecord::Base
             self.errors.add(:busStopLatLong, 'Can\'t be blank')
             return false
         end
+    end
             
         
         
@@ -53,7 +54,6 @@ class Busstop < ActiveRecord::Base
       #      self.errors.add(:busStopLatLong, 'Can\'t be blank')
        #     return false
         #end
-    end
     
     
     def isNumeric?(num)

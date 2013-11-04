@@ -12,11 +12,19 @@ class RouteController < ApplicationController
 
     def createRoute
         @route = Route.new(params[:route].permit(:routeName, :routeDistance, :routeSourceName, :routeDestName, :routeSourceLatLong, :routeDestLatLong, :routeTravelTime, :routeStartTime, :routeStopTime))
-        if @route.save
-            redirect_to :action => 'showAll'
+        @latLongSource = @route.routeSourceLatLong
+        @route.valid?
+        if @route.validateAddressWithError(@latLongSource)
+            if (@route.errors.blank?)
+                @route.save
+                redirect_to :action => 'showAll'
+            else
+                render 'new'
+            end 
         else
             render 'new'
-        end 
+        end
+        
     end
 
     def view   

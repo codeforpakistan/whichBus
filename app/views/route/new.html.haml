@@ -1,3 +1,5 @@
+-if not @latLongSource.blank?
+	=@latLongSource.to_yaml
 %h3 Add Route
 =form_for :route, url:{action: "createRoute"}, html:{class: "form-horizontal"} do |f|
 	%div.form-group
