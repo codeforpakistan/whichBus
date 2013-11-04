@@ -13,8 +13,8 @@ class Route < ActiveRecord::Base
   validates :routeSourceName, presence: true, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }
   validates :routeDestName, presence: true, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters numbers and space" }
   validates :routeDistance, numericality: true, :allow_blank => true
-  #validates :routeSourceLatLong, numericality: true, :allow_blank => true
-  #validates :routeDestLatLong, numericality: true, :allow_blank => true
+  validates :routeSourceLatLong, presence: true 
+  validates :routeDestLatLong, presence: true
   
   def self.search(search)
     if search
@@ -24,21 +24,17 @@ class Route < ActiveRecord::Base
     end
   end
   
-  def validateAddressWithError(latlong)
-      if not (latlong.blank?) 
-          if (isNumerics?(latlong))
-              return true
-          else
-              self.errors.add(:routeSourceLatLong, 'Use proper latlong')
-              return false
-          end
-      else
-          self.errors.add(:routeSourceLatLong, 'Can\'t be blank')
-          return false
-      end
+  def validateLatLong(latLong, fieldName)
+        errors = Hash.new
+        if(isNumeric?(latLong))
+           return  errors = nil
+        else
+            fieldName[fieldName.keys[0]] = "Use Proper LatLong Address."
+            return fieldName
+        end
   end
   
-  def isNumerics?(num)
+  def isNumeric?(num)
       
      if(num =~ /\d+[.]\d+[,]\d+[.]\d+/)
          return true

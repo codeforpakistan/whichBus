@@ -30,31 +30,19 @@ class Busstop < ActiveRecord::Base
             return false
         end
     end
-            
-        
-        
-        
-        
-        #if not (latlong.blank?)
-         #   if (latlong.include? ',')
-          #      lat, lng = latlong.split(',')
-           #     lat = lat.to_f
-            #    lng = lng.to_f
-             #   if(lat == 0 or lng == 0)
-              #      self.errors.add(:busStopLatLong, 'Use proper latlong')
-               #     return false
-                #else
-                 #   return true
-#                end
- #           else
-  #              self.errors.add(:busStopLatLong, 'missing comma')
-   #             return false
-    #        end
-     #   else
-      #      self.errors.add(:busStopLatLong, 'Can\'t be blank')
-       #     return false
-        #end
     
+    
+    def validateLatLong(latLong, fieldName)
+          errors = Hash.new
+          if(isNumeric?(latLong))
+             return  errors = nil
+          else
+              fieldName[fieldName.keys[0]] = "Use Proper LatLong Address."
+              return fieldName
+          end
+
+      end
+            
     
     def isNumeric?(num)
         
