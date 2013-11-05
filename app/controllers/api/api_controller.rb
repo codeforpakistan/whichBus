@@ -4,7 +4,7 @@ class Api::ApiController < ApplicationController
     begin
         @routes = Route.find(params[:id])
         @busstops = @routes.busstops
-        render :json => @busstops
+        render :json => {:routes => @busstops}
     rescue ActiveRecord::RecordNotFound => e
         render :json =>
         {
