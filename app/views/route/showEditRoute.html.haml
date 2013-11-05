@@ -1,10 +1,13 @@
+-if not (@busstopArray.blank?)
+	=@busstopArray.to_yaml
 
 - if @busstops.blank?
 	%hr
 	%h3 No bus stop currently exist.
 -else
 	%hr
-	=#@foundBusstops.to_yaml
+	%h3 Search Busstop
+	%br
 	%div.container.well
 		= form_tag("/route/searchBusstop", method: "post", class: "form-horizontal") do 
 		
@@ -15,6 +18,7 @@
 				= hidden_field_tag(:id, @route.id)
 				= submit_tag("Search", class: "btn btn-default") 
 	%h3= "Choose busstops for route: '#{@route.routeName}'"
+	%br
 	=link_to 'Edit Routes Properties', route_edit_route_properties_path(@route.id), :class => "btn btn-primary"
 	%br
 	%hr

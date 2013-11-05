@@ -1,9 +1,9 @@
-%h2 Resend confirmation instructions
+%h3 Resend confirmation instructions
 
 =form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
 	=devise_error_messages!
 		%div.form-group
-			=f.label :email, :class => 'col-lg-2 control-label'}
+			=f.label :email, 'Email', :class => 'col-lg-2 control-label'}
 			%div.col-lg-3
   				=f.email_field :email, {:class => 'form-control', :id => 'inputEmail'}
 		%div.form-group
