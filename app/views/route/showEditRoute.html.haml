@@ -7,14 +7,26 @@
 	%br
 	%div.container.well
 		= form_tag("/route/searchBusstop", method: "post", class: "form-horizontal") do 
-
-			%div.input-group
-				= text_field_tag(:search, nil, :class => 'form-control')
-				%span.input-group-btn
-					%button.btn.btn-default
-						%span.glyphicon.glyphicon-search
-				= hidden_field_tag(:id, @route.id)
-				= #submit_tag("Search", class: "btn btn-default") 
+			
+			
+			%div.text-center
+				%div.col-lg-6
+					%div.input-group
+						= hidden_field_tag(:id, @route.id)
+						= text_field_tag(:search, nil, :class => "form-control")
+						%span.input-group-btn
+							%button.btn.btn-primary{:type => "submit"}
+								%span.glyphicon.glyphicon-search
+						= #submit_tag("Search", class: "btn btn-default")
+			/
+				%div.col-lg-6
+					%div.input-group
+						= text_field_tag(:search, nil, :class => 'form-control')
+						%span.input-group-btn
+							%button.btn.btn-default
+								="Go"
+						= hidden_field_tag(:id, @route.id)
+						= #submit_tag("Search", class: "btn btn-default") 
 	%h3= "Choose busstops for route: '#{@route.routeName}'"
 	%br
 	=link_to 'Edit Routes Properties', route_edit_route_properties_path(@route.id), :class => "btn btn-primary"
