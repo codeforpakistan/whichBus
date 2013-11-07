@@ -31,13 +31,13 @@ class DeviseCreateAdmins < ActiveRecord::Migration
       # t.datetime :locked_at
       t.belongs_to :admin
       t.string :type
-      t.string :userName        :null = false, :default = ""
-      t.string :firstName       :null = false, :default = ""
-      t.string :lastName        :null = false, :default = ""
+      t.string :userName
+      t.string :firstName
+      t.string :lastName
       t.string :streetAddress
       t.string :city
       t.string :town
-      t.string :contactNumber   :null = false, :default = ""
+      t.string :contactNumber
       t.string :secContactNumber
       t.string :organization
       t.boolean :approved,      :default => false, :null => false

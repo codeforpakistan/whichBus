@@ -2,7 +2,7 @@ class CreateRoutes < ActiveRecord::Migration
   def change
     create_table :routes do |t|
       
-      t.string  :routeName,         :null = false, :default = ""
+      t.string  :routeName
       t.decimal  :routeDistance
       t.string  :routeSourceLatLong
       t.string  :routeDestLatLong 
