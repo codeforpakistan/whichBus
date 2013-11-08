@@ -11,7 +11,8 @@ class Busstop < ActiveRecord::Base
 
     def self.search(search)
         if search
-            return Busstop.find(:all, :conditions => ['busStopName LIKE ?', "%#{search}%"])
+            #return Busstop.find(:all, :conditions => ['busStopName LIKE ?', "%#{search}%"])
+            return Busstop.find(:all, :conditions => ['lower(busStopName) LIKE ?', "%#{search.downcase}%"])
         else
             return Busstop.find(:all)
         end

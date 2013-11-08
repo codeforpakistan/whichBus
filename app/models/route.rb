@@ -16,7 +16,7 @@ class Route < ActiveRecord::Base
 
     def self.search(search)
         if search
-            Busstop.find(:all, :conditions => ['busStopName LIKE ?', "%#{search}%"])
+            Busstop.find(:all, :conditions => ['lower(busStopName) LIKE ?', "%#{search.downcase}%"])
         else
             Busstop.find(:all)
         end
