@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131109170728) do
+ActiveRecord::Schema.define(version: 20131010210246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(version: 20131109170728) do
     t.integer  "route_id"
     t.integer  "busstop_id"
     t.integer  "admin_id"
+    t.integer  "nextBusStop"
+    t.string   "overview_polyline", default: "null"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

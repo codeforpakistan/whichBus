@@ -4,6 +4,8 @@ class CreateRouteBusstops < ActiveRecord::Migration
       t.belongs_to :route
       t.belongs_to :busstop
       t.belongs_to :admin
+      t.integer :nextBusStop
+      t.string :overview_polyline,  :null => true, :default => :null
       t.timestamps
       
     end
