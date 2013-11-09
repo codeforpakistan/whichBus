@@ -7,8 +7,8 @@
 	%br
 	%div.container.well
 		= form_tag("/route/searchBusstop", method: "post", class: "form-horizontal") do 
-			
-			
+		
+		
 			%div.text-center
 				%div.col-lg-6
 					%div.input-group
@@ -38,7 +38,7 @@
 		-if @foundBusstops.blank?
 			%p.text-center 
 				="No Busstop Found"
-		-else
+		-else	
 			%table.table.table-hover.table-condensed.text-center
 				%tr
 					%th.text-center
@@ -68,24 +68,49 @@
 									= content_tag :button, :class => "btn btn-danger" do
 										= content_tag :span, class: "glyphicon glyphicon-remove" do
 											=""
-	%div.well.container
-		%h4.text-center
-			="Included Busstop on This Route"
-		%table.table.table-hover.table-condensed.text-center
-			%tr
-				%th.text-center
-					Bus Stop Name
-				%th.text-center
-					Remove
-			- @busstops.each do |c|		#all bussstops in data base
+	/
+		%div.well.container
+			%h4.text-center
+				="Included Busstop on This Route"
+			%table.table.table-hover.table-condensed.text-center
 				%tr
-					-ids = Array.new
-					- @routeBusstopRelations.each do |u|
-						-ids << u.busstop_id
+					%th.text-center
+						Bus Stop Name
+					%th.text-center
+						Remove
+					%th.text-center
+						Options
+				- @busstops.each do |c|		#all bussstops in data base
+					%tr
+						-ids = Array.new
+						- @routeBusstopRelations.each do |u|
+							-ids << u.busstop_id
 
-					-if not (ids.include?(c.id) == false)
-						%td= c.busStopName
-						%td
+						-if not (ids.include?(c.id) == false)
+							%td= c.busStopName
+							%td
+								= link_to route_remove_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
+									= content_tag :button, :class => "btn btn-danger" do
+										= content_tag :span, class: "glyphicon glyphicon-remove" do
+											=""
+							%td
+								%button.btn.btn-primary{:class => "change-rank", :data =>{:direction => "up"}}
+									&#9650;
+								%button.btn.btn-primary{:class => "change-rank", :data =>{:direction => "down"}}
+									&#9660;
+	%div.well-container
+		%div.text-center
+			="Inclueded Busstop On This Route"
+			%ul{:id => "sortable"}
+			- @busstops.each do |c|		#all bussstops in data base	
+				-ids = Array.new
+				- @routeBusstopRelations.each do |u|
+					-ids << u.busstop_id
+
+				-if not (ids.include?(c.id) == false)
+					%li.ui-state-default
+						%span.ui-icon.ui-icon-arrowthick-2-n-s
+							=c.busStopName
 							= link_to route_remove_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
 								= content_tag :button, :class => "btn btn-danger" do
 									= content_tag :span, class: "glyphicon glyphicon-remove" do
