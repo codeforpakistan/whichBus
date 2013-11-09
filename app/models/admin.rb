@@ -12,10 +12,10 @@ class Admin < ActiveRecord::Base
     has_one :route_busstop
     
     
-    validates :firstName, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, length: {minimum: 3, maximum: 8,}
-    validates :lastName, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, length: {minimum: 3, maximum: 8,}
+    validates :firstName, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, length: {minimum: 3, maximum: 20,}
+    validates :lastName, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, length: {minimum: 3, maximum: 20,}
     validates :email, presence: true, uniqueness: true
-    validates :userName, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, length: {minimum: 4, maximum: 10,}
+    validates :userName, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, length: {minimum: 4, maximum: 12,}
     validates :contactNumber, presence: true, numericality: true
     validates :city, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, :allow_blank => true
     validates :town, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, :allow_blank => true
