@@ -98,20 +98,42 @@
 									&#9650;
 								%button.btn.btn-primary{:class => "change-rank", :data =>{:direction => "down"}}
 									&#9660;
-	%div.well-container
-		%div.text-center
-			="Inclueded Busstop On This Route"
-			%ul{:id => "sortable"}
+	%div.container
+		="Inclueded Busstop On This Route"
+		%ul.list-group{:id => "sortable"}
 			- @busstops.each do |c|		#all bussstops in data base	
 				-ids = Array.new
 				- @routeBusstopRelations.each do |u|
 					-ids << u.busstop_id
 
 				-if not (ids.include?(c.id) == false)
-					%li.ui-state-default
-						%span.ui-icon.ui-icon-arrowthick-2-n-s
-							=c.busStopName
-							= link_to route_remove_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
-								= content_tag :button, :class => "btn btn-danger" do
-									= content_tag :span, class: "glyphicon glyphicon-remove" do
-										=""
+					%li.list-group-item.text-center{:id => "valued-item"}
+						%h4.list-group-item-heading
+						=c.busStopName
+						= link_to route_remove_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
+							= content_tag :button, :class => "btn btn-danger" do
+								= content_tag :span, class: "glyphicon glyphicon-remove" do
+									=""
+	/
+		%div.container
+			%ul.list-group{:id => "sortable"}	
+				%li.list-group-item
+					%p.list-group-item-heading
+						First Name
+					%h4.list-group-item-text
+				%li.ui-state-default{:id => "valued-item"}
+					%span.ui-icon.ui-icon-arrowthick-2-n-s
+					="One"
+				%li.ui-state-default{:id => "valued-item"}
+					%span.ui-icon.ui-icon-arrowthick-2-n-s
+					="Item 2"
+				%li.ui-state-default{:id => "valued-item"}
+					%span.ui-icon.ui-icon-arrowthick-2-n-s
+					="Item 3"
+				%li.ui-state-default{:id => "valued-item"}
+					%span.ui-icon.ui-icon-arrowthick-2-n-s
+					="Item 4"
+				%li.ui-state-default{:id => "valued-item"}
+					%span.ui-icon.ui-icon-arrowthick-2-n-s
+					="Item 5"
+		
