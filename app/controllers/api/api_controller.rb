@@ -13,6 +13,18 @@ class Api::ApiController < ApplicationController
             
         }
     end
+    
+    
+    def savePolyLineData
+#       begin
+          busstopID = params[:busStopID]
+          routeID = params[:routeID]
+          nextBusstop = params[:nextBusStopID]
+          render :json => { :status => 'OK'}
+
+       
+        
+    end
 
     
   end
