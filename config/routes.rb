@@ -31,6 +31,8 @@ RailsBoot::Application.routes.draw do
   
   post 'route/removeRouteBusstop/:id', to: 'route#removeRouteBusstop', as: :route_remove_route_busstop 
   post 'route/includeRouteBusstop/:id', to: 'route#includeRouteBusstop', as: :route_include_route_busstop 
+  
+  post 'route/saveBusStopOnRoute', to: 'route#saveBusStopOnRoute'
   get 'welcome', to: 'welcome#welcome', as: :welcome_welcome
 
   root 'welcome#welcome'

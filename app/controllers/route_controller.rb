@@ -83,6 +83,8 @@ class RouteController < ApplicationController
         @busstops = Busstop.all
         @routeBusstopRelations = RouteBusstop.where(:route_id => id)
         @route = Route.find(params[:id])
+        @busstopsOnRoute = Array.new
+        @busstopsOnRoute = @route.busstops
         @busstopArray = session[:busstopsIDs]
         session.delete(:busstopsIDs)
         if(@busstopArray != nil)    
@@ -93,6 +95,35 @@ class RouteController < ApplicationController
             end
         end
     end
+    
+    def saveBusStopOnRoute      
+        if not(params[:sortedRoute].blank? and params[:route_id].blank?)
+            sortedRoute = Array.new
+            sortedRoute = params[:sortedRoute].split(",")
+            #iter = Integer.new
+            iter = 0
+            relations = Array.new
+            sortedRoute.each do |busstop|
+                iter+=1
+               rel = RouteBusstop.where(:route_id => params[:route_id], :busstop_id => busstop)
+               
+                   rel[0].nextBusStop = sortedRoute[iter+1]
+                   if(rel[0].valid?)
+                       rel[0].save
+                       flash[:notice] = "Record Saved"
+                   else
+                       flash[:alert] = "RouteBusstop Object has errors. #{rel[0].errors.full_messages}"
+                   end
+                relations << rel
+            end
+            
+            route_id = params[:route_id]         
+            flash[:alert] = relations[0].to_json
+            flash[:notice] = params[:route_id].to_s
+            redirect_to :back
+        end
+    end
+    
 
     def searchBusstop
       busstops = Route.search(params[:search])
@@ -109,7 +140,7 @@ class RouteController < ApplicationController
         route = Route.find(params[:route_id])
         route_id = params[:route_id]
         busstop_id = params[:busstop_id]
-        @routeBusstopRelations = RouteBusstop.new(:route_id => route_id, :busstop_id => busstop_id)
+        @routeBusstopRelations = RouteBusstop.new(:route_id => route_id, :busstop_id => busstop_id)    
         if(@routeBusstopRelations.save)
             flash[:notice] = "Busstop: #{busstop.busStopName} added to route: #{route.routeName}"
             redirect_to_back()
