@@ -11,10 +11,14 @@
 			%th.text-center
 				Bus Stop Name
 			%th.text-center
+				Bus Stop LaLong
+			%th.text-center
 				Options
 		%tr
 			%td
 				=@busstop.busStopName
+			%td
+				=@busstop.busStopLatLong
 			%td
 				= link_to busstop_delete_path, method: :delete, data: { :confirm => 'Are you sure?' } do
 					= content_tag :button, :class => "btn btn-danger" do
