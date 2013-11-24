@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131010210246) do
+ActiveRecord::Schema.define(version: 20131124184859) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -71,9 +71,10 @@ ActiveRecord::Schema.define(version: 20131010210246) do
     t.integer  "busstop_id"
     t.integer  "admin_id"
     t.integer  "nextBusStop"
-    t.string   "overview_polyline", default: "null"
+    t.string   "overview_polyline",     default: "null"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "busStopSequenceNumber"
   end
 
   add_index "route_busstops", ["route_id", "busstop_id"], name: "index_route_busstops_on_route_id_and_busstop_id", unique: true
