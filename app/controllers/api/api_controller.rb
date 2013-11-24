@@ -3,9 +3,15 @@ class Api::ApiController < ApplicationController
     respond_to :json
     def showRoute
         begin
-            @routes = Route.find(params[:id])
-            @busstops = @routes.busstops
-            render :json => {:routes => @busstops}
+            @route = Route.find(params[:id])
+            @busstops = @route.busstops
+            render :json => 
+            {
+                :status => "OK",
+                :route => @route,
+                :busstops => @busstops
+
+            }
         rescue ActiveRecord::RecordNotFound => e
             render :json =>
             {

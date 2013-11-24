@@ -96,7 +96,7 @@ class RouteController < ApplicationController
         end
     end
     
-    def saveBusStopOnRoute      
+    def saveBusStopOnRoute
         if not(params[:sortedRoute].blank? and params[:route_id].blank?)
             sortedRoute = Array.new
             sortedRoute = params[:sortedRoute].split(",")
