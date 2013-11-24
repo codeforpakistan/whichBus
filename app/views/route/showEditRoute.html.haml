@@ -64,14 +64,16 @@
 		="Inclueded Busstop On This Route"
 		%br
 		%br
-		%ul.list-group{:id => "sortable"}
+		%ul.well.container.list-group{:id => "sortable", :style => "padding-left:25%; padding-right:20%;"}
 			- @busstopsOnRoute.each do |busstop|
-				%li.list-group-item{:id => busstop.id}
-					= busstop.busStopName
-					=link_to route_remove_route_busstop_path(:busstop_id =>busstop.id, :route_id => @route.id), :method => :post do
-						= content_tag :button, :class => "btn btn-danger" do
-							= content_tag :span, class: "glyphicon glyphicon-remove" do
-								=""
+				%li.list-group-item.col-lg-10{:id => busstop.id}
+					%h4
+						= busstop.busStopName
+						%span.pull-right
+							=link_to route_remove_route_busstop_path(:busstop_id =>busstop.id, :route_id => @route.id), :method => :post do
+								= content_tag :button, :class => "btn btn-danger" do
+									= content_tag :span, class: "glyphicon glyphicon-remove" do
+										=""
 			/
 				- @busstops.each do |c|		#all bussstops in data base	
 					-ids = Array.new
@@ -81,10 +83,11 @@
 					-if not (ids.include?(c.id) == false)
 						%li.list-group-item{:id => "#{c.id}"}
 							=c.busStopName
-							=link_to route_remove_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
-								= content_tag :button, :class => "btn btn-danger" do
-									= content_tag :span, class: "glyphicon glyphicon-remove" do
-										=""
+							%span.pull-right
+								=link_to route_remove_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
+									= content_tag :button, :class => "btn btn-danger" do
+										= content_tag :span, class: "glyphicon glyphicon-remove" do
+											=""
 		= form_tag("/route/saveBusStopOnRoute", method: "post", class: "form-horizontal", :id => "saveRoute") do 
 			= hidden_field_tag(:route_id, @route.id)
-			= submit_tag("Search", class: "btn btn-default", :id => "button")
+			= submit_tag("Save", class: "btn btn-primary pull-right", :id => "button")
