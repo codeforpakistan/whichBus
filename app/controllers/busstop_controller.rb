@@ -20,6 +20,7 @@ class BusstopController < ApplicationController
 
     def createBusstop
         @busstop = Busstop.new(busstop_params)
+        @busstop.admin_id = current_admin.id
         fieldParams = Hash.new
         fieldParams = {:busStopLatLong => @busstop.busStopLatLong}
         @busstop.valid?

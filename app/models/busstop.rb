@@ -1,7 +1,11 @@
+
 class Busstop < ActiveRecord::Base
+include Distance
     has_many     :route_busstops, :dependent => :restrict
     has_many     :routes, through: :route_busstops
     belongs_to   :admin
+
+    PI = 3.141592653589793
 
 
     #errors.add(:busStopName, 'heelo' )
@@ -41,6 +45,29 @@ class Busstop < ActiveRecord::Base
         else
             return false
         end
+    end
+    
+    def searchNearByBusStops(busstop)
+
+        centerBusStopLatLong = busstop.busStopLatLong
+        allBusStop = Busstop.all
+        i = -1
+        nearBusStop = Array.new
+        allBusStop.each do |b|
+            currentBusStopLatLong = b.busStopLatLong
+            b.distance = calculateDistance(centerBusStopLatLong,currentBusStopLatLong)
+            
+            if (b.distance < 2)
+                i +=1
+                nearBusStop[i] = b.busStopName
+            end
+            print b.busStopName
+            print " "
+            print b.distance
+            print "        "
+        end
+        print " These are the Nearest BusStop"
+        print nearBusStop
     end
 
 end
