@@ -70,6 +70,22 @@ include Distance
         print nearBusStop
     end
 
+    def busstopOnWhichRoute(busstop)
+        allRouteBusStopRelations = RouteBusstop.all
+        currentBusStopID = busstop.id
+        
+        routeBusStopRelationsArray = Array.new
+        i = -1
+        routeBusStopRelationsArray = RouteBusstop.where[:busstop_id => currentBusStopID]
+        commonRouteForBusStop = Array.new
+        routeBusStopRelationsArray.each do |r|
+            i +=1
+            commonRouteForBusStop[i] = r.busstop_id
+        end
+
+
+    end
+
 end
 
 
