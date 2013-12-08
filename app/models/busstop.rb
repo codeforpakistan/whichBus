@@ -37,7 +37,7 @@ class Busstop < ActiveRecord::Base
     end
 end
 
-    def searchNearByBusStops()          #search nearby busstops and print 
+    def searchNearByBusStops()  #search nearby busstops and print 
 
         centerBusStopLatLong = self.busStopLatLong
         allBusStop = Busstop.all
@@ -56,16 +56,19 @@ end
     end
 
     def busstopOnWhichRoute(nearByBusstopsArray)
-        allRouteBusStopRelations = RouteBusstop.all
-        currentBusStopID = busstop.id
-        routeBusStopRelationsArray = Array.new
-        i = -1
-        routeBusStopRelationsArray = RouteBusstop.where[:busstop_id => currentBusStopID]
-        commonRouteForBusStop = Array.new
-        routeBusStopRelationsArray.each do |r|
-            i +=1
-            commonRouteForBusStop[i] = r.busstop_id
-        end
+
+        
+        
+        # allRouteBusStopRelations = RouteBusstop.all
+        # currentBusStopID = busstop.id
+        # routeBusStopRelationsArray = Array.new
+        # i = -1
+        # routeBusStopRelationsArray = RouteBusstop.where[:busstop_id => currentBusStopID]
+        # commonRouteForBusStop = Array.new
+        # routeBusStopRelationsArray.each do |r|
+        #     i +=1
+        #     commonRouteForBusStop[i] = r.busstop_id
+        # end
 
 
     end
