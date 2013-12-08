@@ -1,6 +1,5 @@
-
 class Busstop < ActiveRecord::Base
-include Distance
+    include Distance
     has_many     :route_busstops, :dependent => :restrict
     has_many     :routes, through: :route_busstops
     belongs_to   :admin
@@ -12,15 +11,6 @@ include Distance
     validates :busStopName, presence: true, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }
     #validates :busStopLatLong, presence: true
     validates :busStopSecName, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }, :allow_blank => true
-
-#    def self.search(search)
-#        if search
-#            return Busstop.find(:all, :conditions => ['busStopName ILIKE ?', "%#{search}%"])
-            #return Busstop.find(:all, :conditions => ['lower(busStopName) LIKE ?', "%#{search.downcase}%"])
-#        else
-#            return Busstop.find(:all)
-#        end
-#    end 
     
     def validateLatLong(fieldName = {})
         fieldErrors = Hash.new
@@ -37,41 +27,37 @@ include Distance
         end
         return fieldErrors
     end
-            
+
     def isNumeric?(num)
-        
-       if(num =~ /[+,-]?\d{1,2}[.]\d+[,]\s{0,1}[+,-]?\d{1,3}[.]\d+/)
-           return true
-        else
-            return false
-        end
+
+     if(num =~ /[+,-]?\d{1,2}[.]\d+[,]\s{0,1}[+,-]?\d{1,3}[.]\d+/)
+         return true
+     else
+        return false
     end
-    
+end
+
     def searchNearByBusStops()          #search nearby busstops and print 
 
         centerBusStopLatLong = self.busStopLatLong
         allBusStop = Busstop.all
-        i = 0
-        nearBusStop = Array.new
+        nearByBusStops = Array.new
         allBusStop.each do |b|
             currentBusStopLatLong = b.busStopLatLong
-            b.distance = calculateDistance(centerBusStopLatLong,currentBusStopLatLong)
-                
-                nearBusStop[i] = b.busStopName
-                i +=1
-            print b.busStopName
-            print " "
-            print b.distance
-            print "        "
+            tempDistance = calculateDistance(centerBusStopLatLong,currentBusStopLatLong)
+            if tempDistance <= 3.5
+                neighbourBusstop = DistanceID.new
+                neighbourBusstop.distance = tempDistance
+                neighbourBusstop.id = b.id
+                nearByBusStops << neighbourBusstop
+            end
         end
-        print " These are the Nearest BusStop"
-        print nearBusStop
+        return nearByBusStops
     end
 
-    def busstopOnWhichRoute(busstop)
+    def busstopOnWhichRoute(nearByBusstopsArray)
         allRouteBusStopRelations = RouteBusstop.all
         currentBusStopID = busstop.id
-        
         routeBusStopRelationsArray = Array.new
         i = -1
         routeBusStopRelationsArray = RouteBusstop.where[:busstop_id => currentBusStopID]
