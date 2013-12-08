@@ -47,20 +47,18 @@ include Distance
         end
     end
     
-    def searchNearByBusStops(busstop)
+    def searchNearByBusStops()          #search nearby busstops and print 
 
-        centerBusStopLatLong = busstop.busStopLatLong
+        centerBusStopLatLong = self.busStopLatLong
         allBusStop = Busstop.all
-        i = -1
+        i = 0
         nearBusStop = Array.new
         allBusStop.each do |b|
             currentBusStopLatLong = b.busStopLatLong
             b.distance = calculateDistance(centerBusStopLatLong,currentBusStopLatLong)
-            
-            if (b.distance < 2)
-                i +=1
+                
                 nearBusStop[i] = b.busStopName
-            end
+                i +=1
             print b.busStopName
             print " "
             print b.distance
