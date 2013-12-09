@@ -15,7 +15,7 @@ class RouteController < ApplicationController
 
     def createRoute
         @route = Route.new(params[:route].permit(:routeName, :routeDistance, :routeSourceName, :routeDestName, :routeSourceLatLong, :routeDestLatLong, :routeTravelTime, :routeStartTime, :routeStopTime))
-        
+        @route.admin_id = current_admin.id
         fieldParams = Hash.new
         fieldParams = {:routeSourceLatLong => @route.routeSourceLatLong, :routeDestLatLong => @route.routeDestLatLong}
         @route.valid?
