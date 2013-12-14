@@ -1,4 +1,5 @@
 
+require 'tree'
 class Busstop < ActiveRecord::Base
 include Distance
     has_many     :route_busstops, :dependent => :restrict
@@ -84,6 +85,16 @@ include Distance
         end
 
 
+    end
+
+    def testingTree
+        a = Tree::TreeNode.new("1","Hello")
+        b = Tree::TreeNode.new("3","World")
+        c = Tree::TreeNode.new("5","SomeWhere")
+        a << b
+        b << c 
+        a.print_tree
+        return a
     end
 
 end
