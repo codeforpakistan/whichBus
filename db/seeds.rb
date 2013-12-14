@@ -18,7 +18,7 @@ Busstop.create(:busStopName => "Atari Darbar Bus Station", :busStopLatLong => "3
 Busstop.create(:busStopName => "Kamahanr Bus Station", :busStopLatLong => "31.4414607,74.3551201", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Chungi Amar Sidhu Bus Station", :busStopLatLong => "31.4505656,74.3532946", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Ghazi Chowk Bus Station", :busStopLatLong => "31.4568412,74.35127849", :busStopSecName => "", admin_id: nil)
-Busstop.create(:busStopName => "Qainchi Bus Station", :busStopLatLong => "31.4642958,74.3582542", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Qainchi Bus Station", :busStopLatLong => "31.4642958,74.3482542", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Ittefaq Hospital Bus Station", :busStopLatLong => "31.4794295,74.3419305", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Model Town Bus Station", :busStopLatLong => "31.4978731,74.3342954", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Kalma Chowk Bus Station", :busStopLatLong => "31.5038031,74.3317848", :busStopSecName => "", admin_id: nil)
