@@ -40,6 +40,16 @@ class BusstopNode
 			newNode.busstop = currentBusstop
 			newNode.id = currentBusstop.id
 			#Assigning Neighbours
+
+
+			routesForBusstop = currentBusstop.routes
+			routesForBusstop.each do |currentRoute|
+				relationForSequence = RouteBusstop.where(:busstop_id => currentBusstop.id, :route_id => currentRoute.id)
+				if relationForSequence.second.blank?
+					currentBusstopSequenceNumber = relationForSequence.first.busStopSequenceNumber
+					relationForNeighbourBusstops = RouteBusstop.where(:busstop_id => currentBusstop.id, :route_id => currentRoute.id, :busStopSequenceNumber => currentBusstopSequenceNumber)				
+				end
+			end
 			
 
 		end
