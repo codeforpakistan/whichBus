@@ -40,19 +40,38 @@ class BusstopNode
 			newNode.busstop = currentBusstop
 			newNode.id = currentBusstop.id
 			#Assigning Neighbours
-
+			print "\nInitial Nodes Created\n\n"
 
 			routesForBusstop = currentBusstop.routes
 			routesForBusstop.each do |currentRoute|
 				relationForSequence = RouteBusstop.where(:busstop_id => currentBusstop.id, :route_id => currentRoute.id)
 				if relationForSequence.second.blank?
+					print "\nNo Second Object found. Valid Yet\n\n"
 					currentBusstopSequenceNumber = relationForSequence.first.busStopSequenceNumber
-					relationForNeighbourBusstops = RouteBusstop.where(:busstop_id => currentBusstop.id, :route_id => currentRoute.id, :busStopSequenceNumber => currentBusstopSequenceNumber)				
+					print "\nValue for currentBusstopSequenceNumber ==> #{currentBusstopSequenceNumber}\n\n"
+					nextBusstopSequenceNumber = currentBusstopSequenceNumber + 1
+					relationForNeighbourBusstops = RouteBusstop.where(:route_id => currentRoute.id, :busStopSequenceNumber => nextBusstopSequenceNumber)
+					print "\ncount for relationForNeighbourBusstops ==> #{relationForNeighbourBusstops.count}\n\n"
+					if not relationForNeighbourBusstops.blank?
+						nextBusstopToCurrentBusstop = Busstop.find(relationForNeighbourBusstops.first.busstop_id)
+						newNode.neighbours << self.findBusstopFromGraph(relationForNeighbourBusstops.first.busstop_id).object_id
+					end
+					
+					#Find the Busstop ==> relationForNeighbourBusstops.first.busstop_id from the graph array.
+					#get the object_id for this  busstop and push it to newNode.neighbour.
+					
 				end
 			end
-			
-
 		end
-		
+	end
+
+	def self.findBusstopFromGraph(busstop_id)
+		foundBusstopCount = 0
+		@@graph.each do |node|
+			if node.id == busstop_id
+				return node
+			end
+			return nil
+		end
 	end
 end
