@@ -138,6 +138,252 @@ Busstop.create(:busStopName => "Umer Chowk", :busStopLatLong => "31.4444853,74.3
 Busstop.create(:busStopName => "Abu Bakar Chowk", :busStopLatLong => "31.4316567,74.2642844", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Rehmat Chowk", :busStopLatLong => "31.4197015,74.2653612", :busStopSecName => "", admin_id: nil)
 
+#B-11
+#Railway Station
+#Jain Mandir
+Busstop.create(:busStopName => "M.A.O College", :busStopLatLong => "31.5616361,74.3066421", :busStopSecName => "", admin_id: nil)
+#Chouburgi
+#Samanabad Morr
+#Yateem Khana
+#Scheme Morr
+#Khali Khoti
+#Flat Stop
+#Dubai Chowk
+#Bhaikhay Waal Morr
+#Campus Pull
+#Barket Market
+Busstop.create(:busStopName => "Marria Stop", :busStopLatLong => "31.4917518,74.30921640", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "School Stop", :busStopLatLong => "31.4830562,74.3066568", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Khota Pind", :busStopLatLong => "31.47737649,74.3070546", :busStopSecName => "", admin_id: nil)
+#Mochi Pura
+#Pindi Stop
+Busstop.create(:busStopName => "Nursery Stop", :busStopLatLong => "31.4527143,74.323352", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Hamdaed Stop", :busStopLatLong => "31.4473096,74.3203613", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Pully Stop", :busStopLatLong => "31.4368426,74.3144739", :busStopSecName => "", admin_id: nil)
+
+#B-12
+#Railway Station
+#Gari Shahu Police Station
+#Dharam Pura Stop
+#Saddar Bazar
+Busstop.create(:busStopName => "CMH Chowk", :busStopLatLong => "31.500475,74.37788669", :busStopSecName => "", admin_id: nil)
+#Rahat Bakery
+#RA Bazar
+Busstop.create(:busStopName => "Shareef Market", :busStopLatLong => "31.4905039,74.3697435", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Walton Stop", :busStopLatLong => "31.4844839,74.3644944", :busStopSecName => "", admin_id: nil)
+#Qainchi Bus Station
+#Ghazi Chowk Bus Station
+#Chungi Amar Sidhu
+Busstop.create(:busStopName => "Bank Stop", :busStopLatLong => "31.4397947,74.3557799", :busStopSecName => "", admin_id: nil)
+#Darbar Atari
+#Nishtar Colony
+#Youhanabad
+
+#B-12A
+#Azadi Chowk
+#Badami Bagh 
+#Railway Station
+#Gari Shahu Police Station
+#Dharam Pura 
+#CMH Chowk
+#Fortress
+#RA Bazar
+
+#B-14
+#RA Bazar
+#Shareef Market
+#Walton Stop
+#Qainchi
+#Peco Morr
+#Pindi Stop
+#Nursery Stop
+#Hamdaed Chowk
+#Pully Stop
+
+#B-16
+#Azadi Chowk
+#Texali Gate
+Busstop.create(:busStopName => "Data Darbar", :busStopLatLong => "31.57869,74.3071004", :busStopSecName => "", admin_id: nil)
+#Bhati Gate
+#Secretariat
+Busstop.create(:busStopName => "Old Anarkali", :busStopLatLong => "31.5676443,74.3106115", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Manzang Adda", :busStopLatLong => "31.55965,74.3139052", :busStopSecName => "", admin_id: nil)
+#Ganga Ram
+#Manzang Chungi
+Busstop.create(:busStopName => "Eden Center", :busStopLatLong => "31.5471063,74.3158579", :busStopSecName => "", admin_id: nil)
+#Lahore College
+#Center Point
+#Kalma Chowk
+#Model Town
+Busstop.create(:busStopName => "D Block Stop", :busStopLatLong => "31.4881345,74.3224213", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "F Block", :busStopLatLong => "31.481447,74.3220759", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Shaheed Chowk", :busStopLatLong => "31.4930168,74.3199375", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Honda Morr Stop", :busStopLatLong => "31.4648268,74.31506929", :busStopSecName => "", admin_id: nil)
+#Mochi Pura
+Busstop.create(:busStopName => "Barket Chowk", :busStopLatLong => "31.4572562,74.3074893", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Al Karim Chowk", :busStopLatLong => "31.45640719,74.3138287", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Chandani Chowk", :busStopLatLong => "31.4524397,74.3082002", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Omer Chowk", :busStopLatLong => "31.4444853,74.3063957", :busStopSecName => "", admin_id: nil)
+
+#B*17
+#Railway Station
+Busstop.create(:busStopName => "Bohar Wala Chowk", :busStopLatLong => "33.1318507,73.42000539", :busStopSecName => "", admin_id: nil)
+#Gari Shahu Chowk
+#Gari Shahu Police Station
+#Dharam Pura
+Busstop.create(:busStopName => "Mughal Pura", :busStopLatLong => "31.462804,74.3814888", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Jafery Pull", :busStopLatLong => "31.5631924,74.3860942", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Lal Pull", :busStopLatLong => "31.5643393,74.3903356", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "New Pull", :busStopLatLong => "31.5662297,74.3999934", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Fateh Garh", :busStopLatLong => "31.5673564,74.405617", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Aziz Pulli", :busStopLatLong => "31.5686933,74.4112399", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Taj Pura", :busStopLatLong => "31.558073,74.4061799", :busStopSecName => "", admin_id: nil)
+
+#B-18
+#Railway Station
+#Gari Shahu Police Station
+#Dharam Pura
+#Mughal Pura
+#Jafery Pull
+#Lal Pull
+#New Pull
+#Taj Pura
 
 
-#Busstop.create(:busStopName => "", :busStopLatLong => "", :busStopSecName => "", admin_id: nil)
+#B-20
+#Azadi Chowk
+#Texali Gate
+#Data Darbar
+#Bhati
+#Secretariat
+#Jain Mandir
+#Manzang Chungi
+#Shama
+#Ichara
+#Rehman Pura
+Busstop.create(:busStopName => "Aabpara Market", :busStopLatLong => "31.5202009,74.3208499", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Naqsha Stop", :busStopLatLong => "31.5172489,74.31633", :busStopSecName => "", admin_id: nil)
+#Campus Pull
+#Barket Market
+#Marria Stop
+#School Stop
+#Khota Pind
+#Mochi Pura
+#Barket Chowk
+#Al Karim Chowk
+#Chandani Chowk
+#Omer Chowk
+
+#B-21
+#Railway Station
+#Azadi Chowk
+#Naizi Chowk
+#Shahdara Stop
+
+#B-22
+#Aziz Chowk
+#Fateh Garh
+#New Pull
+#Lal Pull
+#Jafery Pull
+#Mughal Pull
+#Dharam Pura
+#Campus Pull
+Busstop.create(:busStopName => "Wafaqi Colony", :busStopLatLong => "31.4858828,74.29334639", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Hanjarwal", :busStopLatLong => "31.4891477,74.2606579", :busStopSecName => "", admin_id: nil)
+#Thokar Bus Stop
+
+#B-23
+#RA Bazar
+#Ghazi Road
+#Qainchi
+#Peco Morr
+#Treat Factory Stop
+#Pindi Stop
+#Mochi Pura
+#Wafaqi Colony
+#Hanjarwal 
+#Thokar
+
+#B-24
+#Railway Station
+Busstop.create(:busStopName => "Haji Camp", :busStopLatLong => "31.5707147,74.33436930", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Shimla Hill", :busStopLatLong => "31.5622222,74.3372222", :busStopSecName => "", admin_id: nil)
+#Zoo
+#Charling Cross
+#Ganga Ram
+#Manzang Chungi
+#Samanabad Morr
+#Yateem Khana
+#Scheme Morr
+#Khali Khoti
+#Flat Stop
+#Dubai Chowk
+#Bhaikhay Waal Morr
+#Campus Pull
+#School Stop
+#Khota Pind
+#Barket Chowk
+#Al Karim Chowk
+#Hamdaed Chowk
+#Pully Stop
+
+#B-26
+#Chungi Amar
+#Ghazi Chowk
+#Qainchi
+#Walton Stop
+#Shareef Market
+Busstop.create(:busStopName => "Defence Morr", :busStopLatLong => "31.4947192,74.3749148", :busStopSecName => "", admin_id: nil)
+#RA Bazar
+#Rahat Bakery
+#CMH Chowk
+#Saddar Bazar
+#Mughal Pura
+Busstop.create(:busStopName => "Ram Garh", :busStopLatLong => "31.569765,74.3808264", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Shalimar Medical College", :busStopLatLong => "31.5763204,74.3810838", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Shalimar Chowk", :busStopLatLong => "31.5838262,74.38000869", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Akhri Mint", :busStopLatLong => "31.5859185,74.39530839", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Dhobi Gart", :busStopLatLong => "31.586585,74.3982637", :busStopSecName => "", admin_id: nil)
+#Droghawala
+Busstop.create(:busStopName => "Salamat Pura", :busStopLatLong => "31.5817024,74.41556629", :busStopSecName => "", admin_id: nil)
+
+#B-51
+#Bhati
+#Secretariat
+#Chouburgi
+#Manzang Chungi
+#Ichara
+Busstop.create(:busStopName => "FC College", :busStopLatLong => "31.5214313,74.3338194", :busStopSecName => "", admin_id: nil)
+#Kalma Chowk
+Busstop.create(:busStopName => "Phattak", :busStopLatLong => "31.2581375,74.22617819", :busStopSecName => "", admin_id: nil)
+#Chungi Amar
+
+#B-53
+#Railway Station
+Busstop.create(:busStopName => "Begum Kot", :busStopLatLong => "31.6166787,74.26708339", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Qila Sattar Shah", :busStopLatLong => "31.6636263,74.1330313", :busStopSecName => "", admin_id: nil)
+
+#B-54
+#Railway Station
+#Bohar Wala Chowk
+#Gari Shahu
+#Gari Shahu Police
+Busstop.create(:busStopName => "Jim Khana", :busStopLatLong => "31.54505,74.340683", :busStopSecName => "", admin_id: nil)
+#Center Point
+#Kalma Chowk
+#Barket Market
+#Marria Stop
+Busstop.create(:busStopName => "Allah Ho Chowk", :busStopLatLong => "31.4692536,74.29827469", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Shoukat Khanam", :busStopLatLong => "31.4488244,74.2701091", :busStopSecName => "", admin_id: nil)
+#Thokar
+
+#B-56
+#Thokar
+Busstop.create(:busStopName => "Katchi Kothi", :busStopLatLong => "31.4507579,74.2459942", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Bhobattian Chowk", :busStopLatLong => "31.3966065,74.22997359", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Tibba", :busStopLatLong => "31.3090939,74.2245662", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Pajian", :busStopLatLong => "31.2998766,74.2244589", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Raiwind Phatak", :busStopLatLong => "31.2581375,74.22617819", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Raiwind Railwy Station", :busStopLatLong => "31.252225,74.22361859", :busStopSecName => "", admin_id: nil)
+
