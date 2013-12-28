@@ -61,13 +61,14 @@ class BusstopNode
 					currentBusstopSequenceNumber = relationForSequence.first.busStopSequenceNumber
 					print "\nValue for currentBusstopSequenceNumber ==> #{currentBusstopSequenceNumber}\n\n"
 					nextBusstopSequenceNumber = currentBusstopSequenceNumber + 1
-					relationForNeighbourBusstops = RouteBusstop.where(:route_id => currentRoute.id, :busStopSequenceNumber => nextBusstopSequenceNumber)
-					print "\ncount for relationForNeighbourBusstops ==> #{relationForNeighbourBusstops.count}\n\n"
-					print "\nRelation RouteBusstop For nextBusstopSequenceNumber ==> #{relationForNeighbourBusstops.first.to_yaml}\n\n"
-					if not relationForNeighbourBusstops.blank?
-						nextBusstopToCurrentBusstop = Busstop.find(relationForNeighbourBusstops.first.busstop_id)
-						print "\n\nNeighbour Busstop to currentBusstop ==> #{nextBusstopToCurrentBusstop.to_yaml}\n\n"
-						newNode.neighbours << self.findBusstopFromGraph(nextBusstopToCurrentBusstop.id).object_id
+					previousBusstopSequenceNumber = currentBusstopSequenceNumber - 1
+					if not(Route.find(currentRoute.id).busstops.count <= currentBusstopSequenceNumber)
+						newNode.neighbours << self.findBusstopFromGraph(self.findNeighbourBusstop(currentRoute.id, currentBusstopSequenceNumber + 1)).object_id
+					end
+					
+					if not (currentBusstopSequenceNumber == 1)
+						newNode.neighbours << self.findBusstopFromGraph(self.findNeighbourBusstop(currentRoute.id, currentBusstopSequenceNumber - 1)).object_id
+
 					end
 					
 					#Find the Busstop ==> relationForNeighbourBusstops.first.busstop_id from the graph array.
@@ -78,7 +79,7 @@ class BusstopNode
 			end
 			self.displayNode(newNode)
 		end
-		return
+		return @@graph
 	end
 
 	def self.findBusstopFromGraph(busstop_id)
@@ -90,7 +91,6 @@ class BusstopNode
 			end
 			
 		end
-		return nil
 	end
 
 	def self.displayNode(newNode)
@@ -105,5 +105,40 @@ class BusstopNode
 		# end
 		# print "\n]"
 		
+	end
+
+	def self.findNeighbourBusstop(route_id = 0, busStopSequenceNumber = 0)
+		relationForNeighbourBusstops = RouteBusstop.where(:route_id => route_id, :busStopSequenceNumber => busStopSequenceNumber)
+		print "\ncount for relationForNeighbourBusstops ==> #{relationForNeighbourBusstops.count}\n\n"
+		print "\nRelation RouteBusstop For nextBusstopSequenceNumber ==> #{relationForNeighbourBusstops.first.to_yaml}\n\n"
+		if not relationForNeighbourBusstops.blank?
+			nextBusstopToCurrentBusstop = Busstop.find(relationForNeighbourBusstops.first.busstop_id)
+			print "\n\nNeighbour Busstop to currentBusstop ==> #{nextBusstopToCurrentBusstop.to_yaml}\n\n"
+			return nextBusstopToCurrentBusstop.id
+		end
+		
+	end
+
+	def self.validateGraph(graph = [])
+		flag = true
+		objectIDArray = Array.new
+		graph.each do |node|
+			objectIDArray << node.object_id
+		end
+		trueCount = 0
+		graph.each do |node|
+			node.neighbours.each do |neighbour|
+				objectIDArray.each do |object_id|
+					if neighbour == object_id
+						trueCount  = trueCount + 1
+					end
+				end
+				if trueCount > 1 or trueCount < 1
+					flag =  false
+				end
+				trueCount = 0
+			end
+		end
+		return flag
 	end
 end
