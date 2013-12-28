@@ -1,7 +1,11 @@
 require 'tree'
 
 class Busstop < ActiveRecord::Base
+<<<<<<< HEAD
     include Distance
+=======
+#include Distance
+>>>>>>> cookie
     has_many     :route_busstops, :dependent => :restrict
     has_many     :routes, through: :route_busstops
     belongs_to   :admin

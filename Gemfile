@@ -53,6 +53,8 @@ gem "devise", "~> 3.1.0"
 # Use unicorn as the app server
 # gem 'unicorn'
 
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
