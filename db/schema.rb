@@ -66,37 +66,6 @@ ActiveRecord::Schema.define(version: 20131228192842) do
 
   add_index "company_routes", ["route_id", "company_id"], name: "index_company_routes_on_route_id_and_company_id", unique: true
 
-  create_table "managers", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "managers", ["email"], name: "index_managers_on_email", unique: true
-  add_index "managers", ["reset_password_token"], name: "index_managers_on_reset_password_token", unique: true
-
-  create_table "rails_admin_histories", force: true do |t|
-    t.text     "message"
-    t.string   "username"
-    t.integer  "item"
-    t.string   "table"
-    t.integer  "month",      limit: 2
-    t.integer  "year",       limit: 5
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories"
-
   create_table "route_busstops", force: true do |t|
     t.integer  "route_id"
     t.integer  "busstop_id"
