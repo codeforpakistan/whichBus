@@ -36,6 +36,9 @@ class BusstopNode
 	def self.createGraph
 		allBusstops = Busstop.all
 		allBusstops.each do |currentBusstop|
+			print "\n\nStarting New Busstop Iteration\n\n\nEnter To Start:"
+			gets()
+			#sleep(3)
 			@@graph << newNode = BusstopNode.new
 			newNode.busstop = currentBusstop
 			newNode.id = currentBusstop.id
@@ -61,7 +64,9 @@ class BusstopNode
 					#get the object_id for this  busstop and push it to newNode.neighbour.
 					
 				end
+
 			end
+			self.displayNode(newNode)
 		end
 	end
 
@@ -73,5 +78,17 @@ class BusstopNode
 			end
 			return nil
 		end
+	end
+
+	def self.displayNode(newNode)
+		print "\n\nPrinting Node Properties\n\n"
+		print "\tNode ID = #{newNode.id}\n"
+		print "\tNode BusstopName = #{newNode.busstop.busStopName}\n"
+		print "\tNode Neighbours ==> \n[\n"
+		newNode.neighbours.each do |neighbour|
+			print "#{neighbour}\n"
+		end
+		print "\n]"
+		
 	end
 end
