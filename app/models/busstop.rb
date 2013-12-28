@@ -1,7 +1,7 @@
 
 require 'tree'
 class Busstop < ActiveRecord::Base
-include Distance
+#include Distance
     has_many     :route_busstops, :dependent => :restrict
     has_many     :routes, through: :route_busstops
     belongs_to   :admin
