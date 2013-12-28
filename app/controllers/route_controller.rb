@@ -102,14 +102,14 @@ class RouteController < ApplicationController
 			sortedRoute = params[:sortedRoute].split(",")
 			#iter = Integer.new
 			iter = 0
-			i = 1
+			sequenceNumber = 1
 			relations = Array.new
 			sortedRoute.each do |busstop|
 				#iter+=1
 				rel = RouteBusstop.where(:route_id => params[:route_id], :busstop_id => busstop)
 				if (rel.second.blank?)  #assert type stmt.
-					rel.first.busStopSequenceNumber = i
-					i+=1
+					rel.first.busStopSequenceNumber = sequenceNumber
+					sequenceNumber+=1
 					if not (sortedRoute.last == busstop)
 						rel.first.nextBusStop = sortedRoute[iter+1]
 						#rel.first.busStopSequenceNumber = i
@@ -128,7 +128,7 @@ class RouteController < ApplicationController
 				end
 				iter+=1
 				
-				relations << rel
+				relations = RouteBusstop.where(:route_id => params[:route_id])
 				flash[:alert] = "relations: #{relations.to_json}"
 			end
 
