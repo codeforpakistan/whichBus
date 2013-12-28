@@ -104,12 +104,13 @@ class RouteController < ApplicationController
 			iter = 0
 			sequenceNumber = 1
 			relations = Array.new
+			testingVariable = Array.new
 			sortedRoute.each do |busstop|
 				#iter+=1
 				rel = RouteBusstop.where(:route_id => params[:route_id], :busstop_id => busstop)
 				if (rel.second.blank?)  #assert type stmt.
 					rel.first.busStopSequenceNumber = sequenceNumber
-					sequenceNumber+=1
+					testingVariable << sequenceNumber+=1
 					if not (sortedRoute.last == busstop)
 						rel.first.nextBusStop = sortedRoute[iter+1]
 						#rel.first.busStopSequenceNumber = i
@@ -121,6 +122,12 @@ class RouteController < ApplicationController
 						end
 					else
 						rel.first.nextBusStop = :null
+						if(rel.first.valid?)
+							rel.first.save
+							#flash[:notice] = "Record Saved: #{rel[0].to_json}"
+						else
+							flash[:alert] = "RouteBusstop Object has errors. #{rel[0].errors.full_messages}"
+						end
 					end
 				else
 					flast[:alert] = "Returning Two Object"
@@ -129,7 +136,7 @@ class RouteController < ApplicationController
 				iter+=1
 				
 				relations = RouteBusstop.where(:route_id => params[:route_id])
-				flash[:alert] = "relations: #{relations.to_json}"
+				flash[:alert] = "relations: #{relations.to_json} <==> #{testingVariable.to_json}"
 			end
 
 			route_id = params[:route_id]         
