@@ -1,3 +1,4 @@
+require 'Neighbour'
 class BusstopNode
 	attr_accessor :id, :neighbours, :busstop
 	@@graph = Array.new
@@ -52,7 +53,6 @@ class BusstopNode
 			gets()
 			currentBusstop = newNode.busstop
 
-
 			routesForBusstop = currentBusstop.routes
 			routesForBusstop.each do |currentRoute|
 				relationForSequence = RouteBusstop.where(:busstop_id => currentBusstop.id, :route_id => currentRoute.id)
@@ -63,11 +63,17 @@ class BusstopNode
 					nextBusstopSequenceNumber = currentBusstopSequenceNumber + 1
 					previousBusstopSequenceNumber = currentBusstopSequenceNumber - 1
 					if not(Route.find(currentRoute.id).busstops.count <= currentBusstopSequenceNumber)
-						newNode.neighbours << self.findBusstopFromGraph(self.findNeighbourBusstop(currentRoute.id, currentBusstopSequenceNumber + 1)).object_id
+						neighboursNode = Neighbour.new
+						neighboursNode.objectID = self.findBusstopFromGraph(self.findNeighbourBusstop(currentRoute.id, currentBusstopSequenceNumber + 1)).object_id
+						neighboursNode.cost = 1
+						newNode.neighbours << neighboursNode
 					end
 					
 					if not (currentBusstopSequenceNumber == 1)
-						newNode.neighbours << self.findBusstopFromGraph(self.findNeighbourBusstop(currentRoute.id, currentBusstopSequenceNumber - 1)).object_id
+						neighboursNode = Neighbour.new
+						neighboursNode.objectID = self.findBusstopFromGraph(self.findNeighbourBusstop(currentRoute.id, currentBusstopSequenceNumber - 1)).object_id
+						neighboursNode.cost = 1
+						newNode.neighbours << neighboursNode
 
 					end
 					
@@ -100,10 +106,6 @@ class BusstopNode
 
 		print "\tNode BusstopName = #{newNode.busstop.busStopName}\n"
 		print "\tNode Neighbours ==> #{newNode.neighbours}"
-		# newNode.neighbours.each do |neighbour|
-		# 	print "#{neighbour}\n"
-		# end
-		# print "\n]"
 		
 	end
 
@@ -129,7 +131,7 @@ class BusstopNode
 		graph.each do |node|
 			node.neighbours.each do |neighbour|
 				objectIDArray.each do |object_id|
-					if neighbour == object_id
+					if neighbour.objectID == object_id
 						trueCount  = trueCount + 1
 					end
 				end
