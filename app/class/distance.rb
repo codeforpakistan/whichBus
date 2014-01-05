@@ -1,7 +1,7 @@
 
 module Distance
 
-    def calculateDistance(latlong1, latlong2)
+    def self.calculateDistance(latlong1, latlong2)
 
         placeOneCoord = Array.new
         placeTwoCoord = Array.new

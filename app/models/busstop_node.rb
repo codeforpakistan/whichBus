@@ -4,6 +4,9 @@ class BusstopNode
 	def initialize(id = 0, *neighbour)
 		@busstop = Busstop.new
 		@id = -1
+		@distance = -1
+		@visited = false
+		#@current = false
 		if not @id == 0
 			@id = id			
 		end
@@ -105,5 +108,47 @@ class BusstopNode
 		# end
 		# print "\n]"
 		
+	end
+
+	def self.allUnvisitedNode
+		unVisitedNodes = Array.new
+		@@graph.each do |node|
+			if node.visited == false
+				unVisitedNodes << node
+			end
+		end
+		return unVisitedNodes
+		
+	end
+
+	def self.findRoute(startID,endID)
+		sourceNode = self.findBusstopFromGraph(startID)
+		destNode = self.findBusstopFromGraph(endID)
+		sourceNode.distance = 0
+		#sourceNode.current = true
+		currentNode = sourceNode
+		while true
+			if currentNode.id == destNode.id
+				print "Algo complete"
+				print "#{shortestDistanceNode}"
+				break
+			end
+			unVisitedNodes = self.allUnvisitedNode
+			shortestDistanceNode = 999999999999999
+			currentNode.neighbours.each do |nodeObjectID|
+				neighbourNode = ObjectSpace._id2ref(nodeObjectID)
+				if neighbourNode.visited == false
+					neighbourNodeLatLong = neighbourNode.busstop.busStopLatLong
+					currentNodeLatLong = currentNode.busstop.busStopLatLong
+					pathDistance = Distance.calculateDistance(currentNodeLatLong,neighbourNodeLatLong)
+					neighbourNode.distance = pathDistance + currentNode.distance
+					if pathDistance < shortestDistanceNode
+						shortestDistanceNode = pathDistance
+						currentNode.visited = true
+						currentNode = neighbourNode					
+					end
+				end
+			end
+		end
 	end
 end
