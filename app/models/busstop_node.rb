@@ -5,6 +5,9 @@ class BusstopNode
 	def initialize(id = 0, *neighbour)
 		@busstop = Busstop.new
 		@id = -1
+		@distance = -1
+		@visited = false
+		#@current = false
 		if not @id == 0
 			@id = id			
 		end
@@ -13,12 +16,15 @@ class BusstopNode
 			@neighbours << n
 		end
 	end
+
 	def self.graph
 		@@graph
 	end
+
 	def self.addToGraph(data)
 		@@graph << data
 	end
+
 	def self.printGraph
 		@@graph.each do |node|
 			print "Node id ==> #{node.id} ==> "
@@ -142,5 +148,47 @@ class BusstopNode
 			end
 		end
 		return flag
+	end
+
+	def self.allUnvisitedNode
+		unVisitedNodes = Array.new
+		@@graph.each do |node|
+			if node.visited == false
+				unVisitedNodes << node
+			end
+		end
+		return unVisitedNodes
+		
+	end
+
+	def self.findRoute(startID,endID)
+		sourceNode = self.findBusstopFromGraph(startID)
+		destNode = self.findBusstopFromGraph(endID)
+		sourceNode.distance = 0
+		#sourceNode.current = true
+		currentNode = sourceNode
+		while true
+			if currentNode.id == destNode.id
+				print "Algo complete"
+				print "#{shortestDistanceNode}"
+				break
+			end
+			unVisitedNodes = self.allUnvisitedNode
+			shortestDistanceNode = 999999999999999
+			currentNode.neighbours.each do |neighbour|
+				neighbourNode = ObjectSpace._id2ref(neighbour.object_id)
+				if neighbourNode.visited == false
+					neighbourNodeLatLong = neighbourNode.busstop.busStopLatLong
+					currentNodeLatLong = currentNode.busstop.busStopLatLong
+					pathDistance = Distance.calculateDistance(currentNodeLatLong,neighbourNodeLatLong)
+					neighbourNode.distance = pathDistance + currentNode.distance
+					if pathDistance < shortestDistanceNode
+						shortestDistanceNode = pathDistance
+						currentNode.visited = true
+						currentNode = neighbourNode					
+					end
+				end
+			end
+		end
 	end
 end
