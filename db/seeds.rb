@@ -387,3 +387,13 @@ Busstop.create(:busStopName => "Pajian", :busStopLatLong => "31.2998766,74.22445
 Busstop.create(:busStopName => "Raiwind Phatak", :busStopLatLong => "31.2581375,74.22617819", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Raiwind Railwy Station", :busStopLatLong => "31.252225,74.22361859", :busStopSecName => "", admin_id: nil)
 
+# Bus stop end
+
+# Route Creation
+Route.create(:routeName => "Metro", :routeSourceName => "helloworld", :routeDestName => "helloworld", :routeDistance => "27", :routeSourceLatLong => "11.11,11.11", routeDestLatLong: "11.11,11.11", admin_id: nil)
+Route.create(:routeName => "B-01", :routeSourceName => "helloworld", :routeDestName => "helloworld", :routeDistance => "27", :routeSourceLatLong => "11.11,11.11", routeDestLatLong: "11.11,11.11", admin_id: nil)
+Route.create(:routeName => "B-02", :routeSourceName => "helloworld", :routeDestName => "helloworld", :routeDistance => "27", :routeSourceLatLong => "11.11,11.11", routeDestLatLong: "11.11,11.11", admin_id: nil)
+Route.create(:routeName => "B-04", :routeSourceName => "helloworld", :routeDestName => "helloworld", :routeDistance => "27", :routeSourceLatLong => "11.11,11.11", routeDestLatLong: "11.11,11.11", admin_id: nil)
+Route.create(:routeName => "B-05", :routeSourceName => "helloworld", :routeDestName => "helloworld", :routeDistance => "27", :routeSourceLatLong => "11.11,11.11", routeDestLatLong: "11.11,11.11", admin_id: nil)
+Route.create(:routeName => "B-08", :routeSourceName => "helloworld", :routeDestName => "helloworld", :routeDistance => "27", :routeSourceLatLong => "11.11,11.11", routeDestLatLong: "11.11,11.11", admin_id: nil)
+
