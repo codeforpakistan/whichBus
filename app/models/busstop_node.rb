@@ -1,6 +1,6 @@
 require 'Neighbour'
 class BusstopNode
-	attr_accessor :id, :neighbours, :busstop
+	attr_accessor :id, :neighbours, :busstop, :distance, :visited
 	@@graph = Array.new
 	def initialize(id = 0, *neighbour)
 		@busstop = Busstop.new
@@ -56,7 +56,7 @@ class BusstopNode
 
 		@@graph.each do |newNode|
 			print "\n\nStarting New Busstop Iteration\n\n\nEnter To Start:"
-			gets()
+			#gets()
 			currentBusstop = newNode.busstop
 
 			routesForBusstop = currentBusstop.routes
@@ -162,21 +162,29 @@ class BusstopNode
 	end
 
 	def self.findRoute(startID,endID)
+		self.createGraph
+		if self.validateGraph == true
+			print "\n\nGraph is Valid. Continuing...\n\n"
+		else
+			return "Graph Not Valid"
+		end
 		sourceNode = self.findBusstopFromGraph(startID)
 		destNode = self.findBusstopFromGraph(endID)
+		print "class For sourceNode:#{sourceNode.to_yaml}"
 		sourceNode.distance = 0
 		#sourceNode.current = true
 		currentNode = sourceNode
 		while true
 			if currentNode.id == destNode.id
 				print "Algo complete"
-				print "#{shortestDistanceNode}"
+				print "#{currentNode.to_yaml}"
 				break
 			end
 			unVisitedNodes = self.allUnvisitedNode
 			shortestDistanceNode = 999999999999999
 			currentNode.neighbours.each do |neighbour|
-				neighbourNode = ObjectSpace._id2ref(neighbour.object_id)
+				neighbourNode = ObjectSpace._id2ref(neighbour.objectID)
+				puts "\n\nneighbourNode's Class => #{neighbourNode.to_yaml}\n\n"
 				if neighbourNode.visited == false
 					neighbourNodeLatLong = neighbourNode.busstop.busStopLatLong
 					currentNodeLatLong = currentNode.busstop.busStopLatLong
