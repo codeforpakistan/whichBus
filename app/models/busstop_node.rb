@@ -162,15 +162,21 @@ class BusstopNode
 	end
 
 	def self.findRoute(startID,endID)
+		if not (Route.all.count > 0)
+			puts "No Routes Exist."
+			return false;
+		end
 		self.createGraph
 		if self.validateGraph == true
 			print "\n\nGraph is Valid. Continuing...\n\n"
 		else
 			return "Graph Not Valid"
+			return false
 		end
 		sourceNode = self.findBusstopFromGraph(startID)
+		puts "Start Busstop Found."
 		destNode = self.findBusstopFromGraph(endID)
-		print "class For sourceNode:#{sourceNode.to_yaml}"
+		print "sourceNode:#{sourceNode.to_yaml}"
 		sourceNode.distance = 0
 		#sourceNode.current = true
 		currentNode = sourceNode
@@ -178,13 +184,13 @@ class BusstopNode
 			if currentNode.id == destNode.id
 				print "Algo complete"
 				print "#{currentNode.to_yaml}"
-				break
+				return true
 			end
 			unVisitedNodes = self.allUnvisitedNode
 			shortestDistanceNode = 999999999999999
 			currentNode.neighbours.each do |neighbour|
 				neighbourNode = ObjectSpace._id2ref(neighbour.objectID)
-				puts "\n\nneighbourNode's Class => #{neighbourNode.to_yaml}\n\n"
+				puts "\n\nneighbourNode => #{neighbourNode.to_yaml}\n\n"
 				if neighbourNode.visited == false
 					neighbourNodeLatLong = neighbourNode.busstop.busStopLatLong
 					currentNodeLatLong = currentNode.busstop.busStopLatLong
