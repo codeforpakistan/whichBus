@@ -166,6 +166,7 @@ class BusstopNode
 			puts "No Routes Exist."
 			return false;
 		end
+		pathRoute = []
 		self.createGraph
 		if self.validateGraph == true
 			print "\n\nGraph is Valid. Continuing...\n\n"
@@ -179,28 +180,58 @@ class BusstopNode
 		print "sourceNode:#{sourceNode.to_yaml}"
 		sourceNode.distance = 0
 		#sourceNode.current = true
+		pathRoute << sourceNode
 		currentNode = sourceNode
 		while true
 			if currentNode.id == destNode.id
-				print "Algo complete"
 				print "#{currentNode.to_yaml}"
-				return true
+				print "Algo complete"
+				return pathRoute
 			end
 			unVisitedNodes = self.allUnvisitedNode
-			shortestDistanceNode = 999999999999999
+			shortestDistance = 999999999999999
+			truthArray = []
+
 			currentNode.neighbours.each do |neighbour|
 				neighbourNode = ObjectSpace._id2ref(neighbour.objectID)
-				puts "\n\nneighbourNode => #{neighbourNode.to_yaml}\n\n"
+				if neighbourNode.visited == true
+					truthArray << neighbourNode.visited
+				end
+			end
+			if truthArray.size >= currentNode.neighbours.size
+				currentNode = pathRoute.pop
+				if currentNode == nil
+					puts "end of algo. Reached  Back to sourceNode."
+					return false		#end of algo. Reached  Back to sourceNode.
+				end
+			end
+			if (truthArray.size == currentNode.neighbours.size)
+				puts "We Need BackTracking..."
+			end
+			currentNode.neighbours.each do |neighbour|
+				neighbourNode = ObjectSpace._id2ref(neighbour.objectID)
+				# puts "\n\nneighbourNode => #{neighbourNode.to_yaml}\n\n"
 				if neighbourNode.visited == false
 					neighbourNodeLatLong = neighbourNode.busstop.busStopLatLong
 					currentNodeLatLong = currentNode.busstop.busStopLatLong
-					pathDistance = Distance.calculateDistance(currentNodeLatLong,neighbourNodeLatLong)
-					neighbourNode.distance = pathDistance + currentNode.distance
-					if pathDistance < shortestDistanceNode
-						shortestDistanceNode = pathDistance
+					transitionDistance = Distance.calculateDistance(currentNodeLatLong,neighbourNodeLatLong)
+					neighbourNode.distance = transitionDistance + currentNode.distance
+					if transitionDistance < shortestDistance
+						shortestDistance = transitionDistance
 						currentNode.visited = true
-						currentNode = neighbourNode					
+						currentNode = neighbourNode	
+						pathRoute << currentNode
+
+					else
+						puts "transitionDistance is not shortest."
 					end
+					print "\n\n\nRouteFound ===>>\n\n\n"
+					pathRoute.each do |u|
+						puts "#{u.busstop.busStopName}"
+					end
+					print"\n\n\n\n"
+				else
+					puts "NeighbourNode already Visited. Moving On..."
 				end
 			end
 		end
