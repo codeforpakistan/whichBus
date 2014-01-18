@@ -11,9 +11,9 @@ class Busstop < ActiveRecord::Base
 
 
     #errors.add(:busStopName, 'heelo' )
-    validates :busStopName, presence: true, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }, length: {minimum: 5, maximum: 25}
+    validates :busStopName, presence: true, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }, length: {minimum: 3, maximum: 25}
     #validates :busStopLatLong, presence: true
-    validates :busStopSecName, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }, length: {minimum: 5, maximum: 25}, :allow_blank => true
+    validates :busStopSecName, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }, length: {minimum: 3, maximum: 25}, :allow_blank => true
     
     def validateLatLong(fieldName = {})
         fieldErrors = Hash.new

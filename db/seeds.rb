@@ -55,21 +55,21 @@ Busstop.create(:busStopName => "High Court", :busStopLatLong => "31.5660583,74.3
 Busstop.create(:busStopName => "Anarkali", :busStopLatLong => "31.5688281,74.308632", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Secretariat", :busStopLatLong => "31.5695685,74.3047321", :busStopSecName => "", admin_id: nil)
 
-#Route B-02
-#Azadi Chowk
+# #Route B-02
+# #Azadi Chowk
 Busstop.create(:busStopName => "Texali Gate", :busStopLatLong => "31.5859706,74.3063253", :busStopSecName => "", admin_id: nil)
-#bhatti
+# #bhatti
 Busstop.create(:busStopName => "Chouburgi", :busStopLatLong => "31.55376039,74.3055438", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "More Samanabad", :busStopLatLong => "31.5444017,74.2944672", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Bhala Stop", :busStopLatLong => "31.5395617,74.2928056", :busStopSecName => "", admin_id: nil)
-#Yateem Khana
-#Scheme Morr
+# #Yateem Khana
+# #Scheme Morr
 Busstop.create(:busStopName => "Kharak Nallah", :busStopLatLong => "31.5092681,74.2713109", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Awan Town", :busStopLatLong => "31.5031886,4.26775959", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Multan Chungi", :busStopLatLong => "31.4961031,74.263823", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Thokar Bus Stop", :busStopLatLong => "31.4732593,74.2415312", :busStopSecName => "", admin_id: nil)
 
-#Route B-04
+# #Route B-04
 Busstop.create(:busStopName => "Badami Bagh", :busStopLatLong => "31.6018492,74.3206208", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Railway Station", :busStopLatLong => "31.5770254,74.3389519", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "UET Gate Number 3", :busStopLatLong => "31.5768685,74.356724", :busStopSecName => "", admin_id: nil)
@@ -85,14 +85,14 @@ Busstop.create(:busStopName => "Wagha", :busStopLatLong => "31.5901662,74.575894
 
 #Route B-05
 #Railway Station
-Busstop.create(:busStopName => "Zoo", :busStopLatLong => "31.5582055,74.3267584", :busStopSecName => "", admin_id: nil)
-Busstop.create(:busStopName => "Cheering Cross", :busStopLatLong => "31.5602168,74.3234968", :busStopSecName => "", admin_id: nil)
+#zoo
+#Cheering Cross
 Busstop.create(:busStopName => "Ganga Ram", :busStopLatLong => "31.5549417,74.3209541", :busStopSecName => "", admin_id: nil)
 #Manzang Chungi
 Busstop.create(:busStopName => "Lahore College", :busStopLatLong => "31.542682,74.3277895", :busStopSecName => "", admin_id: nil)
 #center Point
 #RA Bazar
-Busstop.create(:busStopName => "Ghazi Chowk", :busStopLatLong => "31.4367036,74.2908084", :busStopSecName => "", admin_id: nil)
+#Ghazi Chowk
 
 #Route B-08
 #Railway Station
@@ -199,7 +199,6 @@ Busstop.create(:busStopName => "Old Anarkali", :busStopLatLong => "31.5676443,74
 Busstop.create(:busStopName => "Manzang Adda", :busStopLatLong => "31.55965,74.3139052", :busStopSecName => "", admin_id: nil)
 #Ganga Ram
 #Manzang Chungi
-Busstop.create(:busStopName => "Eden Center", :busStopLatLong => "31.5471063,74.3158579", :busStopSecName => "", admin_id: nil)
 #Lahore College
 #Center Point
 #Kalma Chowk
@@ -212,7 +211,7 @@ Busstop.create(:busStopName => "Honda Morr Stop", :busStopLatLong => "31.4648268
 Busstop.create(:busStopName => "Barket Chowk", :busStopLatLong => "31.4572562,74.3074893", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Al Karim Chowk", :busStopLatLong => "31.45640719,74.3138287", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Chandani Chowk", :busStopLatLong => "31.4524397,74.3082002", :busStopSecName => "", admin_id: nil)
-Busstop.create(:busStopName => "Omer Chowk", :busStopLatLong => "31.4444853,74.3063957", :busStopSecName => "", admin_id: nil)
+#Umer Chowk
 
 #B-17
 #Railway Station
@@ -240,7 +239,7 @@ Busstop.create(:busStopName => "Taj Pura", :busStopLatLong => "31.558073,74.4061
 
 #Route B-19
 Busstop.create(:busStopName => "New Khan Adda", :busStopLatLong => "31.5482446,74.2687127", :busStopSecName => "", admin_id: nil)
-Busstop.create(:busStopName => "Naizi BUs Terminal", :busStopLatLong => "31.5377311,74.28398529", :busStopSecName => "", admin_id: nil)
+Busstop.create(:busStopName => "Naizi Bus Terminal", :busStopLatLong => "31.5377311,74.28398529", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "CDGL Bus Terminal", :busStopLatLong => "31.53506,74.2833374", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Yateem Khana Chowk", :busStopLatLong => "31.5318993,74.2871527", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Scheme Morr", :busStopLatLong => "31.5252389,74.2835783", :busStopSecName => "", admin_id: nil)
@@ -345,11 +344,14 @@ Busstop.create(:busStopName => "Defence Morr", :busStopLatLong => "31.4947192,74
 #Mughal Pura
 Busstop.create(:busStopName => "Ram Garh", :busStopLatLong => "31.569765,74.3808264", :busStopSecName => "", admin_id: nil)
 Busstop.create(:busStopName => "Shalimar Medical College", :busStopLatLong => "31.5763204,74.3810838", :busStopSecName => "", admin_id: nil)
-Busstop.create(:busStopName => "Shalimar Chowk", :busStopLatLong => "31.5838262,74.38000869", :busStopSecName => "", admin_id: nil)
-Busstop.create(:busStopName => "Akhri Mint", :busStopLatLong => "31.5859185,74.39530839", :busStopSecName => "", admin_id: nil)
-Busstop.create(:busStopName => "Dhobi Gart", :busStopLatLong => "31.586585,74.3982637", :busStopSecName => "", admin_id: nil)
+#Shalimar
+#Akhri
+#Dhobi
+#Busstop.create(:busStopName => "Shalimar Chowk", :busStopLatLong => "31.5838262,74.38000869", :busStopSecName => "", admin_id: nil)
+#Busstop.create(:busStopName => "Akhri Mint", :busStopLatLong => "31.5859185,74.39530839", :busStopSecName => "", admin_id: nil)
+#Busstop.create(:busStopName => "Dhobi Gart", :busStopLatLong => "31.586585,74.3982637", :busStopSecName => "", admin_id: nil)
 #Droghawala
-Busstop.create(:busStopName => "Salamat Pura", :busStopLatLong => "31.5817024,74.41556629", :busStopSecName => "", admin_id: nil)
+#Salamat Pura
 
 #B-51
 #Bhati
@@ -359,7 +361,6 @@ Busstop.create(:busStopName => "Salamat Pura", :busStopLatLong => "31.5817024,74
 #Ichara
 Busstop.create(:busStopName => "FC College", :busStopLatLong => "31.5214313,74.3338194", :busStopSecName => "", admin_id: nil)
 #Kalma Chowk
-Busstop.create(:busStopName => "Phattak", :busStopLatLong => "31.2581375,74.22617819", :busStopSecName => "", admin_id: nil)
 #Chungi Amar
 
 #B-53
@@ -393,31 +394,31 @@ Busstop.create(:busStopName => "Raiwind Railway Station", :busStopLatLong => "31
 # Bus stop end
 
 # Route Creation
-#Route.create(:routeName => "Metro", :routeSourceName => "Gajju Matta Bus Stop", :routeDestName => "Shahdara Bus Stop", :routeDistance => "27", :routeSourceLatLong => "31.3921306,74.3626678", routeDestLatLong: "31.676697,74.2907372", admin_id: nil)
-#Route.create(:routeName => "B-01", :routeSourceName => "RA Bazar", :routeDestName => "Secretariat", :routeDistance => "27", :routeSourceLatLong => "31.5059895,74.3850463", routeDestLatLong: "31.5695685,74.3047321", admin_id: nil)
-#Route.create(:routeName => "B-02", :routeSourceName => "Azadi Chowk", :routeDestName => "Thokar Bus Stop", :routeDistance => "27", :routeSourceLatLong => "31.5904825,74.30655039", routeDestLatLong: "31.4732593,74.2415312", admin_id: nil)
-#Route.create(:routeName => "B-04", :routeSourceName => "Badami Bagh", :routeDestName => "Wagha", :routeDistance => "27", :routeSourceLatLong => "31.6018492,74.3206208", routeDestLatLong: "31.5901662,74.5758942", admin_id: nil)
-#Route.create(:routeName => "B-05", :routeSourceName => "Railway Station", :routeDestName => "Ghazi Chowk", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.4367036,74.2908084", admin_id: nil)
-#Route.create(:routeName => "B-08", :routeSourceName => "Railway Station", :routeDestName => "Saddar Chowk", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.5482949,74.3802845", admin_id: nil)
-#Route.create(:routeName => "B-10", :routeSourceName => "Railway Station", :routeDestName => "Rehmat Chowk", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.4197015,74.2653612", admin_id: nil)
-#Route.create(:routeName => "B-11", :routeSourceName => "Railway Station", :routeDestName => "Pully Stop", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.4368426,74.3144739", admin_id: nil)
-#Route.create(:routeName => "B-12", :routeSourceName => "Railway Station", :routeDestName => "Youhanabad Bus Stop", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.4128577,74.3594346", admin_id: nil)
-#Route.create(:routeName => "B-12A", :routeSourceName => "Azadi Chowk", :routeDestName => "RA Bazar", :routeDistance => "27", :routeSourceLatLong => "31.5904825,74.30655039", routeDestLatLong: "31.5059895,74.3850463", admin_id: nil)
-#Route.create(:routeName => "B-14", :routeSourceName => "RA Bazar", :routeDestName => "Pully Stop", :routeDistance => "27", :routeSourceLatLong => "31.5059895,74.3850463", routeDestLatLong: "31.4368426,74.3144739", admin_id: nil)
-#Route.create(:routeName => "B-16", :routeSourceName => "Azadi Chowk", :routeDestName => "Chandani Chowk", :routeDistance => "27", :routeSourceLatLong => "31.5904825,74.30655039", routeDestLatLong: "31.558073,74.4061799", admin_id: nil)
-#Route.create(:routeName => "B-17", :routeSourceName => "Railway Station", :routeDestName => "Taj Pura", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.558073,74.4061799", admin_id: nil)
-#Route.create(:routeName => "B-18", :routeSourceName => "Railway Station", :routeDestName => "Taj Pura", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.558073,74.4061799", admin_id: nil)
-#Route.create(:routeName => "B-19", :routeSourceName => "New Khan Adda", :routeDestName => "Center Point", :routeDistance => "27", :routeSourceLatLong => "31.5482446,74.2687127", routeDestLatLong: "31.5064992,74.33707969", admin_id: nil)
-#Route.create(:routeName => "B-20", :routeSourceName => "Azadi Chowk", :routeDestName => "Omer Chowk", :routeDistance => "27", :routeSourceLatLong => "31.5904825,74.30655039", routeDestLatLong: "31.4444853,74.3063957", admin_id: nil)
-#Route.create(:routeName => "B-21", :routeSourceName => "Railway Station", :routeDestName => "Shahdara Bus Stop", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.616697,74.2907372", admin_id: nil)
-#Route.create(:routeName => "B-22", :routeSourceName => "Aziz Pulli", :routeDestName => "Thokar Bus Stop", :routeDistance => "27", :routeSourceLatLong => "31.5686933,74.4112399", routeDestLatLong: "31.4732593,74.2415312", admin_id: nil)
-#Route.create(:routeName => "B-23", :routeSourceName => "RA Bazar", :routeDestName => "Thokar Bus Stop", :routeDistance => "27", :routeSourceLatLong => "31.5059895,74.3850463", routeDestLatLong: "31.4732593,74.2415312", admin_id: nil)
-#Route.create(:routeName => "B-24", :routeSourceName => "Railway Station", :routeDestName => "Pully Stop", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.4368426,74.3144739", admin_id: nil)
-#Route.create(:routeName => "B-26", :routeSourceName => "Chungi Amar Sidhu", :routeDestName => "Salamat Pura", :routeDistance => "27", :routeSourceLatLong => "31.4505656,74.3532946", routeDestLatLong: "31.5817024,74.41556629", admin_id: nil)
-#Route.create(:routeName => "B-51", :routeSourceName => "Bhatti", :routeDestName => "Chungi Amar Sidhu", :routeDistance => "27", :routeSourceLatLong => "31.5805283,74.3061838", routeDestLatLong: "31.4505656,74.3532946", admin_id: nil)
-#Route.create(:routeName => "B-53", :routeSourceName => "Railway Station", :routeDestName => "Qila Sattar Shah", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.6636263,74.1330313", admin_id: nil)
-#Route.create(:routeName => "B-54", :routeSourceName => "Railway Station", :routeDestName => "Thokar Bus Stop", :routeDistance => "27", :routeSourceLatLong => "", routeDestLatLong: "31.4732593,74.2415312", admin_id: nil)
-#Route.create(:routeName => "B-56", :routeSourceName => "Thokar Bus Stop", :routeDestName => "Raiwind Railway Station", :routeDistance => "27", :routeSourceLatLong => "31.4732593,74.2415312", routeDestLatLong: "31.252225,74.22361859", admin_id: nil)
+Route.create(:routeName => "Metro", :routeSourceName => "Gajju Matta Bus Stop", :routeDestName => "Shahdara Bus Stop", :routeDistance => "27", :routeSourceLatLong => "31.3921306,74.3626678", routeDestLatLong: "31.676697,74.2907372", admin_id: nil)
+Route.create(:routeName => "B 01", :routeSourceName => "RA Bazar", :routeDestName => "Secretariat", :routeDistance => "27", :routeSourceLatLong => "31.5059895,74.3850463", routeDestLatLong: "31.5695685,74.3047321", admin_id: nil)
+Route.create(:routeName => "B 02", :routeSourceName => "Azadi Chowk", :routeDestName => "Thokar Bus Stop", :routeDistance => "27", :routeSourceLatLong => "31.5904825,74.30655039", routeDestLatLong: "31.4732593,74.2415312", admin_id: nil)
+Route.create(:routeName => "B 04", :routeSourceName => "Badami Bagh", :routeDestName => "Wagha", :routeDistance => "27", :routeSourceLatLong => "31.6018492,74.3206208", routeDestLatLong: "31.5901662,74.5758942", admin_id: nil)
+Route.create(:routeName => "B 05", :routeSourceName => "Railway Station", :routeDestName => "Ghazi Chowk", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.4367036,74.2908084", admin_id: nil)
+Route.create(:routeName => "B 08", :routeSourceName => "Railway Station", :routeDestName => "Saddar Chowk", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.5482949,74.3802845", admin_id: nil)
+Route.create(:routeName => "B 10", :routeSourceName => "Railway Station", :routeDestName => "Rehmat Chowk", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.4197015,74.2653612", admin_id: nil)
+Route.create(:routeName => "B 11", :routeSourceName => "Railway Station", :routeDestName => "Pully Stop", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.4368426,74.3144739", admin_id: nil)
+Route.create(:routeName => "B 12", :routeSourceName => "Railway Station", :routeDestName => "Youhanabad Bus Stop", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.4128577,74.3594346", admin_id: nil)
+Route.create(:routeName => "B 12A", :routeSourceName => "Azadi Chowk", :routeDestName => "RA Bazar", :routeDistance => "27", :routeSourceLatLong => "31.5904825,74.30655039", routeDestLatLong: "31.5059895,74.3850463", admin_id: nil)
+Route.create(:routeName => "B 14", :routeSourceName => "RA Bazar", :routeDestName => "Pully Stop", :routeDistance => "27", :routeSourceLatLong => "31.5059895,74.3850463", routeDestLatLong: "31.4368426,74.3144739", admin_id: nil)
+Route.create(:routeName => "B 16", :routeSourceName => "Azadi Chowk", :routeDestName => "Chandani Chowk", :routeDistance => "27", :routeSourceLatLong => "31.5904825,74.30655039", routeDestLatLong: "31.558073,74.4061799", admin_id: nil)
+Route.create(:routeName => "B 17", :routeSourceName => "Railway Station", :routeDestName => "Taj Pura", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.558073,74.4061799", admin_id: nil)
+Route.create(:routeName => "B 18", :routeSourceName => "Railway Station", :routeDestName => "Taj Pura", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.558073,74.4061799", admin_id: nil)
+Route.create(:routeName => "B 19", :routeSourceName => "New Khan Adda", :routeDestName => "Center Point", :routeDistance => "27", :routeSourceLatLong => "31.5482446,74.2687127", routeDestLatLong: "31.5064992,74.33707969", admin_id: nil)
+Route.create(:routeName => "B 20", :routeSourceName => "Azadi Chowk", :routeDestName => "Omer Chowk", :routeDistance => "27", :routeSourceLatLong => "31.5904825,74.30655039", routeDestLatLong: "31.4444853,74.3063957", admin_id: nil)
+Route.create(:routeName => "B 21", :routeSourceName => "Railway Station", :routeDestName => "Shahdara Bus Stop", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.616697,74.2907372", admin_id: nil)
+Route.create(:routeName => "B 22", :routeSourceName => "Aziz Pulli", :routeDestName => "Thokar Bus Stop", :routeDistance => "27", :routeSourceLatLong => "31.5686933,74.4112399", routeDestLatLong: "31.4732593,74.2415312", admin_id: nil)
+Route.create(:routeName => "B 23", :routeSourceName => "RA Bazar", :routeDestName => "Thokar Bus Stop", :routeDistance => "27", :routeSourceLatLong => "31.5059895,74.3850463", routeDestLatLong: "31.4732593,74.2415312", admin_id: nil)
+Route.create(:routeName => "B 24", :routeSourceName => "Railway Station", :routeDestName => "Pully Stop", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.4368426,74.3144739", admin_id: nil)
+Route.create(:routeName => "B 26", :routeSourceName => "Chungi Amar Sidhu", :routeDestName => "Salamat Pura", :routeDistance => "27", :routeSourceLatLong => "31.4505656,74.3532946", routeDestLatLong: "31.5817024,74.41556629", admin_id: nil)
+Route.create(:routeName => "B 51", :routeSourceName => "Bhatti", :routeDestName => "Chungi Amar Sidhu", :routeDistance => "27", :routeSourceLatLong => "31.5805283,74.3061838", routeDestLatLong: "31.4505656,74.3532946", admin_id: nil)
+Route.create(:routeName => "B 53", :routeSourceName => "Railway Station", :routeDestName => "Qila Sattar Shah", :routeDistance => "27", :routeSourceLatLong => "31.5770254,74.3389519", routeDestLatLong: "31.6636263,74.1330313", admin_id: nil)
+Route.create(:routeName => "B 54", :routeSourceName => "Railway Station", :routeDestName => "Thokar Bus Stop", :routeDistance => "27", :routeSourceLatLong => "", routeDestLatLong: "31.4732593,74.2415312", admin_id: nil)
+Route.create(:routeName => "B 56", :routeSourceName => "Thokar Bus Stop", :routeDestName => "Raiwind Railway Station", :routeDistance => "27", :routeSourceLatLong => "31.4732593,74.2415312", routeDestLatLong: "31.252225,74.22361859", admin_id: nil)
 
 # All Route Done
 
