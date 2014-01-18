@@ -1,5 +1,3 @@
-require 'tree'
-
 class Busstop < ActiveRecord::Base
 
     #include Distance

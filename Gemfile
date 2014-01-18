@@ -5,7 +5,7 @@ gem 'rails', '4.0.0'
 
 group :development, :test do
   gem 'sqlite3' 
-  gem 'rubytree'
+  # gem 'rubytree'
 end
 group :production do
   # Use postgre as the database for Active Record
