@@ -186,6 +186,7 @@ class BusstopNode
 			if currentNode.id == destNode.id
 				print "#{currentNode.to_yaml}"
 				print "Algo complete"
+				@@graph = []
 				return pathRoute
 			end
 			unVisitedNodes = self.allUnvisitedNode
@@ -199,8 +200,23 @@ class BusstopNode
 				end
 			end
 			if truthArray.size >= currentNode.neighbours.size
-				currentNode = pathRoute.pop
-				if currentNode == nil
+				neighbourList = []
+				currentNode = pathRoute.last
+				if not currentNode == nil
+					neighbourIDs = currentNode.neighbours.collect(&:objectID)
+					neighbourIDs.each do |neighbourID|
+						neighbourList << ObjectSpace._id2ref(neighbourID)
+					end
+					if not neighbourList.collect(&:visited).include?(false)
+						currentNode = pathRoute.pop
+					end
+
+					#currentNode = pathRoute.pop
+					currentNode.visited = true
+					"\n\n\n"
+					puts "BackTrackning to : #{currentNode.busstop.busStopName}"
+					"\n\n\n"
+				else currentNode == nil
 					puts "end of algo. Reached  Back to sourceNode."
 					return false		#end of algo. Reached  Back to sourceNode.
 				end
@@ -208,6 +224,7 @@ class BusstopNode
 			if (truthArray.size == currentNode.neighbours.size)
 				puts "We Need BackTracking..."
 			end
+			distanceToNeighboursArray = []
 			currentNode.neighbours.each do |neighbour|
 				neighbourNode = ObjectSpace._id2ref(neighbour.objectID)
 				# puts "\n\nneighbourNode => #{neighbourNode.to_yaml}\n\n"
@@ -216,23 +233,34 @@ class BusstopNode
 					currentNodeLatLong = currentNode.busstop.busStopLatLong
 					transitionDistance = Distance.calculateDistance(currentNodeLatLong,neighbourNodeLatLong)
 					neighbourNode.distance = transitionDistance + currentNode.distance
-					if transitionDistance < shortestDistance
-						shortestDistance = transitionDistance
-						currentNode.visited = true
-						currentNode = neighbourNode	
-						pathRoute << currentNode
-
-					else
-						puts "transitionDistance is not shortest."
-					end
-					print "\n\n\nRouteFound ===>>\n\n\n"
-					pathRoute.each do |u|
-						puts "#{u.busstop.busStopName}"
-					end
-					print"\n\n\n\n"
+					distanceToNeighboursArray << transitionDistance
+					
 				else
 					puts "NeighbourNode already Visited. Moving On..."
 				end
+			end
+			if distanceToNeighboursArray.size > 0
+				distanceToNeighboursArray.sort
+				shortestDistanceToNeighbour = distanceToNeighboursArray.first
+				currentNode.neighbours.each do |neighbour|
+					neighbourNode = ObjectSpace._id2ref(neighbour.objectID)
+					if neighbourNode.visited == false
+						neighbourNodeLatLong = neighbourNode.busstop.busStopLatLong
+						currentNodeLatLong = currentNode.busstop.busStopLatLong
+						transitionDistance = Distance.calculateDistance(currentNodeLatLong,neighbourNodeLatLong)
+						if (shortestDistanceToNeighbour == transitionDistance)
+							currentNode.visited = true
+							currentNode = neighbourNode
+							pathRoute << currentNode
+							distanceToNeighboursArray = []
+						end
+					end
+				end
+				print "\n\n\nRouteFound ===>>\n\n\n"
+				pathRoute.each do |u|
+					puts "#{u.busstop.busStopName}"
+				end
+				print"\n\n\n\n"
 			end
 		end
 	end
