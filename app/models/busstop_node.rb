@@ -171,14 +171,15 @@ class BusstopNode
 		if self.validateGraph == true
 			print "\n\nGraph is Valid. Continuing...\n\n"
 		else
-			return "Graph Not Valid"
+			puts "Graph Not Valid"
 			return false
 		end
 		sourceNode = self.findBusstopFromGraph(startID)
 		puts "Start Busstop Found."
 		destNode = self.findBusstopFromGraph(endID)
-		print "sourceNode:#{sourceNode.to_yaml}"
 		sourceNode.distance = 0
+		puts "\nsourceNode:#{sourceNode.to_yaml}"
+		puts "\nDestinationNode:#{destNode.to_yaml}"
 		#sourceNode.current = true
 		pathRoute << sourceNode
 		currentNode = sourceNode
