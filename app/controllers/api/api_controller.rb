@@ -6,7 +6,7 @@ class Api::ApiController < ApplicationController
             @route = Route.find(1)  #Hard Coded For now. Change this Immedaitley.
             startBusstop = Busstop.find(params[:id])
             # destinationBusstop = Busstop.find(params[:destinationLatLong])
-            path = BusstopNode.findRoute(1, 45)
+            path = BusstopNode.findRoute(1, 42)
             busstops = path.collect(&:busstop)
             @route.routeDistance = path.last.distance
             render :json => 
