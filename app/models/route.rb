@@ -8,8 +8,8 @@ class Route < ActiveRecord::Base
     has_many :company_routes
 
     validates :routeName, presence: true, uniqueness: true, format: { with: /\A[\sa-z0-9]+\Z/i, message: "only allows alphanumeric" }
-    validates :routeSourceName, presence: true, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }
-    validates :routeDestName, presence: true, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters numbers and space" }
+    validates :routeSourceName, presence: true, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }, length: {minimum: 5, maximum: 25}
+    validates :routeDestName, presence: true, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters numbers and space" }, length: {minimum: 5, maximum: 25}
     validates :routeDistance, numericality: true, :allow_blank => true
     validates :routeSourceLatLong, presence: true 
     validates :routeDestLatLong, presence: true
