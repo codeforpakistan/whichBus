@@ -1,4 +1,4 @@
-require 'Neighbour'
+# require 'Neighbour'
 class BusstopNode
 	attr_accessor :id, :neighbours, :busstop, :distance, :visited
 	@@graph = Array.new
