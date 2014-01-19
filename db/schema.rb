@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140105141833) do
+ActiveRecord::Schema.define(version: 20140118222846) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -51,6 +51,9 @@ ActiveRecord::Schema.define(version: 20140105141833) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "busstops", ["busStopLatLong"], name: "index_busstops_on_busStopLatLong", unique: true
+  add_index "busstops", ["busStopName"], name: "index_busstops_on_busStopName", unique: true
 
   create_table "companies", force: true do |t|
     t.datetime "created_at"
