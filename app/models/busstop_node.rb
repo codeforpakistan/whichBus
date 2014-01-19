@@ -2,19 +2,13 @@
 class BusstopNode
 	attr_accessor :id, :neighbours, :busstop, :distance, :visited
 	@@graph = Array.new
-	def initialize(id = 0, *neighbour)
+	def initialize()
 		@busstop = Busstop.new
 		@id = -1
 		@distance = -1
 		@visited = false
 		#@current = false
-		if not @id == 0
-			@id = id			
-		end
 		@neighbours = Array.new
-		neighbour.each do |n|
-			@neighbours << n
-		end
 	end
 
 	def self.graph
@@ -48,14 +42,14 @@ class BusstopNode
 			@@graph << newNode = BusstopNode.new
 			newNode.busstop = currentBusstop
 			newNode.id = currentBusstop.id
-			print "\nNode ID: #{newNode.id}\nNode Object_ID: #{newNode.object_id}"
+			# print "\nNode ID: #{newNode.id}\nNode Object_ID: #{newNode.object_id}"
 			#Assigning Neighbours
 		end
 
 		print "\nInitial Nodes Created\n\n"
 
 		@@graph.each do |newNode|
-			print "\n\nStarting New Busstop Iteration\n\n\nEnter To Start:"
+			# print "\n\nStarting New Busstop Iteration\n\n\nEnter To Start:"
 			#gets()
 			currentBusstop = newNode.busstop
 
@@ -63,9 +57,9 @@ class BusstopNode
 			routesForBusstop.each do |currentRoute|
 				relationForSequence = RouteBusstop.where(:busstop_id => currentBusstop.id, :route_id => currentRoute.id)
 				if relationForSequence.second.blank?
-					print "\nNo Second Object found. Valid Yet\n\n"
+					# print "\nNo Second Object found. Valid Yet\n\n"
 					currentBusstopSequenceNumber = relationForSequence.first.busStopSequenceNumber
-					print "\nValue for currentBusstopSequenceNumber ==> #{currentBusstopSequenceNumber}\n\n"
+					# print "\nValue for currentBusstopSequenceNumber ==> #{currentBusstopSequenceNumber}\n\n"
 					nextBusstopSequenceNumber = currentBusstopSequenceNumber + 1
 					previousBusstopSequenceNumber = currentBusstopSequenceNumber - 1
 					if not(Route.find(currentRoute.id).busstops.count <= currentBusstopSequenceNumber)
@@ -89,7 +83,7 @@ class BusstopNode
 				end
 
 			end
-			self.displayNode(newNode)
+			# self.displayNode(newNode)
 		end
 		return @@graph
 	end
@@ -98,7 +92,7 @@ class BusstopNode
 		foundBusstopCount = 0
 		@@graph.each do |node|
 			if node.id == busstop_id
-				print "Node Found From Graph for next Busstop"
+				puts "Node Found From Graph for next Busstop"
 				return node
 			end
 			
@@ -117,11 +111,11 @@ class BusstopNode
 
 	def self.findNeighbourBusstop(route_id = 0, busStopSequenceNumber = 0)
 		relationForNeighbourBusstops = RouteBusstop.where(:route_id => route_id, :busStopSequenceNumber => busStopSequenceNumber)
-		print "\ncount for relationForNeighbourBusstops ==> #{relationForNeighbourBusstops.count}\n\n"
-		print "\nRelation RouteBusstop For nextBusstopSequenceNumber ==> #{relationForNeighbourBusstops.first.to_yaml}\n\n"
+		# print "\ncount for relationForNeighbourBusstops ==> #{relationForNeighbourBusstops.count}\n\n"
+		# print "\nRelation RouteBusstop For nextBusstopSequenceNumber ==> #{relationForNeighbourBusstops.first.to_yaml}\n\n"
 		if not relationForNeighbourBusstops.blank?
 			nextBusstopToCurrentBusstop = Busstop.find(relationForNeighbourBusstops.first.busstop_id)
-			print "\n\nNeighbour Busstop to currentBusstop ==> #{nextBusstopToCurrentBusstop.to_yaml}\n\n"
+			# print "\n\nNeighbour Busstop to currentBusstop ==> #{nextBusstopToCurrentBusstop.to_yaml}\n\n"
 			return nextBusstopToCurrentBusstop.id
 		end
 		
@@ -175,7 +169,8 @@ class BusstopNode
 			return false
 		end
 		sourceNode = self.findBusstopFromGraph(startID)
-		puts "Start Busstop Found."
+		puts "Start Busstop Found. ==> #{sourceNode.to_yaml}"
+		# puts "Count For sourceNode ==> #{sourceNode.count}"
 		destNode = self.findBusstopFromGraph(endID)
 		sourceNode.distance = 0
 		puts "\nsourceNode:#{sourceNode.to_yaml}"

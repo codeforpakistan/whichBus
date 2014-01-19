@@ -5,6 +5,9 @@ class Api::ApiController < ApplicationController
         begin
             @route = Route.find(1)  #Hard Coded For now. Change this Immedaitley.
             path = BusstopNode.findRoute(params[:startLatLong], params[:destinationLatLong])
+
+            puts "Start <==> #{startLatLong} and End <==> #{destinationLatLong}"
+
             if path == true
                 busstops = path.collect(&:busstop)
                 # @route.routeDistance = path.last.distance
