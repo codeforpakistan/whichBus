@@ -89,14 +89,22 @@ class BusstopNode
 	end
 
 	def self.findBusstopFromGraph(busstop_id)
-		foundBusstopCount = 0
+		puts "Finding Busstop with id <==> #{busstop_id}"
+		returnArray = []
 		@@graph.each do |node|
-			if node.id == busstop_id
+			if node.busstop.id == busstop_id
 				puts "Node Found From Graph for next Busstop"
-				return node
+				returnArray << node
 			end
-			
 		end
+		if returnArray.count == 1
+				return returnArray.first
+				
+			else
+				puts "Graph is in inValid State with #{returnArray.count} Nodes for #{busstop_id}"
+				return nil
+			end
+
 	end
 
 	def self.displayNode(newNode)
@@ -161,20 +169,23 @@ class BusstopNode
 			return false;
 		end
 		pathRoute = []
+		@@graph = []
 		self.createGraph
 		if self.validateGraph == true
 			print "\n\nGraph is Valid. Continuing...\n\n"
+			puts "Total Nodes in @@Graph <==> #{@@graph.count}"
 		else
 			puts "Graph Not Valid"
 			return false
 		end
+		puts "Node IDs for Graph ==> #{@@graph.collect(&:id).to_yaml}"
 		sourceNode = self.findBusstopFromGraph(startID)
 		puts "Start Busstop Found. ==> #{sourceNode.to_yaml}"
 		# puts "Count For sourceNode ==> #{sourceNode.count}"
 		destNode = self.findBusstopFromGraph(endID)
+		puts "\nDestination Busstop Found ==> #{destNode.to_yaml}"
 		sourceNode.distance = 0
-		puts "\nsourceNode:#{sourceNode.to_yaml}"
-		puts "\nDestinationNode:#{destNode.to_yaml}"
+		
 		#sourceNode.current = true
 		pathRoute << sourceNode
 		currentNode = sourceNode

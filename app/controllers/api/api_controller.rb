@@ -3,12 +3,13 @@ class Api::ApiController < ApplicationController
     respond_to :json
     def showRoute
         begin
+            print "Start <==> #{params[:startLatLong]} and End <==> #{params[:destinationLatLong]}"
             @route = Route.find(1)  #Hard Coded For now. Change this Immedaitley.
-            path = BusstopNode.findRoute(params[:startLatLong], params[:destinationLatLong])
+            path = BusstopNode.findRoute(params[:startLatLong].to_i, params[:destinationLatLong].to_i)
 
-            puts "Start <==> #{startLatLong} and End <==> #{destinationLatLong}"
+            
 
-            if path == true
+            if not path == false
                 busstops = path.collect(&:busstop)
                 # @route.routeDistance = path.last.distance
                 render :json => 
