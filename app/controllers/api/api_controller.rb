@@ -7,7 +7,7 @@ class Api::ApiController < ApplicationController
             path = BusstopNode.findRoute(params[:startLatLong], params[:destinationLatLong])
             if path == true
                 busstops = path.collect(&:busstop)
-                @route.routeDistance = path.last.distance
+                # @route.routeDistance = path.last.distance
                 render :json => 
                 {
                     :status => "OK",
