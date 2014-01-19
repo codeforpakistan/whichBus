@@ -58,7 +58,7 @@ RailsBoot::Application.routes.draw do
   end
   
   get 'api/showRoute/:id', to: 'api/api#showRoute'
-  # post 'api/showRoute', to: 'api/api#showRoute'
+  post 'api/showRoute', to: 'api/api#showRoute'
   get 'api/savePolyLineData', to: 'api/api#savePolyLineData'
   post 'api/savePolyLineData', to: 'api/api#savePolyLineData'
   

@@ -4,18 +4,24 @@ class Api::ApiController < ApplicationController
     def showRoute
         begin
             @route = Route.find(1)  #Hard Coded For now. Change this Immedaitley.
-            startBusstop = Busstop.find(params[:id])
-            # destinationBusstop = Busstop.find(params[:destinationLatLong])
-            path = BusstopNode.findRoute(1, 42)
-            busstops = path.collect(&:busstop)
-            @route.routeDistance = path.last.distance
-            render :json => 
-            {
-                :status => "OK",
-                :route => @route,
-                :busstops => busstops
+            path = BusstopNode.findRoute(params[:startLatLong, params[:destinationLatLong])
+            if path == true
+                busstops = path.collect(&:busstop)
+                @route.routeDistance = path.last.distance
+                render :json => 
+                {
+                    :status => "OK",
+                    :route => @route,
+                    :busstops => busstops
 
-            }
+                }
+            else
+                render :json =>
+                {
+                    status: "Data Invalid For Algorithm. Returned False"
+                }
+            end
+            
         rescue ActiveRecord::RecordNotFound => e
             render :json =>
             {
