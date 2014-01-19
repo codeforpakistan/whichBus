@@ -4,7 +4,7 @@ class Api::ApiController < ApplicationController
     def showRoute
         begin
             @route = Route.find(1)  #Hard Coded For now. Change this Immedaitley.
-            path = BusstopNode.findRoute(params[:startLatLong, params[:destinationLatLong])
+            path = BusstopNode.findRoute(params[:startLatLong], params[:destinationLatLong])
             if path == true
                 busstops = path.collect(&:busstop)
                 @route.routeDistance = path.last.distance
@@ -16,10 +16,7 @@ class Api::ApiController < ApplicationController
 
                 }
             else
-                render :json =>
-                {
-                    status: "Data Invalid For Algorithm. Returned False"
-                }
+                render :json => { status: "Data Invalid For Algorithm. Returned False" }
             end
             
         rescue ActiveRecord::RecordNotFound => e
