@@ -56,12 +56,12 @@ RailsBoot::Application.routes.draw do
     post "company/removeCompanyRoute/:id", to: 'company#removeCompanyRoute', as: :company_remove_company_route
     delete 'admin/:id', to: 'devise/admin/registrations#destroyUser', as: :admin_destroy
   end
-  
+  get '/api/busStopData', to: 'api/api#busStopData'
   get 'api/showRoute/:id', to: 'api/api#showRoute'
   post 'api/showRoute', to: 'api/api#showRoute'
   get 'api/savePolyLineData', to: 'api/api#savePolyLineData'
   post 'api/savePolyLineData', to: 'api/api#savePolyLineData'
-  get '/api/busStopData', to: 'api/api#busStopData'
+  post '/api/busStopData', to: 'api/api#busStopData'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
