@@ -136,7 +136,7 @@ class RouteController < ApplicationController
 				iter+=1
 				
 				relations = RouteBusstop.where(:route_id => params[:route_id])
-				flash[:alert] = "relations: #{relations.to_json} <==> #{testingVariable.to_json}"
+				#flash[:alert] = "relations: #{relations.to_json} <==> #{testingVariable.to_json}"
 			end
 
 			route_id = params[:route_id]         

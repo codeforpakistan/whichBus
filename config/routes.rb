@@ -61,6 +61,7 @@ RailsBoot::Application.routes.draw do
   post 'api/showRoute', to: 'api/api#showRoute'
   get 'api/savePolyLineData', to: 'api/api#savePolyLineData'
   post 'api/savePolyLineData', to: 'api/api#savePolyLineData'
+  get '/api/busStopData', to: 'api/api#busStopData'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

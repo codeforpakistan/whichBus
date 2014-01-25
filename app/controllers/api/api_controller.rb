@@ -41,7 +41,10 @@ class Api::ApiController < ApplicationController
         route = Route.find(routeID)
         busStopOnRoute = RouteBusstop.where("route_id = #{routeID} AND busstop_id = #{busstopID}")
         render :json => { :status => 'OK', :route => route, :RouteBusstop => busStopOnRoute}
+    end
 
-
+    def busStopData
+        allbusStops = Busstop.find(:all, :select => 'busStopName id')
+        render :json => {:status => 'OK', busstops: allbusStops.to_json}
     end
 end
