@@ -9,9 +9,9 @@ class BusstopController < ApplicationController
     def showAll
         @busstops = Busstop.all
         #Debugging Purpose Only. Remove Immediatley.
-        path = BusstopNode.findRoute(1, 42)
-        @pathRoute = path.collect(&:busstop)
-        flash[:alert] = @pathRoute.collect(&:busStopName)
+        # path = BusstopNode.findRoute(1, 42)
+        # @pathRoute = path.collect(&:busstop)
+        # flash[:alert] = @pathRoute.collect(&:busStopName)
     end
 
     def view
