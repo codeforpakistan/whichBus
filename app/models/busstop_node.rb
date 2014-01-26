@@ -194,7 +194,6 @@ class BusstopNode
 				print "#{currentNode.to_yaml}"
 				print "Algo complete"
 				@@graph = []
-				bestTravelOption = self.calculateTravelOption(pathRoute)
 				return pathRoute
 			end
 			unVisitedNodes = self.allUnvisitedNode
