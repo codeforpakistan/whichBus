@@ -188,10 +188,36 @@ function markallstops(){
 	var location = abcdefghi2;
 	
 	
+console.log("stopName array"+stopName.length);
+console.log("location array"+location.length);
+
 	var firstLocation=location[0];
 	var temp= location.length;
 	var lastLocation= location[temp-1];
 	
+
+console.log("firstLocation"+firstLocation);
+console.log("lastLocation"+lastLocation);
+	
+for (var i = 0; i < stopName.length; i++) {
+	  var loc=location[i];
+	  var nam= stopName[i];
+	  
+	  
+	  markstop(loc,i,nam);
+	lastLocation=location[i];
+	
+	waypts.push({
+          location:loc,
+          stopover:true
+      });
+	
+	
+} 
+
+
+
+
 	
 	
 	// try code 
@@ -243,21 +269,7 @@ function markallstops(){
 	
 	
 	
-	for (var i = 0; i < stopName.length; i++) {
-		  var loc=location[i];
-		  var nam= stopName[i];
-		  
-		  
-		  markstop(loc,i,nam);
-		lastLocation=location[i];
-		
-		waypts.push({
-	          location:loc,
-	          stopover:true
-	      });
-		
-		
-	} 
+	
 
 }
 
