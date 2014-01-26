@@ -1,0 +1,5 @@
+class TravelPath
+
+	def initialize
+	end
+end

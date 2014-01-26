@@ -98,12 +98,12 @@ class BusstopNode
 			end
 		end
 		if returnArray.count == 1
-				return returnArray.first
-				
-			else
-				puts "Graph is in inValid State with #{returnArray.count} Nodes for #{busstop_id}"
-				return nil
-			end
+			return returnArray.first
+
+		else
+			puts "Graph is in inValid State with #{returnArray.count} Nodes for #{busstop_id}"
+			return nil
+		end
 
 	end
 
@@ -194,6 +194,7 @@ class BusstopNode
 				print "#{currentNode.to_yaml}"
 				print "Algo complete"
 				@@graph = []
+				bestTravelOption = self.calculateTravelOption(pathRoute)
 				return pathRoute
 			end
 			unVisitedNodes = self.allUnvisitedNode
@@ -271,4 +272,17 @@ class BusstopNode
 			end
 		end
 	end
+
+	# def calculateTravelOption(busstopArray)
+	# 	busstopArray = busstopArray.collect(&:id)
+	# 	startBusstopID = busstopArray.first
+	# 	destinationBusstopID = busstopArray.last
+	# 	iter = 1
+	# 	currentRoute = 0
+	# 	routesToCheck = Busstop.find(startBusstopID).routes.collect(&:id)
+
+	# 	while busstopArray[iter] != nil
+	# 		nextBusstop	
+	# 	end
+	# end
 end
