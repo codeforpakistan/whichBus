@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Myapp</title>
+	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true%>
+	<%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?key=AIzaSyATjMfjcMWnRf9IMQDLVrdAHk4Y7-x62t8&sensor=false'%>
+	<%= javascript_include_tag 'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js'%>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<style>
+input[type=text] {
+	padding: 0px;
+	margin-bottom: 7px;
+}
+
+.btn {
+	padding: 0px 6px;
+}
+
+html,body,#map-canvas {
+	height: 100%;
+	margin: 0px;
+	padding: 0px
+}
+
+#panel {
+	position: absolute;
+	top: 5px;
+	left: 45%;
+	margin-left: -180px;
+	z-index: 5;
+	background-color: #fff;
+	padding: 5px;
+	/* border: 1px solid #999; */
+	background-color: rgba(5,5,5,0.7);
+	border: none;
+	border-radius: 15px;
+	width: 560px;
+}
+
+#map-canvas img {
+	max-width: none;
+}
+</style>
+</head>
+<body>
+	<%= yield %>
+</body>
+</html>

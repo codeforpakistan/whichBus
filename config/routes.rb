@@ -1,4 +1,5 @@
 RailsBoot::Application.routes.draw do
+  get "front_ends/index"
   #devise_for :admin
   devise_for :admin, :controllers => { :registrations => "devise/admin/registrations", :sessions => "devise/admin/sessions", :passwords => "devise/admin/passwords" }
   
@@ -62,6 +63,8 @@ RailsBoot::Application.routes.draw do
   get 'api/savePolyLineData', to: 'api/api#savePolyLineData'
   post 'api/savePolyLineData', to: 'api/api#savePolyLineData'
   post '/api/busStopData', to: 'api/api#busStopData'
+
+  resources :front_ends
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

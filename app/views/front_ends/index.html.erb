@@ -1,0 +1,63 @@
+<div id="panel">
+		<!-- <b>Start: </b> <select id="start">
+			 <option value="penn station, new york, ny">Penn Station</option>
+      <option value="grand central station, new york, ny">Grand Central Station</option>
+      <option value="625 8th Avenue, New York, NY, 10018">Port Authority Bus Terminal</option>
+      <option value="staten island ferry terminal, new york, ny">Staten Island Ferry Terminal</option>
+      <option value="101 E 125th Street, New York, NY">Harlem - 125th St Station</option>
+			<option value="Gajju Matta Bus Stop, Service Road, Pakistan">gajju
+				matta</option>
+			<option value="Morr Samanabad, Multan Road, Lahore, Punjab, Pakistan">Samanabad</option>
+
+
+		</select> <b>End: </b> <select id="end" onchange="markallstops();">
+			<option value="Chauburji Park Road, Lahore, Punjab">Chauburji
+				Park Road</option>
+
+			<option
+				value="Akbar Chowk, Maulana Shaukat Ali Road, Lahore, Punjab, Pakistan">Akbar
+				Chowk</option>
+			<option value="Bhala Chowk, Multan Road, Lahore, Punjab, Pakistan">Bhala
+				Chowk</option>
+
+			<option
+				value="Azadi Chowk Bus Station, Ravi Rd, Lahore, Punjab, Pakistan">Azadi
+				Chowk</option>
+ -->
+			<!--   <option value="260 Broadway New York NY 10007">City Hall</option>
+      <option value="W 49th St & 5th Ave, New York, NY 10020">Rockefeller Center</option>
+      <option value="moma, New York, NY">MOMA</option>
+      <option value="350 5th Ave, New York, NY, 10118">Empire State Building</option>
+      <option value="253 West 125th Street, New York, NY">Apollo Theater</option>
+      <option value="1 Wall St, New York, NY">Wall St</option> -->
+		 <!-- </select> -->  <!-- <b>Mode of Travel: </b> <select id="mode" onchange="calcRoute();">
+			<option value="DRIVING">Driving</option>
+			<option value="WALKING">Walking</option>
+			<option value="BICYCLING">Bicycling</option>
+			  <option value="TRANSIT">Transit</option>
+		</select>  -->
+
+
+
+
+<!-- new code of search -->
+
+<label for="sourceInput" style="float: left;font-weight: bold;color: rgb(240, 215, 197);;font-size: large;padding-top: 5px;margin-left: 7px;
+">Source&nbsp;&nbsp; </label>
+    <input id="sourceInput" type="text" data-provide="typeahead" style="float: left;width: 120px; margin-top: 4px;]">
+    <input id="sourceInputId" type="hidden"/>
+&nbsp;&nbsp;
+    <label for="destinationInput" style="float: left;font-weight: bold;color:rgb(240, 215, 197);;font-size: large;padding-top: 5px;
+    ">&nbsp;&nbsp;Destination&nbsp;&nbsp; </label>
+    <input id="destinationInput" type="text" data-provide="typeahead" style="float: left;width: 120px; margin-top: 4px;]">
+	<input id="destinationInputId" type="hidden"/>
+&nbsp;&nbsp;
+	<!-- <br /> -->
+	<button class="btn btn-info" type="button" onclick="getRouteInfo();" style="margin-top:4px;margin-right: 6px;" >
+		Get Route
+	</button>
+	
+	<!-- new code of search -->
+
+	</div>
+	<div id="map-canvas"></div>
