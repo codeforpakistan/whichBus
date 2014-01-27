@@ -1,7 +1,0 @@
-class BusstopTransition
-	def initialize
-		@fromBusstop = 0
-		@toBusstop = 0
-		@routeTaken = 0
-	end
-end
