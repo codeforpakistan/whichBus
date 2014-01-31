@@ -10,15 +10,15 @@ class BusstopNode
 		#@current = false
 		@neighbours = Array.new
 	end
-
+	#Getter Method For Graph
 	def self.graph
 		@@graph
 	end
-
+	#I Forgot what this was for. was written when the createGraph was written. Not being Used in current Scope.
 	def self.addToGraph(data)
 		@@graph << data
 	end
-
+	#print the Graph. No Real purpose. Too much output.
 	def self.printGraph
 		@@graph.each do |node|
 			print "Node id ==> #{node.id} ==> "
@@ -28,12 +28,13 @@ class BusstopNode
 			print "\n"
 		end
 	end
-
+	#return a busstop object. should be renamed to getBusstopByID.
 	def getBusstop(id)
 		@id = id
 		return @busstop = Busstop.find(id)
 	end
 
+	#Create a graph from all the busstops data which is included in Routes.
 	def self.createGraph
 		allBusstops = Busstop.all
 		allBusstops.each do |currentBusstop|
@@ -87,7 +88,7 @@ class BusstopNode
 		end
 		return @@graph
 	end
-
+	#Find a given Node that contains a busstop with the given id. (Node.id and Node.busstop.id is the same)
 	def self.findBusstopFromGraph(busstop_id)
 		puts "Finding Busstop with id <==> #{busstop_id}"
 		returnArray = []
@@ -106,7 +107,7 @@ class BusstopNode
 		end
 
 	end
-
+	#Print a given Node
 	def self.displayNode(newNode)
 		print "\n\nPrinting Node Properties\n\n"
 		print "\tNode ID = #{newNode.id}\n"
@@ -128,7 +129,8 @@ class BusstopNode
 		end
 		
 	end
-
+	#Assert Type Method. Will Validate if the Graph is valid to work with or not.
+	#Checks if all the object_id of neighbours are valid Node.object_id
 	def self.validateGraph(graph = [])
 		flag = true
 		objectIDArray = Array.new
@@ -189,7 +191,9 @@ class BusstopNode
 		#sourceNode.current = true
 		pathRoute << sourceNode
 		currentNode = sourceNode
+		#Lets find a path from Source to destination and then break. pathRoute will contain the sequence of busstops.
 		while true
+			#break and retrun `pathRoute` if we have reached the destinationNode.
 			if currentNode.id == destNode.id
 				print "#{currentNode.to_yaml}"
 				print "Algo complete"
@@ -199,39 +203,45 @@ class BusstopNode
 			unVisitedNodes = self.allUnvisitedNode
 			shortestDistance = 999999999999999
 			truthArray = []
-
+			#Is there any neighbour to the currentNode that has not been visited?
 			currentNode.neighbours.each do |neighbour|
 				neighbourNode = ObjectSpace._id2ref(neighbour.objectID)
 				if neighbourNode.visited == true
 					truthArray << neighbourNode.visited
 				end
 			end
+			#is there any Neighbour node that has not been visited.
 			if truthArray.size >= currentNode.neighbours.size
 				neighbourList = []
 				currentNode = pathRoute.last
+				#currentNode == nil means the pathRoute is empty and we cannot backtrack. and shoud retrun false or ###return pathRoute.###
 				if not currentNode == nil
+					#object_id for all Neighbours.
 					neighbourIDs = currentNode.neighbours.collect(&:objectID)
 					neighbourIDs.each do |neighbourID|
 						neighbourList << ObjectSpace._id2ref(neighbourID)
 					end
+					#if neighbourlist contains all visited Nodes. Then we need to backTrack.
 					if not neighbourList.collect(&:visited).include?(false)
 						currentNode = pathRoute.pop
 					end
 
-					#currentNode = pathRoute.pop
 					currentNode.visited = true
 					"\n\n\n"
 					puts "BackTrackning to : #{currentNode.busstop.busStopName}"
 					"\n\n\n"
 				else currentNode == nil
 					puts "end of algo. Reached  Back to sourceNode."
-					return false		#end of algo. Reached  Back to sourceNode.
+					return false		#end of algo. Reached  Back to sourceNode. ###Should Return pathRoute.###
 				end
 			end
+			#remove this if condition in future.
 			if (truthArray.size == currentNode.neighbours.size)
 				puts "We Need BackTracking..."
 			end
+			#this will hold the Distances to all neighbours from the currentNode. (can assert that this has same count as currentNode.neighbours)
 			distanceToNeighboursArray = []
+			#Find distance To all neighbours to currentNode and push onto distanceToNeighboursArray.
 			currentNode.neighbours.each do |neighbour|
 				neighbourNode = ObjectSpace._id2ref(neighbour.objectID)
 				# puts "\n\nneighbourNode => #{neighbourNode.to_yaml}\n\n"
@@ -246,8 +256,11 @@ class BusstopNode
 					puts "NeighbourNode already Visited. Moving On..."
 				end
 			end
+			#check if there was any number of unvisited Nodes.
+			#this codition if false means that all currentNode.neighbours has been visited.
 			if distanceToNeighboursArray.size > 0
 				distanceToNeighboursArray.sort
+				#get the shorteset distance and find the neighbour it belongs to.
 				shortestDistanceToNeighbour = distanceToNeighboursArray.first
 				currentNode.neighbours.each do |neighbour|
 					neighbourNode = ObjectSpace._id2ref(neighbour.objectID)
@@ -255,6 +268,7 @@ class BusstopNode
 						neighbourNodeLatLong = neighbourNode.busstop.busStopLatLong
 						currentNodeLatLong = currentNode.busstop.busStopLatLong
 						transitionDistance = Distance.calculateDistance(currentNodeLatLong,neighbourNodeLatLong)
+						#we found the Neighbour with shortest distance that has not been visited already. Now move to this node (set it as currentNode)
 						if (shortestDistanceToNeighbour == transitionDistance)
 							currentNode.visited = true
 							currentNode = neighbourNode
@@ -263,6 +277,7 @@ class BusstopNode
 						end
 					end
 				end
+				#print out the route Formed after each step.(After each transition)
 				print "\n\n\nRouteFound ===>>\n\n\n"
 				pathRoute.each do |u|
 					puts "#{u.busstop.busStopName}"
