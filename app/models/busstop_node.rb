@@ -165,6 +165,7 @@ class BusstopNode
 	end
 
 	def self.findRoute(startID,endID)
+		allRoutesFound = Array.new
 		if not (Route.all.count > 0)
 			puts "No Routes Exist."
 			return false;
@@ -197,7 +198,9 @@ class BusstopNode
 				print "#{currentNode.to_yaml}"
 				print "Algo complete"
 				@@graph = []
-				return pathRoute
+				allRoutesFound << pathRoute
+				pathRoute.pop
+				currentNode = pathRoute.pop
 			end
 			unVisitedNodes = self.allUnvisitedNode
 			shortestDistance = 999999999999999
@@ -231,7 +234,7 @@ class BusstopNode
 					"\n\n\n"
 				else currentNode == nil
 					puts "end of algo. Reached  Back to sourceNode."
-					return false		#end of algo. Reached  Back to sourceNode. ###Should Return pathRoute.###
+					return allRoutesFound		#end of algo. Reached  Back to sourceNode. ###Should Return pathRoute.###
 				end
 			end
 			#remove this if condition in future.
