@@ -245,21 +245,7 @@ console.log("location array"+location.length);
 console.log("firstLocation"+firstLocation);
 console.log("lastLocation"+lastLocation);
 	
-for (var i = 0; i < stopName.length; i++) {
-	  var loc=location[i];
-	  var nam= stopName[i];
-	  
-	  
-	  markstop(loc,i,nam);
-	lastLocation=location[i];
-	
-	waypts.push({
-          location:loc,
-          stopover:true
-      });
-	
-	
-} 
+
 
 
 
@@ -312,7 +298,21 @@ for (var i = 0; i < stopName.length; i++) {
 	// 
 	
 	
+	for (var i = 0; i < stopName.length; i++) {
+	  var loc=location[i];
+	  var nam= stopName[i];
+	  
+	  
+	  markstop(loc,i,nam);
+	lastLocation=location[i];
 	
+	waypts.push({
+          location:loc,
+          stopover:true
+      });
+	
+	
+} 
 	
 	
 	
