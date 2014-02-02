@@ -195,12 +195,15 @@ class BusstopNode
 		while true
 			#break and retrun `pathRoute` if we have reached the destinationNode.
 			if currentNode.id == destNode.id
+				currentNode.visited = false	#we might arrive on this through a different route.
 				print "#{currentNode.to_yaml}"
 				print "Algo complete"
-				@@graph = []
-				allRoutesFound << pathRoute
-				pathRoute.pop
-				currentNode = pathRoute.pop
+				newPathFound = Array.new
+				newPathFound = pathRoute.map(&:dup)
+				allRoutesFound << newPathFound
+				#set the current node to go to.
+				#Required. Please Implement before calling this method.
+				raise "Method Imcomplete."
 			end
 			unVisitedNodes = self.allUnvisitedNode
 			shortestDistance = 999999999999999
