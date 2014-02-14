@@ -1,5 +1,5 @@
 class BusstopNode
-	attr_accessor :id, :neighbours, :busstop, :distance, :visited
+	attr_accessor :id, :neighbours, :busstop, :distance, :visited, :route_id
 	@@graph = Array.new
 	def initialize()
 		@busstop = Busstop.new
@@ -8,6 +8,7 @@ class BusstopNode
 		@visited = false
 		#@current = false
 		@neighbours = Array.new
+		@route_id = -1
 	end
 	#Getter Method For Graph
 	def self.graph
@@ -250,7 +251,6 @@ class BusstopNode
 					transitionDistance = Distance.calculateDistance(currentNodeLatLong,neighbourNodeLatLong)
 					neighbourNode.distance = transitionDistance + currentNode.distance
 					distanceToNeighboursArray << transitionDistance
-					
 				else
 					puts "NeighbourNode already Visited. Moving On..."
 				end
@@ -284,6 +284,63 @@ class BusstopNode
 				print"\n\n\n\n"
 			end
 		end
+	end
+
+
+	def self.findRouteFrequencyFromPath(pathRoute)
+		useBusAtBusstop = []
+		unless pathRoute == false
+			busstopArray = []
+			busstopArray = pathRoute.collect(&:busstop)
+			allBusstopRoutesArray = []
+			pathRouteBusstopIDs = pathRoute.collect(&:id)
+			puts "busstop IDs: #{pathRouteBusstopIDs}"
+			pathRouteBusstopIDs.each do |busstop_id|
+				routes =  Busstop.find(busstop_id).routes.collect(&:id)
+				routes.each do |r|
+					allBusstopRoutesArray << r
+				end
+			end
+			puts "All BusStop Routes Array #{allBusstopRoutesArray.sort}"
+			uniqueArray = allBusstopRoutesArray.uniq
+			routeCount = Hash.new
+			uniqueArray.each do |routeID|
+				routeCount[routeID] = allBusstopRoutesArray.count(routeID)
+			end
+			uniqueArray = []
+			puts "Sorted Hash : #{routeCount.sort_by { |key, value| value}}"
+			sortedArrayFromHash = routeCount.sort_by { |key, value| value}
+			sortedArrayFromHash.each do |keyValue|
+				uniqueArray << keyValue.first
+			end
+			routeFrequency = uniqueArray.reverse
+			# 
+			busstopArray.each do |busstop|
+				routeForBusstop = busstop.routes.collect(&:id)
+				routeForBusstop = routeForBusstop & routeFrequency
+				frequencyTable = Hash.new
+				routeForBusstop.each do |aRouteID|
+					frequencyTable[aRouteID] = allBusstopRoutesArray.count(aRouteID)
+				end
+				puts "Current Busstop: #{busstop.id}'s Frequency Table: #{frequencyTable.sort_by {|key, value| value}}"
+				frequencyArrayFromHash = frequencyTable.sort_by {|key, value| value}
+				busNumbers = []
+				frequencyArrayFromHash.each do |keyValue|
+					busNumbers << keyValue.first
+				end
+				busNumbers = busNumbers.reverse
+				useBusAtBusstop << busNumbers.first
+			end
+		end
+		travellingPath = Array.new
+		iter = 0
+		pathRoute.each do |aNode|
+			aNode.route_id = useBusAtBusstop[iter]
+			iter = iter + 1
+			travellingPath << aNode.dup
+		end
+		puts "Please Use this Route ==> #{travellingPath.to_yaml}"
+		return travellingPath
 	end
 
 	# def calculateTravelOption(busstopArray)
