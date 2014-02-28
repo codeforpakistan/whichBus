@@ -78,13 +78,33 @@ class RouteController < ApplicationController
 	end
 
 	def showEditRoute
-		id = params[:id]
+		
+				id = params[:id]
+		@rel = Array.new
 		@foundBusstops = Array.new
 		@busstops = Busstop.all
 		@routeBusstopRelations = RouteBusstop.where(:route_id => id)
+
+		# Getting the RoutBustop Relation According to its sequence number
+		@sequenceNumberOrder = @routeBusstopRelations.order(:busStopSequenceNumber)
+		
+		# getting the busstop id in according to sequence number
+		@sequenceNumberOrder.each do |r|
+			@rel << r.busstop_id
+		end
+
 		@route = Route.find(params[:id])
+		
+		# Busstop of route in sequence order
+		@busstopsOnRoutes = Array.new
+		@rel.each do |i|
+			@busstopsOnRoutes << Busstop.find(i)
+		end
+
 		@busstopsOnRoute = Array.new
-		@busstopsOnRoute = @route.busstops
+		
+		@busstopsOnRoute = @route.busstops # This will showing Inclunding Busstopn in Route
+		
 		@busstopArray = session[:busstopsIDs]
 		session.delete(:busstopsIDs)
 		if(@busstopArray != nil)    
@@ -94,6 +114,23 @@ class RouteController < ApplicationController
 				end   
 			end
 		end
+
+		# id = params[:id]
+		# @foundBusstops = Array.new
+		# @busstops = Busstop.all
+		# @routeBusstopRelations = RouteBusstop.where(:route_id => id)
+		# @route = Route.find(params[:id])
+		# @busstopsOnRoute = Array.new
+		# @busstopsOnRoute = @route.busstops
+		# @busstopArray = session[:busstopsIDs]
+		# session.delete(:busstopsIDs)
+		# if(@busstopArray != nil)    
+		# 	if (@busstopArray.size > 0)
+		# 		@busstopArray.each do |b|
+		# 			@foundBusstops << Busstop.find(b)
+		# 		end   
+		# 	end
+		# end
 	end
 	
 	def saveBusStopOnRoute
