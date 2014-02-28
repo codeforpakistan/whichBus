@@ -1,3 +1,5 @@
+= @rel.to_yaml
+= @b.to_yaml
 - if @busstops.blank?
 	%hr
 	%h3 No bus stop currently exist.
@@ -65,7 +67,7 @@
 		%br
 		%br
 		%ul.well.container.list-group{:id => "sortable", :style => "padding-left:25%; padding-right:20%;"}
-			- @busstopsOnRoute.each do |busstop|
+			- @busstopsOnRoutes.each do |busstop|
 				%li.list-group-item.col-lg-10{:id => busstop.id}
 					%h4
 						= busstop.busStopName
