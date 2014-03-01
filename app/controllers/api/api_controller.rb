@@ -3,26 +3,54 @@ class Api::ApiController < ApplicationController
     respond_to :json
     def showRoute
         begin
-            print "Start <==> #{params[:startLatLong]} and End <==> #{params[:destinationLatLong]}"
-            @route = Route.find(1)  #Hard Coded For now. Change this Immedaitley.
-            path = BusstopNode.findRoute(params[:startLatLong].to_i, params[:destinationLatLong].to_i)
+            #Assuming we got IDs from iOS App for Now. For Testing Purpose.
+            startID = params[:startPoint].to_i
+            destinationID = params[:destinationPoint].to_i
 
-            
-
-            if not path == false
-                busstops = path.collect(&:busstop)
-                # @route.routeDistance = path.last.distance
-                render :json => 
-                {
-                    :status => "OK",
-                    :route => @route,
-                    :busstops => busstops
-
-                }
+            startBusstop = Busstop.find startID
+            destinationBusstop = Busstop.find destinationID
+            if startBusstop.routes.count > 0 and destinationBusstop.routes.count > 0
+                @routes = Array.new
+                print "Start <==> #{params[:startPoint]} and End <==> #{params[:destinationPoint]}"
+                path = BusstopNode.findRoute(startID, destinationID)
+                path = BusstopNode.findRouteFrequencyFromPath(path)
+                if not path == false
+                    @busstops = path.collect(&:busstop)
+                    route_ids = path.collect(&:route_id)
+                    route_ids = route_ids.uniq
+                    route_ids.each do |routeID|
+                    @routes << Route.find(routeID)
+                end
+                    # @route.routeDistance = path.last.distance
+                    render :json => 
+                    {
+                        :status => "OK",
+                        :response => 
+                        {
+                            :routes => @routes,
+                            :busstops => @busstops
+                        }
+                    }
+                else
+                    render :json => 
+                    {
+                        status: "Failed",
+                        response:
+                        {
+                            message: "Data Invalid For Algorithm. Returned False"
+                        }
+                    }
+                end
             else
-                render :json => { status: "Data Invalid For Algorithm. Returned False" }
+                render :json => 
+                { 
+                    status: "Failed",
+                    response:
+                    {
+                            message: "No Routes Found for Endpoints." 
+                    }
+                }    
             end
-            
         rescue ActiveRecord::RecordNotFound => e
             render :json =>
             {
@@ -31,16 +59,6 @@ class Api::ApiController < ApplicationController
 
             }
         end
-    end
-
-
-    def savePolyLineData
-        busstopID = params[:busStopID]
-        routeID = params[:routeID]
-        nextBusstop = params[:nextBusStopID]
-        route = Route.find(routeID)
-        busStopOnRoute = RouteBusstop.where("route_id = #{routeID} AND busstop_id = #{busstopID}")
-        render :json => { :status => 'OK', :route => route, :RouteBusstop => busStopOnRoute}
     end
 
     def busStopData
