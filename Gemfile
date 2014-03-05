@@ -55,6 +55,8 @@ gem "devise", "~> 3.1.0"
 
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
+gem 'httparty'
+
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 

@@ -59,6 +59,9 @@ GEM
     haml (4.0.3)
       tilt
     hike (1.2.3)
+    httparty (0.12.0)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.5)
     jbuilder (1.5.1)
       activesupport (>= 3.0.0)
@@ -75,6 +78,7 @@ GEM
     mime-types (1.25)
     minitest (4.7.5)
     multi_json (1.8.0)
+    multi_xml (0.5.5)
     orm_adapter (0.4.0)
     pg (0.17.0)
     polyglot (0.3.3)
@@ -141,6 +145,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise (~> 3.1.0)
   haml
+  httparty
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-rails

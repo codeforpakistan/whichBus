@@ -63,6 +63,7 @@ RailsBoot::Application.routes.draw do
   get 'api/savePolyLineData', to: 'api/api#savePolyLineData'
   post 'api/savePolyLineData', to: 'api/api#savePolyLineData'
   post '/api/busStopData', to: 'api/api#busStopData'
+  post 'api/geoCodeBusstops', :to => 'api/api#geoCodeBusstops'
 
   resources :front_ends
   
