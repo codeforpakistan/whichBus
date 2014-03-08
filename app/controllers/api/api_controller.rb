@@ -81,8 +81,8 @@ class Api::ApiController < ApplicationController
     def geoCodeBusstops(startPointAddress)
         startID = startPointAddress
         
-        startPointUrl = "http://maps.googleapis.com/maps/api/geocode/json?address=#{startID}&sensor=false"
-
+        startPointUrl = "http://maps.googleapis.com/maps/api/geocode/json?address=#{startID}&sensor=false&api_key=#{ENV['GOOGLE_API_KEY']}"
+        puts "Url to Hit: #{startPointUrl}"
         responseStartAddress = HTTParty.get(startPointUrl)
 
         puts responseStartAddress.code
