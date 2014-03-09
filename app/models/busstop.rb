@@ -13,6 +13,14 @@ class Busstop < ActiveRecord::Base
     #validates :busStopLatLong, presence: true
     validates :busStopSecName, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }, length: {minimum: 3, maximum: 25}, :allow_blank => true
     
+    def self.search(search)
+        if search
+            Busstop.find(:all, :conditions => ["\'busStopName\' LIKE ?", "%#{search}%"])
+        else
+            Busstop.find(:all)
+        end
+    end
+
     def validateLatLong(fieldName = {})
         fieldErrors = Hash.new
         int = 0

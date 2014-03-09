@@ -79,7 +79,11 @@ class RouteController < ApplicationController
 
 	def showEditRoute
 		
-				id = params[:id]
+		#@search = Route.search(params[:search])
+
+
+		
+		id = params[:id]
 		@rel = Array.new
 		@foundBusstops = Array.new
 		@busstops = Busstop.all
@@ -187,6 +191,7 @@ class RouteController < ApplicationController
 
 	def searchBusstop
 		busstops = Route.search(params[:search])
+		flash[:alert] = "#{busstops}"
 		busstopsIDs = Array.new
 		busstops.each do |bus|
 			busstopsIDs << bus.id 
