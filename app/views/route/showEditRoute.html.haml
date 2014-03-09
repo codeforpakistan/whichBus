@@ -1,5 +1,6 @@
 = @rel.to_yaml
 = @b.to_yaml
+= @search.to_yaml
 - if @busstops.blank?
 	%hr
 	%h3 No bus stop currently exist.
@@ -15,9 +16,9 @@
 				%div.col-lg-6
 					%div.input-group
 						= hidden_field_tag(:id, @route.id)
-						= text_field_tag(:search, nil, :class => "form-control" , :placeholder => "Bus-Stop Name")
+						= text_field_tag(:search, params[:search], :class => "form-control" , :placeholder => "Bus-Stop Name")
 						%span.input-group-btn
-							%button.btn.btn-primary{:type => "submit"}
+							%button.btn.btn-primary{:type => "submit" }
 								%span.glyphicon.glyphicon-search
 						= #submit_tag("Search", class: "btn btn-default")
 	%h3= "Choose busstops for route: '#{@route.routeName}'"

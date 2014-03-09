@@ -36,7 +36,7 @@ RailsBoot::Application.routes.draw do
   post 'route/saveBusStopOnRoute', to: 'route#saveBusStopOnRoute'
   get 'welcome', to: 'welcome#welcome', as: :welcome_welcome
 
-  root 'front_ends#index'
+  root 'welcome#welcome'
   #rogue lines
   
   #
