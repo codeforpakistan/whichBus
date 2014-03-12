@@ -31,6 +31,33 @@ class Api::ApiController < ApplicationController
                     route_ids.each do |routeID|
                     @routes << Route.find(routeID)
                 end
+                    allBusStopOnMap = Array.new
+                    singleRoute = Array.new
+                    path.each do |aPoint|
+                        allBusStopOnMap << aBusStopOnMap = BusstopOnMap.new(aPoint.busstop,aPoint.route_id)
+                    end
+
+                    totalBusstops = allBusStopOnMap.count
+                    i = 0
+                    
+                    allBusStopOnMap.each_index do |index|
+                        #binding.pry
+                        
+                        # puts "element #{allBusStopOnMap[index].route_id} index #{index}"
+                        # i+=1
+                        if index + 1 < totalBusstops 
+                            puts "index #{index}"
+                            if ! (allBusStopOnMap[index].route_id == allBusStopOnMap[index + 1].route_id) 
+                                #binding.pry
+                                aBusStop = allBusStopOnMap[index]
+                                aBusStop.next_route_id = allBusStopOnMap[index + 1].route_id
+                                singleRoute << aBusStop
+                            end
+                        end
+
+
+
+                    end
                     # @route.routeDistance = path.last.distance
                     render :json => 
                     {
@@ -38,7 +65,10 @@ class Api::ApiController < ApplicationController
                         :response => 
                         {
                             :routes => @routes,
-                            :busstops => path
+                            :sourceBusstop => allBusStopOnMap.first,
+                            :destinationBusstop => allBusStopOnMap.last,
+                            :intermediateBusstop => singleRoute,
+                            :allbusStopsOnRoute => allBusStopOnMap
                         }
                     }
                 else
