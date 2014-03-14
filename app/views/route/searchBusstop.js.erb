@@ -1,0 +1,6 @@
+//alert("#{@busstops}");
+newItem = ("<%= escape_javascript(render(@busstops)) %>");
+//alert(newItem);
+//logger.console("Few Busstops Found");
+// $('#busStopsHolder').html('<table class="table table-hover table-condensed text-center"><tr><th class="text-center">Bus Stop Name</th><th class="text-center">Include</th><th class="text-center">Remove</th></tr>');
+$('#busStopsHolder').html('<table class="table table-hover table-condensed text-center"><tr><th class="text-center">Bus Stop Name</th><th class="text-center">Include</th><th class="text-center">Remove</th></tr>' + newItem + '</table>');
