@@ -35,4 +35,13 @@ $(document).ready(function()
 		
 	});    
 
+	$(function()
+	{
+		$('#searchAjaxForm input').keyup(function()
+		{
+			
+			$('#searchAjaxForm').submit();
+		});
+	});
 });
+

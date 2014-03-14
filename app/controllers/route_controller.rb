@@ -190,14 +190,18 @@ class RouteController < ApplicationController
 	
 
 	def searchBusstop
-		busstops = Route.search(params[:search])
-		flash[:alert] = "#{busstops}"
+		@busstops = Route.search(params[:search])
+		#flash[:alert] = "#{busstops}"
 		busstopsIDs = Array.new
-		busstops.each do |bus|
+		@busstops.each do |bus|
 			busstopsIDs << bus.id 
 		end
-		session[:busstopsIDs] = busstopsIDs
-		redirect_to route_show_edit_route_path(params[:id])
+		puts "Total #{@busstops.count} Busstops Found."
+		# session[:busstopsIDs] = busstopsIDs
+		#redirect_to route_show_edit_route_path(params[:id])
+		respond_to do |format|
+			format.js {}
+		end
 	end
 
 	def includeRouteBusstop
