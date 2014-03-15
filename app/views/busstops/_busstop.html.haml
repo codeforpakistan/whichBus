@@ -1,21 +1,20 @@
 %tr
-	%td
-		- routeInfo = busstop.routes.collect(&:id)
-		- if routeInfo.include?(params[:id])
-			%td
-				= busstop.busStopName
-			%td
-				= link_to route_include_route_busstop_path(:busstop_id =>busstop.id, :route_id => params[:id]), :method => :post do
-					= content_tag :button, :class => "btn btn-primary" do
-						= content_tag :span, class: "glyphicon glyphicon-ok" do
-							=""
-			%td
-		- else
-			%td
-				= busstop.busStopName
-			%td
-			%td
-				= link_to route_remove_route_busstop_path(:busstop_id =>busstop.id, :route_id => params[:id]), :method => :post do
-					= content_tag :button, :class => "btn btn-danger" do
-						= content_tag :span, class: "glyphicon glyphicon-remove" do
-							=""
+	- routeInfo = busstop.routes.collect(&:id)
+	- if !routeInfo.include?(params[:id].to_i)
+		%td
+			= busstop.busStopName
+		%td
+			= link_to route_include_route_busstop_path(:busstop_id =>busstop.id, :route_id => params[:id]), :method => :post do
+				= content_tag :button, :class => "btn btn-primary" do
+					= content_tag :span, class: "glyphicon glyphicon-ok" do
+						=""
+		%td
+	- else
+		%td
+			= busstop.busStopName
+		%td
+		%td
+			= link_to route_remove_route_busstop_path(:busstop_id =>busstop.id, :route_id => params[:id]), :method => :post do
+				= content_tag :button, :class => "btn btn-danger" do
+					= content_tag :span, class: "glyphicon glyphicon-remove" do
+						=""
