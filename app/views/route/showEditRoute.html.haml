@@ -9,9 +9,9 @@
 	%h3 Search Busstop
 	%br
 	%div.container.well
-		= form_tag("/route/searchBusstop", method: "post", remote: true, class: "form-horizontal", id: "searchAjaxForm") do 
-		
-		
+		= form_tag("/route/searchBusstop", method: "post", remote: true, class: "form-horizontal", id: "searchAjaxForm") do
+
+
 			%div.text-center
 				%div.col-lg-6
 					%div.input-group
@@ -26,7 +26,7 @@
 	=link_to 'Edit Routes Properties', route_edit_route_properties_path(@route.id), :class => "btn btn-primary"
 	%br
 	%hr
-	.well.container#busStopsHolder					
+	.well.container#busStopsHolder
 	%div.well.container.text-center{:id => "save"}
 		="Included Busstop On This Route"
 		%br
@@ -42,7 +42,7 @@
 									= content_tag :span, class: "glyphicon glyphicon-remove" do
 										=""
 			/
-				- @busstops.each do |c|		#all bussstops in data base	
+				- @busstops.each do |c|		#all bussstops in data base
 					-ids = Array.new
 					- @routeBusstopRelations.each do |u|
 						-ids << u.busstop_id
@@ -55,6 +55,6 @@
 									= content_tag :button, :class => "btn btn-danger" do
 										= content_tag :span, class: "glyphicon glyphicon-remove" do
 											=""
-		= form_tag("/route/saveBusStopOnRoute", method: "post", class: "form-horizontal", :id => "saveRoute") do 
+		= form_tag("/route/saveBusStopOnRoute", method: "post", class: "form-horizontal", :id => "saveRoute") do
 			= hidden_field_tag(:route_id, @route.id)
 			= submit_tag("Save", class: "btn btn-primary pull-right", :id => "button")
