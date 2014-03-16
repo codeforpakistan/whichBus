@@ -5,3 +5,13 @@ newItem = ("<%= escape_javascript(render(@busstops)) %>");
 //logger.console("Few Busstops Found");
 // $('#busStopsHolder').html('<table class="table table-hover table-condensed text-center"><tr><th class="text-center">Bus Stop Name</th><th class="text-center">Include</th><th class="text-center">Remove</th></tr>');
 $('#busStopsHolder').html('<table class="table table-hover table-condensed text-center"><tr><th class="text-center">Bus Stop Name</th><th class="text-center">Include</th><th class="text-center">Remove</th></tr>' + newItem + '</table>');
+$('.btnToHide').hide();
+$('.dontIncludeForm').hide();
+
+$('.btnToClickToSubmit').click(function(event)
+{
+	alert($(this).parent('div')[0].nodeName);
+	$(this).closest('includeForm')[0].hide();
+	alert("Perent Hiddend");
+});
+

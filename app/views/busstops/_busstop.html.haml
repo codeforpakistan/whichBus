@@ -4,17 +4,40 @@
 		%td
 			= busstop.busStopName
 		%td
-			= link_to route_include_route_busstop_path(:busstop_id =>busstop.id, :route_id => params[:id]), :method => :post do
-				= content_tag :button, :class => "btn btn-primary" do
-					= content_tag :span, class: "glyphicon glyphicon-ok" do
-						=""
+			.includeForm
+				%button.btn.btn-default.btnToClickToSubmit
+					%span.glyphicon.glyphicon-ok
+				= form_tag(route_include_route_busstop_path, :method => :post, remote: true, class: "form-horizontal includeButtonPressed") do
+					= hidden_field_tag(:busstop_id, busstop.id)
+					= hidden_field_tag(:route_id,params[:id])
+					%button.btn.btn-primary.btnToHide
 		%td
+			.dontIncludeForm
+				%button.btn.btn-danger.btnToClickToRemove
+					%span.glyphicon.glyphicon-remove
+				= form_tag(route_remove_route_busstop_path, :method => :post, remote: true, class: "form-horizontal removeButtonPressed") do
+					= hidden_field_tag(:busstop_id, busstop.id)
+					= hidden_field_tag(:route_id,params[:id])
+					%button.btn.btn-primary.btnToHide
 	- else
 		%td
 			= busstop.busStopName
 		%td
+			.dontIncludeForm
+				%button.btn.btn-default.btnToClickToSubmit
+					%span.glyphicon.glyphicon-ok
+				= form_tag(route_include_route_busstop_path, :method => :post, remote: true, class: "form-horizontal includeButtonPressed") do
+					= hidden_field_tag(:busstop_id, busstop.id)
+					= hidden_field_tag(:route_id,params[:id])
+					%button.btn.btn-primary.btnToHide
 		%td
-			= link_to route_remove_route_busstop_path(:busstop_id =>busstop.id, :route_id => params[:id]), :method => :post do
-				= content_tag :button, :class => "btn btn-danger" do
-					= content_tag :span, class: "glyphicon glyphicon-remove" do
-						=""
+			.includeForm
+				%button.btn.btn-danger.btnToClickToRemove
+					%span.glyphicon.glyphicon-remove
+				= form_tag(route_remove_route_busstop_path, :method => :post, remote: true, class: "form-horizontal removeButtonPressed") do
+					= hidden_field_tag(:busstop_id, busstop.id)
+					= hidden_field_tag(:route_id,params[:id])
+					%button.btn.btn-primary.btnToHide
+
+
+

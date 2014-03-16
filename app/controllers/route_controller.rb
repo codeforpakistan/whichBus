@@ -83,11 +83,11 @@ class RouteController < ApplicationController
 
 
 		
-		id = params[:id]
+		# id = params[:id]
 		@rel = Array.new
 		@foundBusstops = Array.new
 		@busstops = Busstop.all
-		@routeBusstopRelations = RouteBusstop.where(:route_id => id)
+		@routeBusstopRelations = RouteBusstop.where(:route_id => params[:id])
 
 		# Getting the RoutBustop Relation According to its sequence number
 		@sequenceNumberOrder = @routeBusstopRelations.order(:busStopSequenceNumber)
@@ -207,15 +207,9 @@ class RouteController < ApplicationController
 	def includeRouteBusstop
 		busstop = Busstop.find(params[:busstop_id])
 		route = Route.find(params[:route_id])
-		route_id = params[:route_id]
-		busstop_id = params[:busstop_id]
-		@routeBusstopRelations = RouteBusstop.new(:route_id => route_id, :busstop_id => busstop_id)    
-		if(@routeBusstopRelations.save)
-			flash[:notice] = "Busstop: #{busstop.busStopName} added to route: #{route.routeName}"
-			redirect_to_back()
-		else
-			flash[:notice] = "Could not update record."
-			redirect_to_back()
+		busstop.routes << route
+		respond_to do |format|
+			format.js
 		end
 	end
 
@@ -224,13 +218,15 @@ class RouteController < ApplicationController
 		route = Route.find(params[:route_id])
 		route_id = params[:route_id]
 		busstop_id = params[:busstop_id]
-		@routeBusstopRelations = RouteBusstop.where(:route_id => route_id, :busstop_id => busstop_id)
-		if(@routeBusstopRelations.destroy_all)
-			flash[:notice] = "Busstop: #{busstop.busStopName} removed from route: #{route.routeName}"
-			redirect_to_back()
+		routeBusstopRelations = RouteBusstop.where(:route_id => route_id, :busstop_id => busstop_id)
+		if(routeBusstopRelations.destroy_all)
+			respond_to do |format|
+				format.js {}
+			end
 		else
-			flash[:notice] = "Could not delete record."
-			redirect_to_back()
+			respond_to do |format|
+				format.js {}
+			end
 		end
 	end
 

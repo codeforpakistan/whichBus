@@ -35,12 +35,36 @@ $(document).ready(function()
 
 	});
 
-	$(function()
+	$('#searchAjaxForm input').keyup(function()
 	{
-		$('#searchAjaxForm input').keyup(function()
-		{
-			$('#busStopsHolder').hide();
-			$('#searchAjaxForm').submit();
-		});
+		$('#busStopsHolder').hide();
+		$('#searchAjaxForm').submit();
+	});
+	
+	$('#busStopsHolder').click(function()
+	{
+		//alert("Incldue Button Presed.");
+	});
+
+
+
+	// $("#busStopsHolder .includeButtonPressed").click(function()
+	// {
+	// 	alert("hello to include button option");
+	// 	$('.includeButtonPressed').submit();
+	// 	alert("From Submitted");
+	// 	// var tag = event.target.nodeName;
+ //        $(event.target).hide();
+ //        alert(event.target);
+
+	// 	//alert("Include button is pressed");
+	// });
+	$(".removeButtonPressed input").click(function()
+	{
+		//alert("hello to remove button");
+		$('.removeButtonPressed').submit();
+		var tag = event.target.nodeName;
+        $(event.target).hide();
+
 	});
 });
