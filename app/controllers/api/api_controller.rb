@@ -49,6 +49,7 @@ class Api::ApiController < ApplicationController
                                     #binding.pry
                                     aBusStop = allBusStopOnMap[index]
                                     aBusStop.next_route_id = allBusStopOnMap[index + 1].route_id
+                                    allBusStopOnMap[index + 1].next_route_id = aBusStop.next_route_id
                                     singleRoute << aBusStop
                                 end
                             end
@@ -122,14 +123,11 @@ class Api::ApiController < ApplicationController
 
         puts "Response Code From Google API: #{responseStartAddress.code}"
 
-        binding.pry
         if responseStartAddress.code == 200
-            binding.pry
             jsonFormatStartAddress = ActiveSupport::JSON.decode(responseStartAddress.body)
             if jsonFormatStartAddress['results'].count > 0
                 puts "Got Some Results. #{jsonFormatStartAddress['results'].count} to be exact."
                 startPointLatLong = jsonFormatStartAddress['results'].first['geometry']['location']
-            binding.pry
             startPointLatLong = parseLatLong(startPointLatLong)
             hashesArray = Hash.new
             @busstop = Busstop.all
