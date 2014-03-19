@@ -60,6 +60,8 @@ gem 'httparty'
 #For setting Environment Variables
 gem "figaro"
 
+gem "squeel"
+
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
