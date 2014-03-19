@@ -59,7 +59,8 @@ class BusstopNode
 				relationForSequence = RouteBusstop.where(:busstop_id => currentBusstop.id, :route_id => currentRoute.id)
 				if relationForSequence.second.blank?
 					# print "\nNo Second Object found. Valid Yet\n\n"
-					currentBusstopSequenceNumber = relationForSequence.first.busStopSequenceNumber
+					currentBusstopSequenceNumber = relationForSequence.first.bus_stop_sequence_number
+					# binding.pry
 					# print "\nValue for currentBusstopSequenceNumber ==> #{currentBusstopSequenceNumber}\n\n"
 					nextBusstopSequenceNumber = currentBusstopSequenceNumber + 1
 					previousBusstopSequenceNumber = currentBusstopSequenceNumber - 1
@@ -119,7 +120,7 @@ class BusstopNode
 	end
 
 	def self.findNeighbourBusstop(route_id = 0, busStopSequenceNumber = 0)
-		relationForNeighbourBusstops = RouteBusstop.where(:route_id => route_id, :busStopSequenceNumber => busStopSequenceNumber)
+		relationForNeighbourBusstops = RouteBusstop.where(:route_id => route_id, :bus_stop_sequence_number => busStopSequenceNumber)
 		# print "\ncount for relationForNeighbourBusstops ==> #{relationForNeighbourBusstops.count}\n\n"
 		# print "\nRelation RouteBusstop For nextBusstopSequenceNumber ==> #{relationForNeighbourBusstops.first.to_yaml}\n\n"
 		if not relationForNeighbourBusstops.blank?
