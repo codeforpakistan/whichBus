@@ -78,11 +78,6 @@ class RouteController < ApplicationController
 	end
 
 	def showEditRoute
-		
-		#@search = Route.search(params[:search])
-
-
-		
 		id = params[:id]
 		@rel = Array.new
 		@foundBusstops = Array.new
@@ -90,7 +85,7 @@ class RouteController < ApplicationController
 		@routeBusstopRelations = RouteBusstop.where(:route_id => id)
 
 		# Getting the RoutBustop Relation According to its sequence number
-		@sequenceNumberOrder = @routeBusstopRelations.order(:busStopSequenceNumber)
+		@sequenceNumberOrder = @routeBusstopRelations.order(:bus_stop_sequence_number)
 		
 		# getting the busstop id in according to sequence number
 		@sequenceNumberOrder.each do |r|
@@ -118,23 +113,6 @@ class RouteController < ApplicationController
 				end   
 			end
 		end
-
-		# id = params[:id]
-		# @foundBusstops = Array.new
-		# @busstops = Busstop.all
-		# @routeBusstopRelations = RouteBusstop.where(:route_id => id)
-		# @route = Route.find(params[:id])
-		# @busstopsOnRoute = Array.new
-		# @busstopsOnRoute = @route.busstops
-		# @busstopArray = session[:busstopsIDs]
-		# session.delete(:busstopsIDs)
-		# if(@busstopArray != nil)    
-		# 	if (@busstopArray.size > 0)
-		# 		@busstopArray.each do |b|
-		# 			@foundBusstops << Busstop.find(b)
-		# 		end   
-		# 	end
-		# end
 	end
 	
 	def saveBusStopOnRoute
@@ -150,11 +128,11 @@ class RouteController < ApplicationController
 				#iter+=1
 				rel = RouteBusstop.where(:route_id => params[:route_id], :busstop_id => busstop)
 				if (rel.second.blank?)  #assert type stmt.
-					rel.first.busStopSequenceNumber = sequenceNumber
+					rel.first.bus_stop_sequence_number = sequenceNumber
 					testingVariable << sequenceNumber+=1
 					if not (sortedRoute.last == busstop)
 						rel.first.nextBusStop = sortedRoute[iter+1]
-						#rel.first.busStopSequenceNumber = i
+						#rel.first.bus_stop_sequence_number = i
 						if(rel.first.valid?)
 							rel.first.save
 							#flash[:notice] = "Record Saved: #{rel[0].to_json}"
