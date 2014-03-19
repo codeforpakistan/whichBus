@@ -83,7 +83,7 @@ class Api::ApiController < ApplicationController
                         status: "Failed",
                         response:
                         {
-                                message: "No Routes Found for Endpoints." 
+                            message: "No Routes Found for Endpoints." 
                         }
                     }    
                 end
@@ -93,7 +93,7 @@ class Api::ApiController < ApplicationController
                     status: "Failed",
                     response:
                     {
-                            message: "No Valid response from Google API." 
+                        message: "No Valid response from Google API." 
                     }
                 }  
             end            
@@ -128,27 +128,30 @@ class Api::ApiController < ApplicationController
             if jsonFormatStartAddress['results'].count > 0
                 puts "Got Some Results. #{jsonFormatStartAddress['results'].count} to be exact."
                 startPointLatLong = jsonFormatStartAddress['results'].first['geometry']['location']
-            startPointLatLong = parseLatLong(startPointLatLong)
-            hashesArray = Hash.new
-            @busstop = Busstop.all
-            @busstop.each do |b|
-                d = Distance.calculateDistance(b.busStopLatLong, startPointLatLong)
-                hashesArray[b.busStopName] = d
-            end
-            hashesArray = hashesArray.sort_by { |key, value| value}
-            puts "Printing Hashes: #{hashesArray.to_yaml}"
-            puts "Closest Hash: #{hashesArray.first.last}"
+                startPointLatLong = parseLatLong(startPointLatLong)
+                hashesArray = Hash.new
+                @busstop = Busstop.all
+                @busstop.each do |b|
+                    d = Distance.calculateDistance(b.busStopLatLong, startPointLatLong)
+                    hashesArray[b.busStopName] = d
+                end
+                hashesArray = hashesArray.sort_by { |key, value| value}
+                puts "Printing Hashes: #{hashesArray.to_yaml}"
+                puts "Closest Hash: #{hashesArray.first.last}"
 
-            nearestBusstop = Busstop.find_by_busStopName(hashesArray.first.first) 
-            puts "Nearest Busstop => #{nearestBusstop.to_yaml}"
+                nearestBusstop = Busstop.find_by_busStopName(hashesArray.first.first) 
+                puts "Nearest Busstop => #{nearestBusstop.to_yaml}"
 
-            return nearestBusstop
-            end
-
-            
+                return nearestBusstop
+            end  
         else
+            jsonFormatStartAddress = ActiveSupport::JSON.decode(responseStartAddress.body)
+            binding.pry
+            puts "Google API Returned Status Code: #{responseStartAddress.code}"
+            puts "Google Status Returned <#{jsonFormatStartAddress['results'].count} results \n with Following error: #{jsonFormatStartAddress['error_message']}, Status: #{jsonFormatStartAddress['status']}"
             return false
         end
+        puts "Review This Piece of code. Execution Should NEVER Reach this Line."
         return false
     end
 
