@@ -1,4 +1,5 @@
 RailsBoot::Application.routes.draw do
+  mount RailsAdmin::Engine => '/manager', :as => 'rails_admin'
   get "front_ends/index"
   #devise_for :admin
   devise_for :admin, :controllers => { :registrations => "devise/admin/registrations", :sessions => "devise/admin/sessions", :passwords => "devise/admin/passwords" }

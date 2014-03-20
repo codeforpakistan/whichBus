@@ -62,6 +62,8 @@ gem "figaro"
 
 gem "squeel"
 
+gem "rails_admin"
+
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
