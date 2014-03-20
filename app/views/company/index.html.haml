@@ -1,6 +1,7 @@
-%h1 Showing All Routes for Company
+/%h1 Showing All Routes for Company
 -if @companyRoutes.blank?
 	%h3= "Nothing to show"
+	=link_to "Show All Routes", company_showAll_path, :class => "btn btn-primary"
 -else
 	/
 		%div

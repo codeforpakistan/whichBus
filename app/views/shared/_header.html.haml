@@ -44,7 +44,7 @@
 		-if admin_signed_in?
 			- user = current_admin
 			%div.btn-group
-				%button.btn.btn-default.dropdown-toggle{ :type => "button", :data => {:toggle => "dropdown"}}
+				%button.btn.btn-success.dropdown-toggle{ :type => "button", :data => {:toggle => "dropdown"}}
 					-if user.userName.blank?
 						="#{user.type}: #{user.firstName} #{user.lastName}"
 					-else
@@ -59,7 +59,7 @@
 						=link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'navbar-link'
 					%li.divider
 					%li
-						=link_to "Delete My Account", admin_destroy_path(user.id), :class => "navbar-link", :data => { :confirm => "Are you sure?" }, :method => :delete
+						=link_to "Delete My Account", admin_destroy_path(user.id), :class => "navbar-link ", :data => { :confirm => "Are you sure?" }, :method => :delete
 		-else
 			= link_to "Sign up", new_admin_registration_path, :class => 'btn btn-primary navbar-link'
 			= link_to "Login", new_admin_session_path, :class => 'btn btn-primary navbar-link'	

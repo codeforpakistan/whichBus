@@ -1,13 +1,18 @@
 
 %br
 %br
-=link_to "Show All Company Routes", company_index_path, :class => "btn btn-primary"
+=link_to "Show All Company Included Routes", company_index_path, :class => "btn btn-primary"
+|
+=link_to "Show All Routes", company_showAll_path, :class => "btn btn-primary"
 %br
 -if @route.blank?
 	%h4 Route Empty
 -else
 	%hr
-	%h3= "Showing route details for: \'#{@route.routeName}\'"
+	%h3
+		Showing route details for
+		%span.label.label-primary
+			="#{@route.routeName}"
 	%hr
 	=form_for :route, url:{controller: "route", action: "update"}, html:{class: "form-horizontal"} do |f|
 		%div.form-group
@@ -48,7 +53,9 @@
 				=f.text_field :routeStopTime, {:class => 'form-control', :disabled => 'disabled', :value => @route.routeStopTime}
 	%hr
 	%h3
-		="Bus Stops on route: #{@route.routeName}"
+		Bus Stop on route:
+		%span.label.label-primary
+			="#{@route.routeName}"
 	%hr
 	%table.table.table-hover.table-condensed.text-center
 		%tr

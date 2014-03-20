@@ -6,7 +6,9 @@
 	%h3 No bus stop currently exist.
 -else
 	%hr
-	%h3 Search Busstop
+	%h3
+		%span.label.label-primary
+			Search Busstop
 	%br
 	%div.container.well
 		= form_tag("/route/searchBusstop", method: "post", remote: true, class: "form-horizontal", id: "searchAjaxForm") do
@@ -21,7 +23,10 @@
 							%button.btn.btn-primary{:type => "submit" }
 								%span.glyphicon.glyphicon-search
 						= #submit_tag("Search", class: "btn btn-default")
-	%h3= "Choose busstops for route: '#{@route.routeName}'"
+	%h3
+		Choose busstops for route:
+		%span.label.label-info
+			= "#{@route.routeName}"
 	%br
 	=link_to 'Edit Routes Properties', route_edit_route_properties_path(@route.id), :class => "btn btn-primary"
 	%br

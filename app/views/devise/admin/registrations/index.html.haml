@@ -19,12 +19,15 @@
 			%td.text-center
 				Last Name
 			%td.text-center
-				Approved By
+				Status By
 		-@admins.each do |a|
 			%tr
 				%td= link_to a.userName, admin_user_profile_path(a.id)
 				%td= a.email
 				%td= a.firstName
 				%td= a.lastName
-				%td= a.admin
+				-if a.approved? 
+					%td= "Approved"
+				-else
+					%td= "Pending"
 				
