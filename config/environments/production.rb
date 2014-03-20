@@ -69,6 +69,22 @@ RailsBoot::Application.configure do
   # the I18n.default_locale when a translation can not be found).
   config.i18n.fallbacks = true
 
+  config.action_mailer.raise_delivery_errors = false
+
+  config.action_mailer.default_url_options = { :host => 'http://incomeon.herokuapp.com/' }
+  #config/environments/development.rb
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :openssl_verify_mode => 'none',
+      address: 'vps103.spsnetwork.net',
+      port: 25,
+      domain: 'mail.forestbankfoundation.org',
+      authentication: 'plain',
+      enable_starttls_auto: true,
+      user_name: 'no-reply@forestbankfoundation.org',
+      password: 'helloworld@1234'
+  }
+  
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 

@@ -8,4 +8,5 @@
 		%p 
 			Your account is awaiting approval. Your resquest is pending.
 		%p  
-			=link_to "Contact Us", "admin@admin.com", :class => "btn btn-primary"
+			="Contact Us"
+			=mail_to ENV['CONTACT_EMAIL']

@@ -8,3 +8,4 @@
 # Add application configuration variables here, as shown below.
 #
 GOOGLE_API_KEY: "YOUR_GOOGLE_API_HERE"
+CONTACT_EMAIL

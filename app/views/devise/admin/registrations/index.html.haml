@@ -19,7 +19,7 @@
 			%td.text-center
 				Last Name
 			%td.text-center
-				Status By
+				Status
 		-@admins.each do |a|
 			%tr
 				%td= link_to a.userName, admin_user_profile_path(a.id)
