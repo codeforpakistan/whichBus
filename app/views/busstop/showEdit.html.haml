@@ -1,8 +1,12 @@
 -if @editBusstop.blank?
 	="No Bus Stop Found"
 -else
-	%h1= "Edit Bus Stop: #{@editBusstop.busStopName}"
+	%h1
+		Edit Bus Stop: 
+		%span.label.label-info
+			="#{@editBusstop.busStopName}"
 	-@editBusstop.errors.full_messages
+	%br
 	=form_for :busstop, url:{action: "update"}, html:{class: "form-horizontal"} do |f|
 		%div.form-group
 			=f.label :busStopName, {:class => 'col-lg-2 control-label'}

@@ -11,8 +11,8 @@ class Route < ActiveRecord::Base
     validates :routeSourceName, presence: true, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }, length: {minimum: 5, maximum: 25}
     validates :routeDestName, presence: true, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters numbers and space" }, length: {minimum: 5, maximum: 25}
     validates :routeDistance, numericality: true, :allow_blank => true
-    validates :routeSourceLatLong, presence: true 
-    validates :routeDestLatLong, presence: true
+    validates :routeSourceLatLong, presence: true, format: {with: /[+,-]?\d{1,2}[.]\d+[,]\s{0,1}[+,-]?\d{1,3}[.]\d+/, message: "Improper Format"} 
+    validates :routeDestLatLong, presence: true, format: {with: /[+,-]?\d{1,2}[.]\d+[,]\s{0,1}[+,-]?\d{1,3}[.]\d+/, message: "Improper Format"}
 
     def self.search(search)
         if search

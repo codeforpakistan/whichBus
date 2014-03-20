@@ -8,9 +8,8 @@ class Busstop < ActiveRecord::Base
     PI = 3.141592653589793
 
 
-    #errors.add(:busStopName, 'heelo' )
     validates :busStopName, presence: true, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }, length: {minimum: 3, maximum: 35}
-    #validates :busStopLatLong, presence: true
+    validates :busStopLatLong, presence: true, format: {with: /[+,-]?\d{1,2}[.]\d+[,]\s{0,1}[+,-]?\d{1,3}[.]\d+/, message: "Not in format"}
     validates :busStopSecName, format: { with: /\A^[a-zA-Z\d ]+$\Z/i, message: "only allows letters, numbers and space" }, length: {minimum: 3, maximum: 35}, :allow_blank => true
     
     def self.search(search)

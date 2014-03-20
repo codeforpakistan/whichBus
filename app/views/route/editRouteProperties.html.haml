@@ -2,7 +2,11 @@
 -if @editRoute.blank?
 	="No such Route Found."
 -else
-	%h3= "Edit Route: #{@editRoute.routeName}"
+	%h3
+		Edit Route:
+		%span.label.label-info
+			="#{@editRoute.routeName}"
+		%br
 	=form_for :route, url:{action: "update"}, html:{class: "form-horizontal"} do |f|
 		%div.form-group
 			=f.label :routeName, 'Route Name', {:class => 'col-lg-2 control-label'}
@@ -61,7 +65,7 @@
 		%div.form-group
 			%div.col-lg-offset-2.col-lg-10
 				=f.submit :class => 'btn btn-primary'
-				%button.btn.btn-default{:type => 'button'}
+				%button.btn.btn-danger{:type => 'button'}
 					="Cancel"
 
 
