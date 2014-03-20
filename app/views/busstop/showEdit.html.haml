@@ -9,21 +9,21 @@
 	%br
 	=form_for :busstop, url:{action: "update"}, html:{class: "form-horizontal"} do |f|
 		%div.form-group
-			=f.label :busStopName, {:class => 'col-lg-2 control-label'}
+			=f.label :busStopName, "Bus Stop Name" ,{:class => 'col-lg-2 control-label'}
 			%span.error-message
 				- if not (@editBusstop.errors[:busStopName].blank?)
 					=@editBusstop.errors[:busStopName].to_s
 			%div.col-lg-3
 				=f.text_field :busStopName, {:class => 'form-control', :value => @editBusstop.busStopName}
 		%div.form-group
-			=f.label :busStopLatLong, {:class => 'col-lg-2 control-label'}
+			=f.label :busStopLatLong, "Bus Stop LatLong" ,{:class => 'col-lg-2 control-label'}
 			%span.error-message
 				- if not (@editBusstop.errors[:busStopLatLong].blank?)
 					=@editBusstop.errors[:busStopLatLong].to_s
 			%div.col-lg-3
 				=f.text_field :busStopLatLong, {:class => 'form-control', :value => @editBusstop.busStopLatLong}
 		%div.form-group
-			=f.label :busStopSecName, {:class => 'col-lg-2 control-label'}
+			=f.label :busStopSecName, "Bus Stop Secondary Name" ,{:class => 'col-lg-2 control-label'}
 			%span.error-message
 				- if not (@editBusstop.errors[:busStopSecName].blank?)
 					=@editBusstop.errors[:busStopSecName].to_s
