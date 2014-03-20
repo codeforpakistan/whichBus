@@ -33,6 +33,7 @@
 	%hr
 	.well.container#busStopsHolder
 	%div.well.container.text-center{:id => "save"}
+		="Search Busstop Click on the add button the add busstop on route then click on the save button at the bottom of the page to save busstops for specific route."
 		="Included Busstop On This Route"
 		%br
 		%br
@@ -62,4 +63,4 @@
 											=""
 		= form_tag("/route/saveBusStopOnRoute", method: "post", class: "form-horizontal", :id => "saveRoute") do
 			= hidden_field_tag(:route_id, @route.id)
-			= submit_tag("Save", class: "btn btn-primary pull-right", :id => "button")
+			= submit_tag("Save Busstop on Route", class: "btn btn-primary pull-right", :id => "button")
