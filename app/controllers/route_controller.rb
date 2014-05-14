@@ -161,7 +161,7 @@ class RouteController < ApplicationController
 			route_id = params[:route_id]         
 
 			#flash[:alert] = relations[0].to_json
-			#flash[:notice] = params[:route_id].to_s
+			flash[:notice] = "Busstop sequence added to: #{Route.find(route_id).routeName} "
 			redirect_to :back
 		end
 	end

@@ -125,6 +125,7 @@ class Api::ApiController < ApplicationController
 
         if responseStartAddress.code == 200
             jsonFormatStartAddress = ActiveSupport::JSON.decode(responseStartAddress.body)
+            # binding.pry
             if jsonFormatStartAddress['results'].count > 0
                 puts "Got Some Results. #{jsonFormatStartAddress['results'].count} to be exact."
                 startPointLatLong = jsonFormatStartAddress['results'].first['geometry']['location']
