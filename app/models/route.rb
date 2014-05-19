@@ -1,4 +1,11 @@
 class Route < ActiveRecord::Base
+    include Neoid::Node
+
+    neoidable do |c|
+        c.field :routeName
+        c.field :routeDistance
+    end
+
     has_many :route_busstops, :dependent => :destroy
     has_many :busstops, through: :route_busstops
 

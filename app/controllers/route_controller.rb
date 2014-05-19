@@ -1,4 +1,4 @@
-class RouteController < ApplicationController
+ class RouteController < ApplicationController
 	before_filter :authenticate_admin!
 	before_filter :authenticate_isAdmin#, :except => [:showAll, :view, :routeDetails]
 	#before_filter :authenticate_company, :only => [:showAll, :view, :routeDetails], unless: :current_user_isAdmin?
@@ -135,6 +135,10 @@ class RouteController < ApplicationController
 						#rel.first.bus_stop_sequence_number = i
 						if(rel.first.valid?)
 							rel.first.save
+							pointBusstop = rel.first.busstop
+							neighbourBusstop = Busstop.find(rel.first.nextBusStop)
+							neo = Neography::Rest.new()
+							result = neo.create_relationship('neighbour_busstop', pointBusstop.neo_node, neighbourBusstop.neo_node)
 							#flash[:notice] = "Record Saved: #{rel[0].to_json}"
 						else
 							flash[:alert] = "RouteBusstop Object has errors. #{rel[0].errors.full_messages}"

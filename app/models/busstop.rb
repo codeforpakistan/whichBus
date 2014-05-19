@@ -1,6 +1,15 @@
 class Busstop < ActiveRecord::Base
 
     #include Distance
+    include Neoid::Node
+
+    neoidable do |c|
+        # c.field :label do
+        #     "Busstop"
+        # end
+        c.field :busStopName
+        c.field :busStopLatLong
+    end
     has_many     :route_busstops, :dependent => :restrict
     has_many     :routes, through: :route_busstops
     belongs_to   :admin
@@ -38,9 +47,9 @@ class Busstop < ActiveRecord::Base
 
     def isNumeric?(num)
 
-     if(num =~ /[+,-]?\d{1,2}[.]\d+[,]\s{0,1}[+,-]?\d{1,3}[.]\d+/)
-         return true
-     else
+       if(num =~ /[+,-]?\d{1,2}[.]\d+[,]\s{0,1}[+,-]?\d{1,3}[.]\d+/)
+           return true
+       else
         return false
     end
 end

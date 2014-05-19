@@ -1,6 +1,10 @@
 class RouteBusstop < ActiveRecord::Base
-  
-  belongs_to :route
-  belongs_to :busstop
-  belongs_to :admin
+
+	include Neoid::Relationship
+	neoidable do |c|
+    	c.relationship start_node: :route, end_node: :busstop, type: :route_busstops
+  	end
+	belongs_to :route
+	belongs_to :busstop
+	belongs_to :admin
 end

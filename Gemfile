@@ -6,6 +6,8 @@ gem 'rails', '4.0.0'
 group :development, :test do
   gem 'sqlite3' 
   gem 'pry-rails'
+  gem "better_errors"
+  gem "binding_of_caller"
   # gem 'rubytree'
 end
 group :production do
@@ -69,3 +71,4 @@ gem "rails_admin"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'neoid'
