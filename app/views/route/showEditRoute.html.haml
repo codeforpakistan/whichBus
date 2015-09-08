@@ -1,3 +1,6 @@
+=# @rel.to_yaml
+=# @b.to_yaml
+=# @search.to_yaml
 - if @busstops.blank?
 	%hr
 	%h3 No bus stop currently exist.
@@ -6,16 +9,16 @@
 	%h3 Search Busstop
 	%br
 	%div.container.well
-		= form_tag("/route/searchBusstop", method: "post", class: "form-horizontal") do 
-		
-		
+		= form_tag("/route/searchBusstop", method: "post", remote: true, class: "form-horizontal", id: "searchAjaxForm") do
+
+
 			%div.text-center
 				%div.col-lg-6
 					%div.input-group
 						= hidden_field_tag(:id, @route.id)
-						= text_field_tag(:search, nil, :class => "form-control" , :placeholder => "Bus-Stop Name")
+						= text_field_tag(:search, params[:search], :class => "form-control" , :placeholder => "Bus-Stop Name")
 						%span.input-group-btn
-							%button.btn.btn-primary{:type => "submit"}
+							%button.btn.btn-primary{:type => "submit" }
 								%span.glyphicon.glyphicon-search
 						= #submit_tag("Search", class: "btn btn-default")
 	%h3= "Choose busstops for route: '#{@route.routeName}'"
@@ -23,49 +26,13 @@
 	=link_to 'Edit Routes Properties', route_edit_route_properties_path(@route.id), :class => "btn btn-primary"
 	%br
 	%hr
-	%div.well.container
-		%h4.text-center
-			="Search Result"
-		-if @foundBusstops.blank?
-			%p.text-center 
-				="No Busstop Found"
-		-else	
-			%table.table.table-hover.table-condensed.text-center
-				%tr
-					%th.text-center
-						Bus Stop Name
-					%th.text-center
-						Include
-					%th.text-center
-						Remove
-				- @foundBusstops.each do |c|		#all bussstops in data base
-					%tr
-						-ids = Array.new
-						- @routeBusstopRelations.each do |u|
-							-ids << u.busstop_id
-
-						-if (ids.include?(c.id) == false)
-							%td= c.busStopName
-							%td
-								= link_to route_include_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
-									= content_tag :button, :class => "btn btn-primary" do
-										= content_tag :span, class: "glyphicon glyphicon-ok" do
-											=""
-							%td
-						-else
-							%td= c.busStopName
-							%td
-							%td
-								= link_to route_remove_route_busstop_path(:busstop_id =>c.id, :route_id => @route.id), :method => :post do
-									= content_tag :button, :class => "btn btn-danger" do
-										= content_tag :span, class: "glyphicon glyphicon-remove" do
-											=""
+	.well.container#busStopsHolder
 	%div.well.container.text-center{:id => "save"}
-		="Inclueded Busstop On This Route"
+		="Included Busstop On This Route"
 		%br
 		%br
 		%ul.well.container.list-group{:id => "sortable", :style => "padding-left:25%; padding-right:20%;"}
-			- @busstopsOnRoute.each do |busstop|
+			- @busstopsOnRoutes.each do |busstop|
 				%li.list-group-item.col-lg-10{:id => busstop.id}
 					%h4
 						= busstop.busStopName
@@ -75,7 +42,7 @@
 									= content_tag :span, class: "glyphicon glyphicon-remove" do
 										=""
 			/
-				- @busstops.each do |c|		#all bussstops in data base	
+				- @busstops.each do |c|		#all bussstops in data base
 					-ids = Array.new
 					- @routeBusstopRelations.each do |u|
 						-ids << u.busstop_id
@@ -88,6 +55,6 @@
 									= content_tag :button, :class => "btn btn-danger" do
 										= content_tag :span, class: "glyphicon glyphicon-remove" do
 											=""
-		= form_tag("/route/saveBusStopOnRoute", method: "post", class: "form-horizontal", :id => "saveRoute") do 
+		= form_tag("/route/saveBusStopOnRoute", method: "post", class: "form-horizontal", :id => "saveRoute") do
 			= hidden_field_tag(:route_id, @route.id)
 			= submit_tag("Save", class: "btn btn-primary pull-right", :id => "button")

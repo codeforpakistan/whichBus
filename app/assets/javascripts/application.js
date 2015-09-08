@@ -18,11 +18,11 @@
 
 var myArray1 = new Array();
 
-$(document).ready(function() 
-{	
-	//var myArray1 = new Array();	
+$(document).ready(function()
+{
+	//var myArray1 = new Array();
 	$(function()
-	{	
+	{
 		$( "#sortable" ).sortable();
 		$( "#sortable" ).disableSelection();
 	});
@@ -32,7 +32,15 @@ $(document).ready(function()
 		$("#save p").html(sortedIDs.toString());
 		$("#save #saveRoute").append("<input name=\'sortedRoute\' id=\'sortedRoute\' type=\'hidden\' value= \'"+ sortedIDs.toString() + "\'>");
 		alert(sortedIDs.join(" "));
-		
-	});    
 
+	});
+
+	$(function()
+	{
+		$('#searchAjaxForm input').keyup(function()
+		{
+			$('#busStopsHolder').hide();
+			$('#searchAjaxForm').submit();
+		});
+	});
 });

@@ -5,6 +5,7 @@ gem 'rails', '4.0.0'
 
 group :development, :test do
   gem 'sqlite3' 
+  gem 'pry-rails'
   # gem 'rubytree'
 end
 group :production do
@@ -54,6 +55,10 @@ gem "devise", "~> 3.1.0"
 # gem 'unicorn'
 
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+#For hitting API Links and much more.
+gem 'httparty'
+#For setting Environment Variables
+gem "figaro"
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

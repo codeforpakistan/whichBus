@@ -14,3 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+#Ignore API Key and Passwords File
+# Ignore application configuration
+/config/application.yml

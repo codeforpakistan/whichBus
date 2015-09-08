@@ -2,7 +2,7 @@ RailsBoot::Application.routes.draw do
   get "front_ends/index"
   #devise_for :admin
   devise_for :admin, :controllers => { :registrations => "devise/admin/registrations", :sessions => "devise/admin/sessions", :passwords => "devise/admin/passwords" }
-  
+
  # devise_for :admins
   get "super_admin/index"
   get "super_admin/dashboard"
@@ -14,8 +14,8 @@ RailsBoot::Application.routes.draw do
   get "busstop/showEdit/:id", :to => "busstop#showEdit", as: :busstop_show_edit
   post "busstop/update/:id", :to => "busstop#update", as: :busstop_update
   post "busstop/createBusstop"
-  
-  
+
+
   post "route/searchBusstop"
   get "route/searchBusstop"
   get "route/showAllRoute"
@@ -29,27 +29,27 @@ RailsBoot::Application.routes.draw do
   delete "route/:id", to: 'route#destroy', as: :route_delete
   get 'route/showEditRoute/:id', to: 'route#showEditRoute', as: :route_show_edit_route
   get "route/routeDetails/:id", to: 'route#routeDetails', as: :route_route_details
-  
-  post 'route/removeRouteBusstop/:id', to: 'route#removeRouteBusstop', as: :route_remove_route_busstop 
-  post 'route/includeRouteBusstop/:id', to: 'route#includeRouteBusstop', as: :route_include_route_busstop 
-  
+
+  post 'route/removeRouteBusstop', to: 'route#removeRouteBusstop', as: :route_remove_route_busstop
+  post 'route/includeRouteBusstop', to: 'route#includeRouteBusstop', as: :route_include_route_busstop
+
   post 'route/saveBusStopOnRoute', to: 'route#saveBusStopOnRoute'
   get 'welcome', to: 'welcome#welcome', as: :welcome_welcome
 
-  root 'front_ends#index'
+  root 'welcome#welcome'
   #rogue lines
-  
+
   #
-  
+
   devise_scope :admin do
 
     #get 'admin/passwords/new', to: 'devise/admin/passwords#new', as: :admin_passwords_new
     get 'admin/index', to: 'devise/admin/registrations#index', as: :admin_index
     get 'admin/pendingUser', to: 'devise/admin/registrations#pendingUser', as: :admin_pending_user
     post 'admin/approveUser/:id', to: 'devise/admin/registrations#approveUser', as: :admin_approve_user
-    post 'admin/approveAdmin/:id', to: 'devise/admin/registrations#approveAdmin', as: :admin_approve_admin 
-    get 'unApprovedAccount', to: 'devise/admin/registrations#unApprovedAdmin', as: :admin_unapproved_account 
-    get 'userProfile/:id', to: 'devise/admin/registrations#userProfile', as: :admin_user_profile 
+    post 'admin/approveAdmin/:id', to: 'devise/admin/registrations#approveAdmin', as: :admin_approve_admin
+    get 'unApprovedAccount', to: 'devise/admin/registrations#unApprovedAdmin', as: :admin_unapproved_account
+    get 'userProfile/:id', to: 'devise/admin/registrations#userProfile', as: :admin_user_profile
     get "company/index", as: :company_index
     get "company/showAll", as: :company_showAll
     get 'company/routeDetails/:id', to: 'company#routeDetails', as: :company_route_details
@@ -63,14 +63,15 @@ RailsBoot::Application.routes.draw do
   get 'api/savePolyLineData', to: 'api/api#savePolyLineData'
   post 'api/savePolyLineData', to: 'api/api#savePolyLineData'
   post '/api/busStopData', to: 'api/api#busStopData'
+  post 'api/geoCodeBusstops', :to => 'api/api#geoCodeBusstops'
 
   resources :front_ends
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -106,7 +107,7 @@ RailsBoot::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
